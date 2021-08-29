@@ -5,20 +5,20 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 //import sequelize model
-const Employee = require("../models/Employee");
+const User = require("../models/User");
 
-const employees = express.Router();
-employees.use(cors())
+const users = express.Router();
+users.use(cors())
 
 //register user
-employees.post('/register', (req, res) => {
+users.post('/register', (req, res) => {
     const today = new Date()
     const userData = {
         username: req.body.username,
         password: req.body.password,
         created: today
     }
-    Employee.findOne({
+    User.findOne({
         where: {
             username: req.body.username
         }
@@ -32,7 +32,7 @@ employees.post('/register', (req, res) => {
                 console.log("success!")
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
-                    Employee.create(userData)
+                    User.create(userData)
                         .then(user => {
                             res.json({ status: user.username + ' registered' })
                         })
@@ -48,8 +48,8 @@ employees.post('/register', (req, res) => {
 })
 
 //login user
-employees.post('/login', (req, res) => {
-    Employee.findOne({
+users.post('/login', (req, res) => {
+    Users.findOne({
         where: {
             username: req.body.username
         }
@@ -73,14 +73,14 @@ employees.post('/login', (req, res) => {
 })
 
 //find all users
-employees.get("/all", function (req, res) {
-    Employee.findAll().then(user => {
+users.get("/all", function (req, res) {
+    Users.findAll().then(user => {
         res.send(user);
     });
 });
 
-employees.get("/list", function (req, res) {
-    Employee.findAll().then(response => {
+users.get("/list", function (req, res) {
+    User.findAll().then(response => {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         var test = [];
         for (var i = 0; i < response.length; i++) {
@@ -101,8 +101,8 @@ employees.get("/list", function (req, res) {
 });
 
 //find user by username
-employees.get("/:username", function (req, res) {
-    Employee.findOne({
+users.get("/:username", function (req, res) {
+    User.findOne({
         where: {
             username: req.params.username
         }
@@ -111,4 +111,4 @@ employees.get("/:username", function (req, res) {
     });
 });
 
-module.exports = employees
+module.exports = users

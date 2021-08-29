@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize")
 const db = require("../database/db")
 
-var Employees = db.sequelize.define(
-    'employee',
+var Users = db.sequelize.define(
+    'user',
     {
         id: {
             type: Sequelize.INTEGER,
@@ -35,6 +35,6 @@ var Employees = db.sequelize.define(
     }
 )
 
-Employees.sync(/*{force: true}*/)
+Users.sync(/*{force: true}*/)
 
-module.exports = Employees
+module.exports = Users

@@ -1,4 +1,4 @@
-# ServantApp | `https://servantapp.herokuapp.com/`
+# ServantApp | https://servantapp.herokuapp.com/
 
 You will need the .env file for this project in order for it to run. Should be stickied in the `dev-lounge` channel on discord, but feel free to DM me if you need it.
 

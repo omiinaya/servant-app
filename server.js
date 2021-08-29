@@ -2,7 +2,7 @@ require("dotenv").config()
 
 //requirements
 var express = require("express")
-//var keepAwake = require("./client/src/assets/addons/wakeUpDyno");
+var keepAwake = require("./client/src/assets/addons/wakeUpDyno");
 var cors = require("cors")
 var path = require("path");
 var bodyParser = require("body-parser")
@@ -32,5 +32,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
     console.log("Server is running on port: " + port + "!")
-    //keepAwake("https://oem-crm.herokuapp.com/");
+    keepAwake("https://servantapp.herokuapp.com/");
 })

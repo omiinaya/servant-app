@@ -8,6 +8,8 @@ import {
     NavItem,
     NavLink
 } from 'reactstrap';
+import PopUp from "../PopUp/"
+import Register from "../Register"
 
 const NavBar = (props) => {
 
@@ -21,12 +23,22 @@ const NavBar = (props) => {
                 <NavbarBrand href="/">ServantApp</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                <Nav className="justify-content-end" style={{ width: "100%" }} pills>
+                    <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>
-                            <NavLink href="#">Login</NavLink>
+                        <PopUp
+                                buttonLabel='Sign In'
+                                content={<Register />}
+                                title='Sign In'
+                                style="link"
+                            />
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#" active>Join</NavLink>
+                            <PopUp
+                                buttonLabel='Join'
+                                content={<Register />}
+                                title='Sign Up'
+                                style="danger"
+                            />
                         </NavItem>
                     </Nav>
                 </Collapse>

@@ -3,10 +3,10 @@ require("dotenv").config()
 
 //requiring necessary packages.
 var express = require("express")
+var keepAwake = require("./client/src/assets/addons/wakeUpDyno");
 var cors = require("cors")
 var path = require("path");
 var bodyParser = require("body-parser")
-var keepAwake = require("./client/src/assets/addons/wakeUpDyno");
 
 //initializing express web server.
 var app = express()
@@ -15,15 +15,15 @@ var app = express()
 var port = process.env.PORT || 5000
 
 //enabling cors on the web server.
-app.use(cors())
 app.use(bodyParser.json())
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //importing user model.
 var Users = require('./routes/Users');
 
 //importing user routes.
-app.use('/api/users', Users);
+app.use('/api/users/', Users);
 
 //exposing the public folder to the public.
 app.use(express.static('public'));

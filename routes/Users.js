@@ -49,7 +49,7 @@ users.post('/register', (req, res) => {
 
 //login user
 users.post('/login', (req, res) => {
-    Users.findOne({
+    User.findOne({
         where: {
             username: req.body.username
         }
@@ -65,39 +65,20 @@ users.post('/login', (req, res) => {
                 }
             } else {
                 res.status(400).json({ error: "User does not exist" })
+                console.log('User does not exist')
             }
         })
         .catch(err => {
             res.status(400).json({ error: err })
+            console.log(err)
         })
 })
 
 //find all users
 users.get("/all", function (req, res) {
-    Users.findAll().then(user => {
+    User.findAll().then(user => {
         res.send(user);
     });
-});
-
-users.get("/list", function (req, res) {
-    User.findAll().then(response => {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        var test = [];
-        for (var i = 0; i < response.length; i++) {
-            test.push({
-                id: response[i].id,
-                text: response[i].FULL_NAME
-            });
-        }
-        test.sort((a, b) => (a.text > b.text) ? 1 : -1)
-        var data = {
-            'status': 'success',
-            'records': test
-        };
-        var json = JSON.stringify(data);
-        res.write(json);
-        res.end();
-    })
 });
 
 //find user by username

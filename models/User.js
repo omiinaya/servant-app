@@ -8,18 +8,19 @@ var Users = db.sequelize.define(
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
+            allowNull: true
         },
         first_name: {
             type: Sequelize.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         last_name: {
             type: Sequelize.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         email: {
             type: Sequelize.STRING(255),
-            allowNull: false
+            allowNull: true
         },
         username: {
             type: Sequelize.STRING,

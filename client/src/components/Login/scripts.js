@@ -1,8 +1,12 @@
 import axios from 'axios';
 
 export const login = user => {
+    var base = 'http://localhost:5000'
+    var url = base + '/api/users/login'
+    console.log(user)
+    console.log(url)
     return axios
-        .post('/api/users/login', {
+        .post(url, {
             username: user.username,
             password: user.password
         })

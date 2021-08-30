@@ -6,12 +6,12 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink
 } from 'reactstrap';
 import PopUp from "../PopUp/"
+import Login from "../Login"
 import Register from "../Register"
 
-const NavBar = (props) => {
+const NavBar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -27,9 +27,9 @@ const NavBar = (props) => {
                         <NavItem>
                         <PopUp
                                 buttonLabel='Sign In'
-                                content={<Register />}
+                                content={<Login />}
                                 title='Sign In'
-                                style="link"
+                                color="link"
                             />
                         </NavItem>
                         <NavItem>
@@ -37,7 +37,7 @@ const NavBar = (props) => {
                                 buttonLabel='Join'
                                 content={<Register />}
                                 title='Sign Up'
-                                style="danger"
+                                color="secondary"
                             />
                         </NavItem>
                     </Nav>

@@ -4,7 +4,7 @@ import NavBar from "../NavBar"
 class Home extends Component {
 
     componentDidMount() {
-        console.log('test')
+        console.log('DOM finished loading.')
     }
 
     render() {

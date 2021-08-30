@@ -1,10 +1,12 @@
 import logo from '../../logo.svg';
 import React, { Component } from "react";
+import NavBar from "../NavBar"
 
 class Default extends Component {
     render() {
         return (
             <div className="App">
+                <NavBar />
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <p>

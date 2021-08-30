@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Form, FormGroup, Input } from 'reactstrap';
 
-const Auth = (props) => {
+const Register = () => {
   return (
     <Form>
       <FormGroup>
-        <Input type="email" name="email" id="email" placeholder="Email / Username" />
+        <Input type="username" name="username" id="username" placeholder="Email / Username" />
       </FormGroup>
       <FormGroup>
         <Input type="password" name="password" id="password" placeholder="Password" />
@@ -15,4 +15,4 @@ const Auth = (props) => {
   );
 }
 
-export default Auth;
+export default Register;

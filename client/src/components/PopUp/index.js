@@ -14,7 +14,7 @@ const PopUp = (props) => {
         className,
         content,
         title,
-        style
+        color
     } = props;
 
     //setting state of modal to false
@@ -25,7 +25,7 @@ const PopUp = (props) => {
 
     return (
         <div>
-            <Button outline color={style} onClick={toggle}>{buttonLabel}</Button>
+            <Button outline color={color} onClick={toggle}>{buttonLabel}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>{title}</ModalHeader>
                 <ModalBody>

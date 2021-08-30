@@ -1,8 +1,8 @@
 import axios from 'axios';
-var base = 'http://localhost:5000'
+import { baseURL } from '../../config'
 
 export function isUser(a) {
-    var url = base + '/api/users/'
+    var url = baseURL + '/api/users/'
     return axios
     .get(url + a)
     .then(function (res) {
@@ -11,9 +11,12 @@ export function isUser(a) {
 }
 
 export const register = newUser => {
-    var url = base + '/api/users/register'
+    var url = baseURL + '/api/users/register'
     return axios
     .post(url, {
+        firstname: newUser.firstname,
+        lastname: newUser.lastname,
+        email: newUser.email,
         username: newUser.username,
         password: newUser.password
     })

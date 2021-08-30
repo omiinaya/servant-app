@@ -28,9 +28,10 @@ class Login extends Component {
       password: this.state.password
     }
 
-    login(user).then(res => {
-      if (res) {
-        window.location.reload(false);
+    login(user).then(data => {
+      if (data) {
+        console.log(data)
+        //window.location.reload(false);
       }
     })
   }

@@ -14,6 +14,9 @@ users.use(cors())
 users.post('/register', (req, res) => {
     const today = new Date()
     const userData = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
         username: req.body.username,
         password: req.body.password,
         created: today

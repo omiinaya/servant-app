@@ -10,17 +10,17 @@ var Users = db.sequelize.define(
             autoIncrement: true,
             allowNull: true
         },
-        first_name: {
+        firstname: {
             type: Sequelize.STRING(255),
-            allowNull: true
+            allowNull: false
         },
-        last_name: {
+        lastname: {
             type: Sequelize.STRING(255),
-            allowNull: true
+            allowNull: false
         },
         email: {
             type: Sequelize.STRING(255),
-            allowNull: true
+            allowNull: false
         },
         username: {
             type: Sequelize.STRING,

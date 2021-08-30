@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { baseURL } from '../../config'
 
 export const login = user => {
-    var base = 'http://localhost:5000'
-    var url = base + '/api/users/login'
+    var url = baseURL + '/api/users/login'
     console.log(user)
     console.log(url)
     return axios

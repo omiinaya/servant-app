@@ -22,10 +22,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //importing user model.
 var Users = require('./routes/Users');
 var Reviews = require('./routes/Reviews');
+var Requests = require('./routes/Requests');
+var Services = require('./routes/Services');
 
 //importing user routes.
 app.use('/api/users/', Users);
 app.use('/api/reviews/', Reviews);
+app.use('/api/requests/', Requests);
+app.use('/api/services/', Services);
 
 //exposing the public folder to the public.
 app.use(express.static('public'));

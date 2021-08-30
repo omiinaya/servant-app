@@ -21,9 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //importing user model.
 var Users = require('./routes/Users');
+var Reviews = require('./routes/Reviews');
 
 //importing user routes.
 app.use('/api/users/', Users);
+app.use('/api/reviews/', Reviews);
 
 //exposing the public folder to the public.
 app.use(express.static('public'));

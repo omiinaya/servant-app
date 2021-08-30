@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PopUp from "../PopUp/"
 import Auth from "../Auth"
+import NavBar from "../NavBar"
 
 class Home extends Component {
 
@@ -11,8 +12,11 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <NavBar />
                 <div>Hello World.</div>
-                <a href="/default">Route to default.</a>
+                <div>
+                    <a href="/default">Route to default.</a>
+                </div>
                 <div>
                     <PopUp
                         buttonLabel='test'

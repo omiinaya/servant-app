@@ -42,7 +42,7 @@ class Login extends Component {
           <Input type="username" name="username" id="username" placeholder="Email / Username" onChange={this.onChange} />
         </FormGroup>
         <FormGroup>
-          <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange}/>
+          <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
         </FormGroup>
         <Button size="lg" onClick={this.onSubmit} block>Continue</Button>
       </Form>

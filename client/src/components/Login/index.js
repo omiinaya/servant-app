@@ -34,6 +34,8 @@ class Login extends Component {
         window.location.reload();
       }
     })
+
+    alert(user.username)
   }
 
   render() {

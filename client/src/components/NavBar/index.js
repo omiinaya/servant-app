@@ -6,11 +6,11 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
+    Button
 } from 'reactstrap';
 import PopUp from "../PopUp/"
 import Login from "../Login"
 import Register from "../Register"
-//import { isLoggedIn } from './scripts';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -24,6 +24,12 @@ class NavBar extends React.Component {
         this.setState({ isOpen: !this.state.isOpen })
     }
 
+    logOut(e) {
+        e.preventDefault()
+        localStorage.removeItem('usertoken')
+        window.open("/", "_self")
+    }
+
     render() {
         const loggedIn = (
             <Navbar color="light" light expand="md">
@@ -32,12 +38,7 @@ class NavBar extends React.Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>
-                            <PopUp
-                                buttonLabel='Logout'
-                                content={<Register />}
-                                title='Sign Up'
-                                color="secondary"
-                            />
+                            <Button outline color='secondary' onClick={this.logOut.bind(this)}>Logout</Button>
                         </NavItem>
                     </Nav>
                 </Collapse>

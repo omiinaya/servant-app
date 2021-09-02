@@ -25,33 +25,52 @@ class NavBar extends React.Component {
     }
 
     render() {
+        const loggedIn = (
+            <Navbar color="light" light expand="md">
+                <NavbarBrand href="/">ServantApp</NavbarBrand>
+                <NavbarToggler onClick={() => { this.toggle() }} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="justify-content-end" style={{ width: "100%" }}>
+                        <NavItem>
+                            <PopUp
+                                buttonLabel='Logout'
+                                content={<Register />}
+                                title='Sign Up'
+                                color="secondary"
+                            />
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        )
+        const loggedOut = (
+            <Navbar color="light" light expand="md">
+                <NavbarBrand href="/">ServantApp</NavbarBrand>
+                <NavbarToggler onClick={() => { this.toggle() }} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="justify-content-end" style={{ width: "100%" }}>
+                        <NavItem>
+                            <PopUp
+                                buttonLabel='Sign In'
+                                content={<Login />}
+                                title='Sign In'
+                                color="link"
+                            />
+                        </NavItem>
+                        <NavItem>
+                            <PopUp
+                                buttonLabel='Join'
+                                content={<Register />}
+                                title='Sign Up'
+                                color="secondary"
+                            />
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        )
         return (
-            <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">ServantApp</NavbarBrand>
-                    <NavbarToggler onClick={ ()=> { this.toggle() } } />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="justify-content-end" style={{ width: "100%" }}>
-                            <NavItem>
-                                <PopUp
-                                    buttonLabel='Sign In'
-                                    content={<Login />}
-                                    title='Sign In'
-                                    color="link"
-                                />
-                            </NavItem>
-                            <NavItem>
-                                <PopUp
-                                    buttonLabel='Join'
-                                    content={<Register />}
-                                    title='Sign Up'
-                                    color="secondary"
-                                />
-                            </NavItem>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
+            <div>{localStorage.usertoken ? loggedIn : loggedOut}</div>
         );
     }
 }

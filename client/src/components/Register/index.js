@@ -7,7 +7,7 @@ import {
   Col,
   Row
 } from 'reactstrap';
-import { isUser, register } from './scripts'
+import { isUser, register, passwordsMatch } from './scripts'
 
 class Register extends Component {
   constructor() {
@@ -17,7 +17,8 @@ class Register extends Component {
       lastname: '',
       email: '',
       username: '',
-      password: ''
+      password: '',
+      password2: ''
     }
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -35,23 +36,28 @@ class Register extends Component {
       lastname: this.state.lastname,
       email: this.state.email,
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      password2: this.state.password2
     }
 
-    isUser(user.username).then(res => {
-      console.log(res)
-      if (res === null) {
-        console.log(user)
-        register(user).then(data => {
-          if (data) {
-            console.log(data)
-            //window.location.reload(false);
-          }
-        })
-      } else {
-        console.log("user already exists.")
-      }
-    })
+    if (passwordsMatch(user.password, user.password2)) {
+      isUser(user.username).then(res => {
+        console.log(res)
+        if (res === null) {
+          console.log(user)
+          register(user).then(data => {
+            if (data) {
+              console.log(data)
+              window.location.reload();
+            }
+          })
+        } else {
+          console.log("user already exists.")
+        }
+      })
+    } else {
+      console.log('passwords do not match.')
+    }
   }
 
   render() {
@@ -70,13 +76,16 @@ class Register extends Component {
           </Col>
         </Row>
         <FormGroup>
-          <Input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
-        </FormGroup>
-        <FormGroup>
           <Input type="username" name="username" id="username" placeholder="Username" onChange={this.onChange} />
         </FormGroup>
         <FormGroup>
+          <Input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
+        </FormGroup>
+        <FormGroup>
           <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
+        </FormGroup>
+        <FormGroup>
+          <Input type="password" name="password2" id="password2" placeholder="Re-enter Password" onChange={this.onChange} />
         </FormGroup>
         <Button size="lg" onClick={this.onSubmit} block>Continue</Button>
       </Form>

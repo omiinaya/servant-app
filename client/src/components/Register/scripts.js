@@ -10,6 +10,14 @@ export function isUser(a) {
     })
 }
 
+export function passwordsMatch(a, b) {
+    if (a === b) {
+        return true
+    } else {
+        return false
+    }
+}
+
 export const register = newUser => {
     var url = baseURL + '/api/users/register'
     return axios

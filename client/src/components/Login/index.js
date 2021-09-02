@@ -31,7 +31,7 @@ class Login extends Component {
     login(user).then(data => {
       if (data) {
         console.log(data)
-        //window.location.reload(false);
+        window.location.reload();
       }
     })
   }

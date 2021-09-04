@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input } from 'reactstrap';
+import { withRouter } from 'react-router-dom' 
+import { 
+  Button, 
+  Form, 
+  FormGroup, 
+  Input 
+} from 'reactstrap';
 import { login } from './scripts';
 
 class Login extends Component {
-
   constructor() {
     super()
     this.state = {
@@ -30,12 +35,9 @@ class Login extends Component {
 
     login(user).then(data => {
       if (data) {
-        console.log(data)
-        window.location.reload();
+        this.props.history.push('/');
       }
     })
-
-    alert(user.username)
   }
 
   render() {
@@ -53,4 +55,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

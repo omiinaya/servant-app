@@ -32,4 +32,7 @@ export const register = newUser => {
         console.log("User has been egistered.")
         return res.data
     })
+    .catch(err => {
+        console.log(err)
+    })
 }

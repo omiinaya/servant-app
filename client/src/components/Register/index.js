@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import {
   Button,
   Form,
@@ -42,13 +43,13 @@ class Register extends Component {
 
     if (passwordsMatch(user.password, user.password2)) {
       isUser(user.username).then(res => {
-        console.log(res)
         if (res === null) {
-          console.log(user)
           register(user).then(data => {
+            console.log(data)
             if (data) {
-              console.log(data)
-              window.location.reload();
+              console.log('test1')
+              this.props.history.push('/')
+              console.log('test2')
             }
           })
         } else {
@@ -93,4 +94,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);

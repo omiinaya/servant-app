@@ -28,16 +28,14 @@ users.post('/register', (req, res) => {
     })
         .then(user => {
             if (user) {
-                res.json({
-                    error: "User already exists"
-                })
+                res.json("User already exists")
             } else {
                 console.log("success!")
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
                     User.create(userData)
                         .then(user => {
-                            res.json({ status: user.username + ' registered' })
+                            res.json( user.username + ' registered' )
                         })
                         .catch(err => {
                             res.send("error: " + err)

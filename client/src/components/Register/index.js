@@ -9,6 +9,7 @@ import {
   Row
 } from 'reactstrap';
 import { isUser, register, passwordsMatch } from './scripts'
+import { login } from '../Login/scripts';
 
 class Register extends Component {
   constructor() {
@@ -45,11 +46,12 @@ class Register extends Component {
       isUser(user.username).then(res => {
         if (res === null) {
           register(user).then(data => {
-            console.log(data)
             if (data) {
-              console.log('test1')
-              this.props.history.push('/')
-              console.log('test2')
+              login(user).then(data => {
+                if (data) {
+                  this.props.history.push('/');
+                }
+              })
             }
           })
         } else {

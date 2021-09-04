@@ -96,7 +96,7 @@ class Register extends Component {
         <FormGroup>
           <Input type="password" name="password2" id="password2" placeholder="Re-enter Password" onChange={this.onChange} />
         </FormGroup>
-        <Button size="lg" onClick={this.onSubmit} block>Continue</Button>
+        <Button size="lg" onTap={this.onSubmit} block>Continue</Button>
       </Form>
     );
   }

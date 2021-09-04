@@ -50,7 +50,7 @@ class Login extends Component {
         <FormGroup>
           <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
         </FormGroup>
-        <Button size="lg" onClick={this.onSubmit} block>Continue</Button>
+        <Button size="lg" onTap={this.onSubmit} block>Continue</Button>
       </Form>
     );
   }

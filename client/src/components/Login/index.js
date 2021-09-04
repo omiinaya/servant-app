@@ -43,14 +43,14 @@ class Login extends Component {
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.onSubmit}>
         <FormGroup>
           <Input type="username" name="username" id="username" placeholder="Email / Username" onChange={this.onChange} />
         </FormGroup>
         <FormGroup>
           <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
         </FormGroup>
-        <Button size="lg" onTap={this.onSubmit} block>Continue</Button>
+        <Button type='submit' size="lg" block>Continue</Button>
       </Form>
     );
   }

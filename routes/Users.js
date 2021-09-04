@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { Op } = require("sequelize");
 
 //import sequelize model
 const User = require("../models/User");
@@ -24,7 +25,7 @@ users.post('/register', (req, res) => {
     }
     User.findOne({
         where: {
-            username: req.body.username
+            [Op.or]: [{ username: req.body.username }, { email: req.body.username }], 
         }
     })
         .then(user => {
@@ -35,7 +36,7 @@ users.post('/register', (req, res) => {
                     userData.password = hash
                     User.create(userData)
                         .then(user => {
-                            res.json( user.username + ' registered' )
+                            res.json(user.username + ' registered')
                         })
                         .catch(err => {
                             res.send("error: " + err)
@@ -52,7 +53,7 @@ users.post('/register', (req, res) => {
 users.post('/login', (req, res) => {
     User.findOne({
         where: {
-            username: req.body.username
+            [Op.or]: [{ username: req.body.username }, { email: req.body.username }], 
         }
     })
         .then(user => {

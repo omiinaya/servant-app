@@ -40,6 +40,6 @@ var Users = db.sequelize.define(
     }
 )
 
-Users.sync({force: true})
+Users.sync(/*{force: true}*/)
 
 module.exports = Users

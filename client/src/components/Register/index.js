@@ -68,7 +68,7 @@ class Register extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Form noValidate onSubmit={this.onSubmit}>
         <Row form>
           <Col md={6}>
             <FormGroup>

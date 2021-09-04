@@ -5,16 +5,13 @@ import {
     ModalHeader, 
     ModalBody 
 } from 'reactstrap';
+import Register from '../Register'
 
-const PopUp = (props) => {
+const RegisterModal = (props) => {
 
     //props received when calling component
     const {
-        buttonLabel,
         className,
-        content,
-        title,
-        color
     } = props;
 
     //setting state of modal to false
@@ -25,15 +22,15 @@ const PopUp = (props) => {
 
     return (
         <div>
-            <Button outline color={color} onClick={toggle}>{buttonLabel}</Button>
+            <Button outline color='secondary' onClick={toggle}>Join</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>{title}</ModalHeader>
+                <ModalHeader toggle={toggle}>Sign Up</ModalHeader>
                 <ModalBody>
-                    {content}
+                    <Register toggle={toggle}/>
                 </ModalBody>
             </Modal>
         </div>
     );
 }
 
-export default PopUp;
+export default RegisterModal;

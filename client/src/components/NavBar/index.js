@@ -8,9 +8,8 @@ import {
     NavItem,
     Button
 } from 'reactstrap';
-import PopUp from "../PopUp/"
-import Login from "../Login"
-import Register from "../Register"
+import LoginModal from "../LoginModal"
+import RegisterModal from "../RegisterModal"
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -51,20 +50,10 @@ class NavBar extends React.Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>
-                            <PopUp
-                                buttonLabel='Sign In'
-                                content={<Login />}
-                                title='Sign In'
-                                color="link"
-                            />
+                            <LoginModal />
                         </NavItem>
                         <NavItem>
-                            <PopUp
-                                buttonLabel='Join'
-                                content={<Register />}
-                                title='Sign Up'
-                                color="secondary"
-                            />
+                            <RegisterModal />
                         </NavItem>
                     </Nav>
                 </Collapse>

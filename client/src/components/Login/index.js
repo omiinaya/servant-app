@@ -36,7 +36,8 @@ class Login extends Component {
 
     login(user).then(data => {
       if (data) {
-        this.props.history.push('/');
+        //this.props.history.push('/');
+        this.props.toggle()
       }
     })
   }
@@ -51,6 +52,7 @@ class Login extends Component {
           <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
         </FormGroup>
         <Button type='submit' size="lg" block>Continue</Button>
+        <button type="submit" id="button">test</button>
       </Form>
     );
   }

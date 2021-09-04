@@ -18,6 +18,7 @@ class Register extends Component {
       firstname: '',
       lastname: '',
       email: '',
+      birthdate: '',
       username: '',
       password: '',
       password2: ''
@@ -28,6 +29,7 @@ class Register extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+    console.log(e.target.value)
   }
 
   onSubmit(e) {
@@ -37,6 +39,7 @@ class Register extends Component {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       email: this.state.email,
+      birthdate: this.state.birthdate,
       username: this.state.username,
       password: this.state.password,
       password2: this.state.password2
@@ -83,6 +86,9 @@ class Register extends Component {
         </FormGroup>
         <FormGroup>
           <Input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
+        </FormGroup>
+        <FormGroup>
+          <Input type="date" name="birthdate" id="birthdate" placeholder="Date of Birth" onChange={this.onChange} />
         </FormGroup>
         <FormGroup>
           <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />

@@ -25,6 +25,7 @@ export const register = newUser => {
         firstname: newUser.firstname,
         lastname: newUser.lastname,
         email: newUser.email,
+        birthdate: newUser.birthdate,
         username: newUser.username,
         password: newUser.password
     })

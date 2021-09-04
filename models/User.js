@@ -22,12 +22,16 @@ var Users = db.sequelize.define(
             type: Sequelize.STRING(255),
             allowNull: false
         },
+        birthdate: {
+            type: Sequelize.STRING(255),
+            allowNull: false
+        },
         username: {
-            type: Sequelize.STRING,
+            type: Sequelize.STRING(255),
             allowNull: false
         },
         password: {
-            type: Sequelize.STRING,
+            type: Sequelize.STRING(255),
             allowNull: false
         }
     },

@@ -17,6 +17,7 @@ users.post('/register', (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
+        birthdate: req.body.birthdate,
         username: req.body.username,
         password: req.body.password,
         created: today
@@ -30,7 +31,6 @@ users.post('/register', (req, res) => {
             if (user) {
                 res.json("User already exists")
             } else {
-                console.log("success!")
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
                     User.create(userData)

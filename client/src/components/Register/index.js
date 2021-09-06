@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { TextField, Button } from '@material-ui/core';
 import { isUser, register, passwordsMatch } from './scripts'
 import { login } from '../Login/scripts';
 

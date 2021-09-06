@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../NavBar"
+import Banner from "../Banner"
 
 class Home extends Component {
 
@@ -11,7 +12,7 @@ class Home extends Component {
         return (
             <div>
                 <NavBar />
-                <a href="/default">Hello World.</a>
+                <Banner />
             </div>
         )
     }

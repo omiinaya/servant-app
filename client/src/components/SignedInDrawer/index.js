@@ -1,14 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
 import MailIcon from '@material-ui/icons/Mail';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import { 
+  makeStyles, 
+  Drawer, 
+  List, 
+  ListItem, 
+  ListItemIcon, 
+  ListItemText 
+} from '@material-ui/core';
 
 const useStyles = makeStyles({
   list: {
@@ -45,7 +48,7 @@ function SignedOutDrawer() {
       <List>
         <Link to='/' color="inherit">
           <ListItem>
-            <ListItemIcon><MailIcon /></ListItemIcon>
+            <ListItemIcon><VpnKeyIcon /></ListItemIcon>
             <ListItemText primary='Logout' onClick={handleLogOut}/>
           </ListItem>
         </Link>

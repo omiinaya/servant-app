@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import TextField from '@material-ui/core/TextField';
+import { TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import Button from '@material-ui/core/Button';
 import { login } from './scripts';
 
 const styles = () => ({

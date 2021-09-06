@@ -1,15 +1,18 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import MailIcon from '@material-ui/icons/Mail';
-import LoginModal from "../LoginModal"
-import RegisterModal from "../RegisterModal"
 import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
+import MailIcon from '@material-ui/icons/Mail';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+
+import { 
+  makeStyles, 
+  Drawer, 
+  List, 
+  ListItem, 
+  ListItemIcon,
+  ListItemText 
+} from '@material-ui/core';
 
 const useStyles = makeStyles({
   list: {
@@ -44,16 +47,16 @@ function SignedOutDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to='/login'>
+        <Link to='/login' color="inherit">
           <ListItem>
-            <ListItemIcon><MailIcon /></ListItemIcon>
-            <LoginModal type='secondary' label='Sign In' title='Sign In' />
+            <ListItemIcon><VpnKeyIcon /></ListItemIcon>
+            <ListItemText primary='Sign In' />
           </ListItem>
         </Link>
-        <Link to='/register'>
+        <Link to='/register' color="inherit">
           <ListItem>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <RegisterModal type='secondary' label='Register' title='Sign Up' />
+            <ListItemText primary='Sign Up' />
           </ListItem>
         </Link>
       </List>

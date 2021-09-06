@@ -43,7 +43,8 @@
     "react-transition-group": "^4.4.2",
     "sequelize": "^5.22.4",
     "sequelize-auto": "^0.6.7",
-    "serve": "^11.3.2"
+    "serve": "^11.3.2",
+    "styled-components": "^5.3.1"
   },
   "bugs": {
     "url": "https://github.com/omiinaya/"

@@ -5,10 +5,9 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import LoginModal from "../LoginModal"
-import RegisterModal from "../RegisterModal"
-import { Link } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles({
@@ -44,26 +43,26 @@ function SignedOutDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to='/test'>
+        <Link to='/' color="inherit">
           <ListItem>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <LoginModal type='secondary' label='Sign In' title='Sign In' />
-          </ListItem>
-        </Link>
-        <Link to='/test'>
-          <ListItem>
-            <ListItemIcon><MailIcon /></ListItemIcon>
-            <RegisterModal type='secondary' label='Register' title='Sign Up' />
+            <ListItemText primary='Logout' onClick={handleLogOut}/>
           </ListItem>
         </Link>
       </List>
     </div>
   );
 
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('usertoken')
+    window.open("/", "_self")
+  }
+
   return (
     <div>
       <React.Fragment key='right'>
-      <MenuIcon onClick={toggleDrawer('right', true)}  />
+        <MenuIcon onClick={toggleDrawer('right', true)} />
         <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
           {list('right')}
         </Drawer>

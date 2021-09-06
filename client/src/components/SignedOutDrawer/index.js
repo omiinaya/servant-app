@@ -44,13 +44,13 @@ function SignedOutDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <Link to='/test'>
+        <Link to='/login'>
           <ListItem>
             <ListItemIcon><MailIcon /></ListItemIcon>
             <LoginModal type='secondary' label='Sign In' title='Sign In' />
           </ListItem>
         </Link>
-        <Link to='/test'>
+        <Link to='/register'>
           <ListItem>
             <ListItemIcon><MailIcon /></ListItemIcon>
             <RegisterModal type='secondary' label='Register' title='Sign Up' />

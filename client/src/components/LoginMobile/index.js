@@ -8,7 +8,9 @@ class RegisterMobile extends Component {
         return (
             <div>
                 <SignedOutAppBar />
-                <Login />
+                <div>
+                    <Login />
+                </div>
             </div>
         );
     }

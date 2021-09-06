@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import { isUser, register, passwordsMatch } from './scripts'
 import { login } from '../Login/scripts';
 
-const styles = theme => ({
+const styles = () => ({
   container: {
     '& > *': {
       display: 'flex',
@@ -95,36 +95,6 @@ class Register extends Component {
   render() {
     const { classes } = this.props;
     return (
-      /*<Form noValidate onSubmit={this.onSubmit}>
-        <Row form>
-          <Col md={6}>
-            <FormGroup>
-              <Input type="firstname" name="firstname" id="firstname" placeholder="First Name" onChange={this.onChange} />
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Input type="lastname" name="lastname" id="lastname" placeholder="Last Name" onChange={this.onChange} />
-            </FormGroup>
-          </Col>
-        </Row>
-        <FormGroup>
-          <Input type="username" name="username" id="username" placeholder="Username" onChange={this.onChange} />
-        </FormGroup>
-        <FormGroup>
-          <Input type="email" name="email" id="email" placeholder="Email" onChange={this.onChange} />
-        </FormGroup>
-        <FormGroup>
-          <Input type="date" name="birthdate" id="birthdate" placeholder="Date of Birth" onChange={this.onChange} />
-        </FormGroup>
-        <FormGroup>
-          <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
-        </FormGroup>
-        <FormGroup>
-          <Input type="password" name="password2" id="password2" placeholder="Re-enter Password" onChange={this.onChange} />
-        </FormGroup>
-        <Button type='submit' size="lg" block>Continue</Button>
-      </Form>*/
       <form noValidate autoComplete="off" onSubmit={this.onSubmit}>
         <div className={classes.container}>
           <div className={classes.half}>

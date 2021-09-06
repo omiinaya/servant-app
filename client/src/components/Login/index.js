@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom' 
-import { 
-  Button, 
-  Form, 
-  FormGroup, 
-  Input 
-} from 'reactstrap';
+import { withRouter } from 'react-router-dom'
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/styles';
+import Button from '@material-ui/core/Button';
 import { login } from './scripts';
+
+const styles = theme => ({
+  root: {
+    '& > *': {
+      margin: '2%',
+      width: '96%',
+    },
+  }
+})
 
 class Login extends Component {
   constructor() {
@@ -42,18 +48,15 @@ class Login extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <Form onSubmit={this.onSubmit}>
-        <FormGroup>
-          <Input type="username" name="username" id="username" placeholder="Email / Username" onChange={this.onChange} />
-        </FormGroup>
-        <FormGroup>
-          <Input type="password" name="password" id="password" placeholder="Password" onChange={this.onChange} />
-        </FormGroup>
-        <Button type='submit' size="lg" block>Continue</Button>
-      </Form>
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={this.onSubmit}>
+        <TextField size='small' id="username" name="username" type="username" label="Username" variant="outlined" onChange={this.onChange} />
+        <TextField size='small' id="password" name="password" type="password" label="Password" variant="outlined" onChange={this.onChange} />
+        <Button type='submit' size='large' color="primary" variant="contained">Continue</Button>
+      </form>
     );
   }
 }
 
-export default withRouter(Login);
+export default withRouter(withStyles(styles)(Login));

@@ -85,6 +85,7 @@ export default function ScrollableTabsButtonForce() {
           title="Need a hand?"
           details="Ask locals for help with problems you need solved."
           label="Request Now"
+          label2="See Requests"
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -92,13 +93,15 @@ export default function ScrollableTabsButtonForce() {
           title="Got a hand?"
           details="Help locals with problems you can solve."
           label="Help Now"
+          label2="See Servies"
         />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <BannerMenuTab
         title="Have items to trade?"
         details="Trade items you don't need with locals that might want them."
-        label="Shop Now"
+        label="List an Item"
+        label2="Shop for an Item"
         />
       </TabPanel>
     </div>

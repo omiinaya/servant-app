@@ -5,9 +5,11 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import LoginModal from "../LoginModal"
+import RegisterModal from "../RegisterModal"
+import { Link } from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles({
   list: {
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-function TemporaryDrawer() {
+function SignedOutDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -42,39 +44,32 @@ function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+        <Link to='/test'>
+          <ListItem>
+            <ListItemIcon><MailIcon /></ListItemIcon>
+            <LoginModal type='secondary' label='Sign In' title='Sign In' />
           </ListItem>
-        ))}
-      </List>
-      {/*
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+        </Link>
+        <Link to='/test'>
+          <ListItem>
+            <ListItemIcon><MailIcon /></ListItemIcon>
+            <RegisterModal type='secondary' label='Register' title='Sign Up' />
           </ListItem>
-        ))}
+        </Link>
       </List>
-        */}
     </div>
   );
 
   return (
     <div>
-      {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <div>test</div>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <React.Fragment key='right'>
+      <MenuIcon onClick={toggleDrawer('right', true)}  />
+        <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
+          {list('right')}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }
 
-export default TemporaryDrawer;
+export default SignedOutDrawer;

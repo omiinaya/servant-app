@@ -8,12 +8,12 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Link } from 'react-router-dom';
+import SignedInDrawer from '../SignedInDrawer';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   //rules that apply to burger menu
   menuButton: {
-    //no rules yet
+    marginTop: theme.spacing(-0.5)
   },
   //rules that apply to servantApp title
   title: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0.5),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
@@ -110,15 +110,11 @@ function SignedInAppBar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
   const handleLogOut = (e) => {
     e.preventDefault()
     localStorage.removeItem('usertoken')
     window.open("/", "_self")
-}
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -214,15 +210,14 @@ function SignedInAppBar() {
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
-            <IconButton
+          <IconButton
               edge="end"
               className={classes.menuButton}
               aria-label="open drawer"
               aria-haspopup="true"
               color="inherit"
-              onClick={handleMobileMenuOpen}
             >
-              <MenuIcon />
+              <SignedInDrawer />
             </IconButton>
           </div>
         </Toolbar>

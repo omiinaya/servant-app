@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { isUser, register, passwordsMatch } from './scripts'
 import { login } from '../Login/scripts';
-import { FormHelperText } from '@material-ui/core';
 
 const styles = theme => ({
   container: {

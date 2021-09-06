@@ -9,6 +9,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import LoginModal from "../LoginModal"
 import RegisterModal from "../RegisterModal"
 import { Link } from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles({
   list: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-function TemporaryDrawer() {
+function SignedOutDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -46,13 +47,13 @@ function TemporaryDrawer() {
         <Link to='/test'>
           <ListItem>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <LoginModal type='link' label='Sign In' title='Sign In' test='test1' />
+            <LoginModal type='secondary' label='Sign In' title='Sign In' />
           </ListItem>
         </Link>
         <Link to='/test'>
           <ListItem>
             <ListItemIcon><MailIcon /></ListItemIcon>
-            <RegisterModal type='link' label='Register' title='Sign Up' test='test2' />
+            <RegisterModal type='secondary' label='Register' title='Sign Up' />
           </ListItem>
         </Link>
       </List>
@@ -62,7 +63,7 @@ function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment key='right'>
-        <div>test</div>
+      <MenuIcon onClick={toggleDrawer('right', true)}  />
         <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
           {list('right')}
         </Drawer>
@@ -71,4 +72,4 @@ function TemporaryDrawer() {
   );
 }
 
-export default TemporaryDrawer;
+export default SignedOutDrawer;

@@ -22,9 +22,9 @@ const RegisterModal = (props) => {
 
     return (
         <div>
-            <Button outline color='secondary' onClick={toggle}>Join</Button>
+            <Button outline color={props.type} onClick={toggle}>{props.label}</Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>Sign Up</ModalHeader>
+                <ModalHeader toggle={toggle}>{props.title}</ModalHeader>
                 <ModalBody>
                     <Register toggle={toggle}/>
                 </ModalBody>

@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Collapse,
     Navbar,
-    NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
@@ -10,7 +9,8 @@ import {
 } from 'reactstrap';
 import LoginModal from "../LoginModal"
 import RegisterModal from "../RegisterModal"
-import Drawer from "../Drawer"
+import SignedInDrawer from "../SignedInDrawer"
+import SignedOutDrawer from "../SignedOutDrawer"
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -34,7 +34,7 @@ class NavBar extends React.Component {
         const loggedIn = (
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">ServantApp</NavbarBrand>
-                <Drawer />
+                <SignedInDrawer />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>
@@ -47,14 +47,22 @@ class NavBar extends React.Component {
         const loggedOut = (
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">ServantApp</NavbarBrand>
-                <Drawer />
+                <SignedOutDrawer />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>
-                            <LoginModal />
+                            <LoginModal
+                                type='link'
+                                label='Sign In'
+                                title='Sign In'
+                            />
                         </NavItem>
                         <NavItem>
-                            <RegisterModal />
+                            <RegisterModal
+                                type='secondary'
+                                label='Join'
+                                title='Sign Up'
+                            />
                         </NavItem>
                     </Nav>
                 </Collapse>

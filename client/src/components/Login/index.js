@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 import { login } from './scripts';
 
-const styles = theme => ({
+const styles = () => ({
   root: {
     '& > *': {
       margin: '2%',

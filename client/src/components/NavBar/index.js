@@ -10,6 +10,7 @@ import {
 } from 'reactstrap';
 import LoginModal from "../LoginModal"
 import RegisterModal from "../RegisterModal"
+import Drawer from "../Drawer"
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class NavBar extends React.Component {
         const loggedIn = (
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">ServantApp</NavbarBrand>
-                <NavbarToggler onClick={() => { this.toggle() }} />
+                <Drawer />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>
@@ -46,7 +47,7 @@ class NavBar extends React.Component {
         const loggedOut = (
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/">ServantApp</NavbarBrand>
-                <NavbarToggler onClick={() => { this.toggle() }} />
+                <Drawer />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="justify-content-end" style={{ width: "100%" }}>
                         <NavItem>

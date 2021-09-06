@@ -3,10 +3,10 @@ require("dotenv").config()
 
 //requiring necessary packages.
 var express = require("express")
-var keepAwake = require("./client/src/assets/addons/wakeUpDyno");
 var cors = require("cors")
 var path = require("path");
 var bodyParser = require("body-parser")
+var keepAwake = require("./client/src/assets/addons/wakeUpDyno");
 
 //initializing express web server.
 var app = express()
@@ -19,13 +19,13 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-//importing user model.
+//importing sequelize models.
 var Users = require('./routes/Users');
 var Reviews = require('./routes/Reviews');
 var Requests = require('./routes/Requests');
 var Services = require('./routes/Services');
 
-//importing user routes.
+//importing api routes.
 app.use('/api/users/', Users);
 app.use('/api/reviews/', Reviews);
 app.use('/api/requests/', Requests);

@@ -45,12 +45,17 @@ class Register extends Component {
       password2: this.state.password2
     }
 
+    //check if password fields match
     if (passwordsMatch(user.password, user.password2)) {
+      //if they match, check if the user exists
       isUser(user.username).then(res => {
+        //if it doesn't exist, create user
         if (res === null) {
           register(user).then(data => {
+            //if user was created successfully, log them in
             if (data) {
               login(user).then(data => {
+                //if user was logged in succesfully, reload page to update components
                 if (data) {
                   this.props.history.push('/');
                 }
@@ -58,10 +63,12 @@ class Register extends Component {
             }
           })
         } else {
+          //handle what happens when the username already exists
           console.log("user already exists.")
         }
       })
     } else {
+      //handle what happens when the password fields don't match
       console.log('passwords do not match.')
     }
   }
@@ -97,7 +104,6 @@ class Register extends Component {
           <Input type="password" name="password2" id="password2" placeholder="Re-enter Password" onChange={this.onChange} />
         </FormGroup>
         <Button type='submit' size="lg" block>Continue</Button>
-        <button type="submit" id="button">test</button>
       </Form>
     );
   }

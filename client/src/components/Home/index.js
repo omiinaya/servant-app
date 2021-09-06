@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../NavBar"
-import RegisterPage from "../RegisterPage"
+import Drawer from "../Drawer"
 
 class Home extends Component {
 
@@ -13,7 +13,6 @@ class Home extends Component {
             <div>
                 <NavBar />
                 <a href="/default">Hello World.</a>
-                <RegisterPage />
             </div>
         )
     }

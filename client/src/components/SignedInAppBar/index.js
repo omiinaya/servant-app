@@ -13,18 +13,18 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
+  //rules that apply to burger menu
   menuButton: {
-    //rules that apply to burger menu
+    //no rules yet
   },
+  //rules that apply to servantApp title
   title: {
-    //rules that apply to servantApp title
     color: 'white',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PrimaryAppBar() {
+function SignedInAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -114,6 +114,12 @@ function PrimaryAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('usertoken')
+    window.open("/", "_self")
+}
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -127,6 +133,7 @@ function PrimaryAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleLogOut}>Logout</MenuItem>
     </Menu>
   );
 
@@ -205,15 +212,6 @@ function PrimaryAppBar() {
             >
               <AccountCircle />
             </IconButton>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -235,4 +233,4 @@ function PrimaryAppBar() {
   );
 }
 
-export default PrimaryAppBar
+export default SignedInAppBar

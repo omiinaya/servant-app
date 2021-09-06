@@ -57,7 +57,10 @@ class Register extends Component {
               login(user).then(data => {
                 //if user was logged in succesfully, reload page to update components
                 if (data) {
+                  //reloading home component to refresh user features
                   this.props.history.push('/');
+                  //closing popup when done reloading components
+                  //this.props.toggle()
                 }
               })
             }

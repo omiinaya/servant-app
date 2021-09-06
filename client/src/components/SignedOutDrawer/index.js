@@ -9,10 +9,6 @@ import MailIcon from '@material-ui/icons/Mail';
 import LoginModal from "../LoginModal"
 import RegisterModal from "../RegisterModal"
 import { Link } from 'react-router-dom';
-import {
-  NavbarToggler,
-  Navbar
-} from 'reactstrap';
 
 const useStyles = makeStyles({
   list: {
@@ -66,9 +62,7 @@ function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment key='right'>
-        <Navbar color="light" light expand="md">
-          <NavbarToggler onClick={toggleDrawer('right', true)} />
-        </Navbar>
+        <div>test</div>
         <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
           {list('right')}
         </Drawer>

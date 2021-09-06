@@ -8,10 +8,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import {
-  NavbarToggler,
-  Navbar
-} from 'reactstrap';
 
 const useStyles = makeStyles({
   list: {
@@ -71,9 +67,7 @@ function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Navbar color="light" light expand="md">
-            <NavbarToggler onClick={toggleDrawer(anchor, true)} />
-          </Navbar>
+          <div>test</div>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>

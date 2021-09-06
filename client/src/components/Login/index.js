@@ -37,7 +37,6 @@ class Login extends Component {
     login(user).then(data => {
       if (data) {
         this.props.history.push('/');
-        this.props.toggle()
       }
     })
   }

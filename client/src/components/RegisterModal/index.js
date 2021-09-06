@@ -1,36 +1,51 @@
-import React, { useState } from 'react';
-import { 
-    Button, 
-    Modal, 
-    ModalHeader, 
-    ModalBody 
-} from 'reactstrap';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
 import Register from '../Register'
+import Button from '@material-ui/core/Button';
 
-const RegisterModal = (props) => {
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    top: `50%`,
+    left: `50%`,
+    transform: `translate(-50%, -50%)`,
+    borderRadius: '2%'
+  },
+}));
 
-    //props received when calling component
-    const {
-        className,
-    } = props;
+function RegisterModal() {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const toggle = () => setOpen(!open);
 
-    //setting state of modal to false
-    const [modal, setModal] = useState(false);
+  const body = (
+    <div className={classes.paper}>
+      <h2 id="simple-modal-title">Sign Up</h2>
+      <br />
+      <div id="simple-modal-content">
+        <Register toggle={toggle}/>
+      </div>
+    </div>
+  );
 
-    //toggling modal state to the opposite of current
-    const toggle = () => setModal(!modal);
-
-    return (
-        <div>
-            <Button outline color={props.type} onClick={toggle}>{props.label}</Button>
-            <Modal isOpen={modal} toggle={toggle} className={className}>
-                <ModalHeader toggle={toggle}>{props.title}</ModalHeader>
-                <ModalBody>
-                    <Register toggle={toggle}/>
-                </ModalBody>
-            </Modal>
-        </div>
-    );
+  return (
+    <div>
+      <Button color="inherit" variant="outlined" onClick={toggle} >Join</Button>
+      <Modal
+        open={open}
+        onClose={toggle}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {body}
+      </Modal>
+    </div>
+  );
 }
 
 export default RegisterModal;

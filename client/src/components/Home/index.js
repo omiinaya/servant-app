@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../NavBar"
+import PrimaryAppBar from "../SignedInAppBar"
 
 class Home extends Component {
 
@@ -11,6 +12,7 @@ class Home extends Component {
         return (
             <div>
                 <NavBar />
+                <PrimaryAppBar />
                 <a href="/default">Hello World.</a>
             </div>
         )

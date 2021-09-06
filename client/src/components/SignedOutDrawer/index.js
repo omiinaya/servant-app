@@ -8,6 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MailIcon from '@material-ui/icons/Mail';
 import LoginModal from "../LoginModal"
 import RegisterModal from "../RegisterModal"
+import { Link } from 'react-router-dom';
 import {
   NavbarToggler,
   Navbar
@@ -46,14 +47,18 @@ function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <ListItem>
-          <ListItemIcon><MailIcon /></ListItemIcon>
-          <LoginModal type='link' label='Sign In' title='Sign In' test='test1' />
-        </ListItem>
-        <ListItem>
-          <ListItemIcon><MailIcon /></ListItemIcon>
-          <RegisterModal type='link' label='Register' title='Sign Up' test='test2' />
-        </ListItem>
+        <Link to='/test'>
+          <ListItem>
+            <ListItemIcon><MailIcon /></ListItemIcon>
+            <LoginModal type='link' label='Sign In' title='Sign In' test='test1' />
+          </ListItem>
+        </Link>
+        <Link to='/test'>
+          <ListItem>
+            <ListItemIcon><MailIcon /></ListItemIcon>
+            <RegisterModal type='link' label='Register' title='Sign Up' test='test2' />
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
@@ -61,13 +66,13 @@ function TemporaryDrawer() {
   return (
     <div>
       <React.Fragment key='right'>
-          <Navbar color="light" light expand="md">
-            <NavbarToggler onClick={toggleDrawer('right', true)} />
-          </Navbar>
-          <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
-            {list('right')}
-          </Drawer>
-        </React.Fragment>
+        <Navbar color="light" light expand="md">
+          <NavbarToggler onClick={toggleDrawer('right', true)} />
+        </Navbar>
+        <Drawer anchor='right' open={state['right']} onClose={toggleDrawer('right', false)}>
+          {list('right')}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }

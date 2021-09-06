@@ -14,6 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -23,9 +24,15 @@ const useStyles = makeStyles((theme) => ({
     //rules that apply to burger menu
   },
   title: {
-    display: 'none',
+    //rules that apply to servantApp title
+    color: 'white',
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+      //color: 'white'
+    },
+    //rules for mobile devices only
+    [theme.breakpoints.down('xs')]: {
+      display: 'none'
     },
   },
   search: {
@@ -66,15 +73,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   sectionDesktop: {
-    display: 'none',
+    //display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
   },
   sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
+    display: 'none',
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
     },
   },
 }));
@@ -131,32 +141,22 @@ function PrimaryAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      {/* 3 dot menu items */}
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
             <MailIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        Logout
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <Badge badgeContent={4} color="secondary">
+            <MailIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+        Placeholder
       </MenuItem>
     </Menu>
   );
@@ -165,9 +165,11 @@ function PrimaryAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            ServantApp
-          </Typography>
+          <Link to='/'>
+            <Typography className={classes.title} variant="h6" noWrap>
+              ServantApp
+            </Typography>
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -203,18 +205,27 @@ function PrimaryAppBar() {
             >
               <AccountCircle />
             </IconButton>
+            <IconButton
+              aria-label="show more"
+              aria-controls={mobileMenuId}
+              aria-haspopup="true"
+              onClick={handleMobileMenuOpen}
+              color="inherit"
+            >
+              <MoreIcon />
+            </IconButton>
           </div>
           <div className={classes.sectionMobile}>
-          <IconButton
-            edge="end"
-            className={classes.menuButton}
-            aria-label="open drawer"
-            aria-haspopup="true"
-            color="inherit"
-            onClick={handleMobileMenuOpen}
-          >
-            <MenuIcon />
-          </IconButton>
+            <IconButton
+              edge="end"
+              className={classes.menuButton}
+              aria-label="open drawer"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={handleMobileMenuOpen}
+            >
+              <MenuIcon />
+            </IconButton>
           </div>
         </Toolbar>
       </AppBar>

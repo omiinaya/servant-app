@@ -4,12 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import WorkIcon from '@material-ui/icons/Work';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import { 
-    AppBar, 
-    Tabs, 
-    Tab, 
-    Typography, 
-    Box 
+import BannerMenuTab from '../BannerMenuTab';
+import {
+  AppBar,
+  Tabs,
+  Tab,
+  Typography,
+  Box
 } from '@material-ui/core';
 
 function TabPanel(props) {
@@ -76,17 +77,29 @@ export default function ScrollableTabsButtonForce() {
         >
           <Tab label="Make a Request" icon={<AccessibilityNewIcon />} {...a11yProps(0)} />
           <Tab label="Offer a Service" icon={<WorkIcon />} {...a11yProps(1)} />
-          <Tab label="Buy/Sell Items" icon={<LocalGroceryStoreIcon />} {...a11yProps(2)} />
+          <Tab label="Shop for items" icon={<LocalGroceryStoreIcon />} {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <BannerMenuTab
+          title="Need a hand?"
+          details="Ask locals for help with problems you need solved."
+          label="Request Now"
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <BannerMenuTab
+          title="Got a hand?"
+          details="Help locals with problems you can solve."
+          label="Help Now"
+        />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <BannerMenuTab
+        title="Have items to trade?"
+        details="Trade items you don't need with locals that might want them."
+        label="Shop Now"
+        />
       </TabPanel>
     </div>
   );

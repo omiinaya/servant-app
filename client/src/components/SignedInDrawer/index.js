@@ -1,9 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import { 
   makeStyles, 
   Drawer, 
@@ -47,6 +47,10 @@ function SignedOutDrawer() {
     >
       <List>
         <Link to='/' color="inherit">
+        <ListItem>
+            <ListItemIcon><AccountCircle /></ListItemIcon>
+            <ListItemText primary='My Account' />
+          </ListItem>
           <ListItem>
             <ListItemIcon><VpnKeyIcon /></ListItemIcon>
             <ListItemText primary='Logout' onClick={handleLogOut}/>

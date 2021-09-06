@@ -6,15 +6,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import { 
-  AppBar, 
-  Toolbar, 
-  IconButton, 
-  Typography, 
-  InputBase, 
-  Badge, 
-  MenuItem, 
-  Menu 
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  InputBase,
+  Badge,
+  MenuItem,
+  Menu
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
     //rules for mobile devices only
     [theme.breakpoints.down('xs')]: {
-      display: 'none'
+      display: 'block'
     },
   },
   search: {
@@ -45,11 +45,23 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(0.5),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    [theme.breakpoints.down('lg')]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
+      width: '40%',
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: theme.spacing(3),
+      width: '45%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: '50%',
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginLeft: theme.spacing(3),
+      width: '100%',
+      marginLeft: theme.spacing(2.5),
     },
   },
   searchIcon: {
@@ -63,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputRoot: {
     color: 'inherit',
+    width: '100%'
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -71,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '100%',
     },
   },
   sectionDesktop: {
@@ -86,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
   sectionMobile: {
     display: 'none',
     [theme.breakpoints.down('xs')]: {
-      display: 'flex',
+      display: 'flex'
     },
   },
 }));
@@ -172,7 +185,7 @@ function SignedInAppBar() {
         <Toolbar>
           <Link to='/'>
             <Typography className={classes.title} variant="h6" noWrap>
-              ServantApp
+              Servant
             </Typography>
           </Link>
           <div className={classes.search}>
@@ -212,7 +225,7 @@ function SignedInAppBar() {
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
-          <IconButton
+            <IconButton
               edge="end"
               className={classes.menuButton}
               aria-label="open drawer"

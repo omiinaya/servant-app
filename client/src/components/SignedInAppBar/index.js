@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
       width: '50%',
     },
     [theme.breakpoints.down('xs')]: {
-      marginLeft: theme.spacing(3),
       width: '100%',
       marginLeft: theme.spacing(2.5),
     },

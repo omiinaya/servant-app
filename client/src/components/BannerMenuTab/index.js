@@ -28,10 +28,10 @@ class BannerMenuTab extends Component {
                 <div style={styles.details}>{this.props.details}</div>
                 <div style={styles.buttons}>
                     <Box m={1}>
-                        <Button variant="contained">{this.props.label}</Button>
+                        <Button variant="contained" color="primary">{this.props.label}</Button>
                     </Box>
                     <Box m={1}>
-                        <Button variant="contained">{this.props.label2}</Button>
+                        <Button variant="contained" color="primary">{this.props.label2}</Button>
                     </Box>
                 </div>
             </div>

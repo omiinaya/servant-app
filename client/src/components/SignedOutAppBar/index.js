@@ -41,11 +41,22 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(0.5),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    [theme.breakpoints.down('lg')]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
+      width: '40%',
+    },
+    [theme.breakpoints.down('md')]: {
+      marginLeft: theme.spacing(3),
+      width: '45%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: '50%',
+    },
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+      marginLeft: theme.spacing(2.5),
     },
   },
   searchIcon: {

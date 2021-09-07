@@ -100,8 +100,8 @@ export default function ScrollableTabsButtonForce() {
         <BannerMenuTab
         title="Have items to trade?"
         details="Trade items you don't need with locals that might want them."
-        label="List an Item"
-        label2="Shop for an Item"
+        label="Shop Now"
+        label2="List Item"
         />
       </TabPanel>
     </div>

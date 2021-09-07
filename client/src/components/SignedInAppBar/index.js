@@ -180,7 +180,7 @@ function SignedInAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar>
           <Link to='/'>
             <Typography className={classes.title} variant="h6" noWrap>

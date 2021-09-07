@@ -14,7 +14,7 @@ import {
 function Banner(props) {
     if (props.newProp) console.log(props.newProp)
     const contentPosition = props.contentPosition ? props.contentPosition : "left"
-    const totalItems = props.length ? props.length : 3;
+    const totalItems = props.length ? props.length : 6;
     const mediaLength = totalItems - 1;
 
     let items = [];
@@ -68,7 +68,7 @@ function Banner(props) {
 
     return (
         <Card raised className="Banner">
-            <Grid container spacing={0} className="BannerGrid">
+            <Grid container spacing={7} className="BannerGrid">
                 {items}
             </Grid>
         </Card>
@@ -88,14 +88,15 @@ const items = [
             {
                 Name: "iPhone",
                 Image: "https://source.unsplash.com/featured/?iphone"
-            }
-        ]
-    },
-    {
-        Name: "Home Appliances",
-        Caption: "Say no to manual home labour!",
-        contentPosition: "middle",
-        Items: [
+            },
+            {
+                Name: "Washing Machine WX9102",
+                Image: "https://source.unsplash.com/featured/?washingmachine"
+            },
+            {
+                Name: "Learus Vacuum Cleaner",
+                Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
+            },
             {
                 Name: "Washing Machine WX9102",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
@@ -105,7 +106,39 @@ const items = [
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             }
         ]
-    }
+    },
+    {
+        Name: "Home Appliances",
+        Caption: "Say no to manual home labour!",
+        contentPosition: "middle",
+        Items: [
+            {
+                Name: "Macbook Pro",
+                Image: "https://source.unsplash.com/featured/?macbook"
+            },
+            {
+                Name: "iPhone",
+                Image: "https://source.unsplash.com/featured/?iphone"
+            },
+            {
+                Name: "Washing Machine WX9102",
+                Image: "https://source.unsplash.com/featured/?washingmachine"
+            },
+            {
+                Name: "Learus Vacuum Cleaner",
+                Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
+            },
+            {
+                Name: "Washing Machine WX9102",
+                Image: "https://source.unsplash.com/featured/?washingmachine"
+            },
+            {
+                Name: "Learus Vacuum Cleaner",
+                Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
+            }
+        ]
+    },
+    
 ]
 
 class BannerCarousel extends React.Component {

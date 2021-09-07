@@ -12,7 +12,7 @@ const styles = theme => ({
         backgroundColor: 'black',
         backgroundImage: `url(${BannerImage})`,
         backgroundSize: '100%',
-        height: '63vh'
+        height: '58vh'
     }
 });
 

@@ -7,7 +7,7 @@ import BannerCarousel from '../BannerCarousel';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '40%',
-        margin: '3%',
+        margin: '4vh',
         borderRadius: '1%',
         [theme.breakpoints.down('lg')]: {
             width: '37%',
@@ -23,9 +23,15 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
         },
     },
+    title: {
+        fontSize: '40px',
+        fontFamily: 'MyFont3',
+        margin: 'auto',
+        textAlign: 'center'
+    },
     carousel: {
         //carousel rules
-        marginTop: '6.5%',
+    
     }
 })
 )
@@ -41,6 +47,9 @@ function Banner() {
                 >
                     <BannerMenu />
                 </Box>
+            </div>
+            <div className={classes.title}>
+                Popular professional services
             </div>
             <div className={classes.carousel}>
                 <BannerCarousel />

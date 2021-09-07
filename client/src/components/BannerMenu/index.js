@@ -98,8 +98,8 @@ export default function ScrollableTabsButtonForce() {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <BannerMenuTab
-        title="Have items to trade?"
-        details="Trade items you don't need with locals that might want them."
+        title="Things to sale?"
+        details="Sell items you don't need to locals that might want them."
         label="Shop Now"
         label2="List Item"
         />

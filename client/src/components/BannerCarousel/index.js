@@ -147,8 +147,8 @@ class BannerCarousel extends React.Component {
 
         this.state = {
             autoPlay: false,
-            animation: "slide",
-            indicators: true,
+            animation: "fade",
+            indicators: false,
             timeout: 500,
             navButtonsAlwaysVisible: true,
             navButtonsAlwaysInvisible: false,

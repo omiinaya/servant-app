@@ -6,14 +6,17 @@ import BannerMenu from '../BannerMenu';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '50%',
-        margin: '4%',
+        width: '40%',
+        margin: '3%',
         borderRadius: '1%',
+        [theme.breakpoints.down('lg')]: {
+            width: '37%',
+        },
         [theme.breakpoints.down('md')]: {
-            width: '50%',
+            width: '57%',
         },
         [theme.breakpoints.down('sm')]: {
-            width: '60.5%',
+            width: '70%',
         },
         [theme.breakpoints.down('xs')]: {
             margin: '0%',

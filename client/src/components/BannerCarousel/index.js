@@ -108,8 +108,8 @@ const items = [
         ]
     },
     {
-        Name: "Home Appliances",
-        Caption: "Say no to manual home labour!",
+        Name: "Appliances",
+        Caption: "Say no to manual labour!",
         contentPosition: "middle",
         Items: [
             {
@@ -137,8 +137,7 @@ const items = [
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             }
         ]
-    },
-    
+    }
 ]
 
 class BannerCarousel extends React.Component {
@@ -202,7 +201,7 @@ class BannerCarousel extends React.Component {
 
     render() {
         return (
-            <div style={{ marginTop: "50px", color: "#494949" }}>
+            <div style={{ color: "#494949" }}>
                 <Carousel
                     className="Example"
                     autoPlay={this.state.autoPlay}

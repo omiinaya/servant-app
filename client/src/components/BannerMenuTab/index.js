@@ -8,19 +8,15 @@ const styles = {
     title: {
         fontSize: '40px',
         fontFamily: 'MyFont3',
-        margin: '2%'
+        margin: '1.5vh'
     },
     details: {
         fontFamily: 'MyFont2',
-        margin: '2%'
+        margin: '1.5vh'
     },
     buttons: {
         fontFamily: 'MyFont2',
         display: 'flex'
-    },
-    extra: {
-        fontFamily: 'MyFont2',
-        //
     }
 };
 
@@ -37,7 +33,6 @@ class BannerMenuTab extends Component {
                     <Box m={1}>
                         <Button variant="contained">{this.props.label2}</Button>
                     </Box>
-                    <div>{this.props.extra}</div>
                 </div>
             </div>
         )

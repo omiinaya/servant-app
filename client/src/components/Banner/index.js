@@ -24,14 +24,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     title: {
-        fontSize: '40px',
+        fontSize: '26px',
         fontFamily: 'MyFont3',
-        margin: 'auto',
-        textAlign: 'center'
+        marginTop: '8vh',
+        margin: '4vh',
     },
     carousel: {
         //carousel rules
-    
     }
 })
 )

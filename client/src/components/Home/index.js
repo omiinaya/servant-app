@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import { withStyles } from '@material-ui/styles';
 import NavBar from "../NavBar"
 import Banner from "../Banner"
 
-const styles = {
+const styles = theme => ({
     root: {
-        //backgroundColor: 'black',
-        //height: '100vh'
+
     }
-};
+});
 
 class Home extends Component {
 
@@ -16,8 +16,9 @@ class Home extends Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <div style={styles.root}>
+            <div className={classes.root}>
                 <NavBar />
                 <Banner />
             </div>
@@ -25,4 +26,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default withStyles(styles)(Home);

@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import NavBar from "../NavBar"
 import Banner from "../Banner"
 
+const styles = {
+    root: {
+        //backgroundColor: 'black',
+        //height: '100vh'
+    }
+};
+
 class Home extends Component {
 
     componentDidMount() {
@@ -10,7 +17,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div style={styles.root}>
                 <NavBar />
                 <Banner />
             </div>

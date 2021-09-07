@@ -65,7 +65,7 @@ export default function ScrollableTabsButtonForce() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default" elevation={3}>
         <Tabs
           value={value}
           onChange={handleChange}

@@ -7,7 +7,7 @@ class Banner extends Component {
         return (
             <div>
                 <BannerMenu />
-                <BannerCarousel />
+                {/*<BannerCarousel />*/}
             </div>
         )
     }

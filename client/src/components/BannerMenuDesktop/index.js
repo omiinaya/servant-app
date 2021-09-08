@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import WorkIcon from '@material-ui/icons/Work';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import BannerTabMenu from '../BannerTabMenu';
+import BannerMenuTab from '../BannerMenuTab';
 import {
   AppBar,
   Tabs,
@@ -81,7 +81,7 @@ export default function ScrollableTabsButtonForce() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <BannerTabMenu
+        <BannerMenuTab
           title="Need a hand?"
           details="Request the help of locals with problems you need solved."
           label="Request Now"
@@ -89,7 +89,7 @@ export default function ScrollableTabsButtonForce() {
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <BannerTabMenu
+        <BannerMenuTab
           title="Got a hand?"
           details="Help locals by solving requests they have submitted."
           label="Help Now"
@@ -97,7 +97,7 @@ export default function ScrollableTabsButtonForce() {
         />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <BannerTabMenu
+        <BannerMenuTab
         title="Things to sale?"
         details="Sell items you don't need to locals that might want them."
         label="Shop Now"

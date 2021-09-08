@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import BannerMenuTab from '../BannerMenuTab';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,20 +72,35 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Requests" {...a11yProps(0)} />
+          <Tab label="Services" {...a11yProps(1)} />
+          <Tab label="Market" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          Item One
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
-        </TabPanel>
+      <TabPanel value={value} index={0} dir={theme.direction}>
+        <BannerMenuTab
+          title="Need a hand?"
+          details="Request the help of locals with problems you need solved."
+          label="Request Now"
+          label2="See Requests"
+        />
+      </TabPanel>
+      <TabPanel value={value} index={1} dir={theme.direction}>
+        <BannerMenuTab
+          title="Got a hand?"
+          details="Help locals by solving requests they have submitted."
+          label="Help Now"
+          label2="See Servies"
+        />
+      </TabPanel>
+      <TabPanel value={value} index={2} dir={theme.direction}>
+        <BannerMenuTab
+          title="Things to sale?"
+          details="Sell items you don't need to locals that might want them."
+          label="Shop Now"
+          label2="List Item"
+        />
+      </TabPanel>
     </div>
   );
 }

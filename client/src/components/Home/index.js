@@ -5,6 +5,7 @@ import NavBar from "../NavBar"
 import { Box } from '@material-ui/core';
 import BannerMenu from '../BannerMenu';
 import BannerCarousel from '../BannerCarousel';
+import BottomAppBar from '../BottomAppBar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: '26px',
         fontFamily: 'MyFont3',
-        marginTop: '4vh',
+        marginTop: '8vh',
         margin: '4vh',
     },
     carousel: {
@@ -41,16 +42,16 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('lg')]: {
             height: '56vh',
         },
-        [theme.breakpoints.down('md')]: {
-            height: '56vh',
-        },
-        [theme.breakpoints.down('sm')]: {
-            height: '56vh',
-        },
         [theme.breakpoints.down('xs')]: {
             height: '0vh',
         },
     },
+    mobile: {
+        display: 'none',
+        [theme.breakpoints.down('xs')]: {
+            display: 'flex'
+        },
+    }
 }))
 
 function Home() {
@@ -73,7 +74,9 @@ function Home() {
                 <div className={classes.carousel}>
                     <BannerCarousel />
                 </div>
-
+                <div className={classes.mobile}>
+                <BottomAppBar />
+                </div>
             </div>
         </div>
     )

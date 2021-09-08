@@ -14,7 +14,7 @@ import {
 function Banner(props) {
     if (props.newProp) console.log(props.newProp)
     const contentPosition = props.contentPosition ? props.contentPosition : "left"
-    const totalItems = props.length ? props.length : 6;
+    const totalItems = props.length ? props.length : 1;
     const mediaLength = totalItems - 1;
 
     let items = [];
@@ -35,27 +35,6 @@ function Banner(props) {
             </CardContent>
         </Grid>
     )
-
-    for (let i = 0; i < mediaLength; i++) {
-        const item = props.item.Items[i];
-
-        const media = (
-            <Grid item xs={12 / totalItems} key={item.Name}>
-                <CardMedia
-                    className="Media"
-                    image={item.Image}
-                    title={item.Name}
-                >
-                    <Typography className="MediaCaption">
-                        {item.Name}
-                    </Typography>
-                </CardMedia>
-
-            </Grid>
-        )
-
-        items.push(media);
-    }
 
     if (contentPosition === "left") {
         items.unshift(content);
@@ -79,32 +58,9 @@ const items = [
         Name: "Electronics",
         Caption: "Electrify your friends!",
         contentPosition: "left",
-        Items: [
-            {
-                Name: "Macbook Pro",
-                Image: "https://source.unsplash.com/featured/?macbook"
-            },
-            {
-                Name: "iPhone",
-                Image: "https://source.unsplash.com/featured/?iphone"
-            },
-            {
-                Name: "Washing Machine WX9102",
-                Image: "https://source.unsplash.com/featured/?washingmachine"
-            },
-            {
-                Name: "Learus Vacuum Cleaner",
-                Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
-            },
-            {
-                Name: "Washing Machine WX9103",
-                Image: "https://source.unsplash.com/featured/?washingmachine"
-            },
-            {
-                Name: "Learus Vacuum Cleaner2",
-                Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
-            }
-        ]
+        
+           
+        
     },
     {
         Name: "Appliances",

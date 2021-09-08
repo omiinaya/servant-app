@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import WorkIcon from '@material-ui/icons/Work';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import BannerMenuTab from '../BannerMenuTab';
+import BannerMenuTab from '../BannerTabMenu';
 import {
   AppBar,
   Tabs,

@@ -1,38 +1,82 @@
-import React, { Component } from "react";
-import { withStyles } from '@material-ui/styles';
+import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import BannerImage from '../../assets/images/banner.jpg';
 import NavBar from "../NavBar"
-import Banner from "../Banner"
+import { Box } from '@material-ui/core';
+import BannerMenu from '../BannerMenu';
+import BannerCarousel from '../BannerCarousel';
 
-const styles = theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
-        
+        width: '40%',
+        margin: '4vh',
+        borderRadius: '1%',
+        [theme.breakpoints.down('lg')]: {
+            width: '75vh',
+        },
+        [theme.breakpoints.down('md')]: {
+            width: '75vh',
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '75vh',
+        },
+        [theme.breakpoints.down('xs')]: {
+            margin: '0%',
+            width: '100%',
+        },
+    },
+    title: {
+        fontSize: '26px',
+        fontFamily: 'MyFont3',
+        marginTop: '4vh',
+        margin: '4vh',
+    },
+    carousel: {
+        //carousel rules
     },
     banner: {
         backgroundColor: 'black',
         backgroundImage: `url(${BannerImage})`,
         backgroundSize: '100%',
-        height: '58vh'
-    }
-});
+        [theme.breakpoints.down('lg')]: {
+            height: '58vh',
+        },
+        [theme.breakpoints.down('md')]: {
+            height: '58vh',
+        },
+        [theme.breakpoints.down('sm')]: {
+            height: '58vh',
+        },
+        [theme.breakpoints.down('xs')]: {
+            height: '40vh',
+        },
+    },
+}))
 
-class Home extends Component {
-
-    componentDidMount() {
-        console.log('DOM finished loading.')
-    }
-
-    render() {
-        const { classes } = this.props;
-        return (
-            <div>
-                <div className={classes.banner}>
-                    <NavBar />
-                    <Banner />
+function Home() {
+    const classes = useStyles();
+    return (
+        <div>
+            <div className={classes.banner}>
+                <NavBar />
+                <div className={classes.root}>
+                    <Box
+                        boxShadow={3}
+                        bgcolor="background.paper"
+                    >
+                        <BannerMenu />
+                    </Box>
                 </div>
+                <div className={classes.title}>
+                    Popular services
+                </div>
+                <div className={classes.carousel}>
+                    <BannerCarousel />
+                </div>
+
             </div>
-        )
-    }
+        </div>
+    )
 }
 
-export default withStyles(styles)(Home);
+export default Home;

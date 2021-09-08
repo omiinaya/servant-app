@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '4vh',
     },
     carousel: {
-        //carousel rules
+        
     },
     banner: {
         backgroundColor: 'black',

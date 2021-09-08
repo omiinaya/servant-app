@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     //rules for mobile devices only
     [theme.breakpoints.down('xs')]: {
-      display: 'none'
+      display: 'block'
     },
   },
   search: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       width: '100%',
-      marginLeft: theme.spacing(2.5),
+      marginLeft: theme.spacing(2),
     },
   },
   searchIcon: {
@@ -134,7 +134,7 @@ function SignedOutAppBar() {
         <Toolbar>
           <Link to='/'>
             <Typography className={classes.title} variant="h6" noWrap>
-              ServantApp
+              Servant
             </Typography>
           </Link>
           <div className={classes.search}>

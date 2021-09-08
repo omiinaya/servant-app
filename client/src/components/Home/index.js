@@ -39,16 +39,16 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: `url(${BannerImage})`,
         backgroundSize: '100%',
         [theme.breakpoints.down('lg')]: {
-            height: '58vh',
+            height: '56vh',
         },
         [theme.breakpoints.down('md')]: {
-            height: '58vh',
+            height: '56vh',
         },
         [theme.breakpoints.down('sm')]: {
-            height: '58vh',
+            height: '56vh',
         },
         [theme.breakpoints.down('xs')]: {
-            height: '40vh',
+            height: '0vh',
         },
     },
 }))

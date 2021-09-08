@@ -98,11 +98,11 @@ const items = [
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             },
             {
-                Name: "Washing Machine WX9102",
+                Name: "Washing Machine WX9103",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleaner",
+                Name: "Learus Vacuum Cleaner2",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             }
         ]

@@ -5,7 +5,6 @@ import './style.scss';
 import {
     Card,
     CardContent,
-    CardMedia,
     Typography,
     Grid,
     Button
@@ -14,12 +13,10 @@ import {
 function Banner(props) {
     if (props.newProp) console.log(props.newProp)
     const contentPosition = props.contentPosition ? props.contentPosition : "left"
-    const totalItems = props.length ? props.length : 1;
-    const mediaLength = totalItems - 1;
 
     let items = [];
     const content = (
-        <Grid item xs={12 / totalItems} key="content">
+        <Grid item xs={12} key="content">
             <CardContent className="Content">
                 <Typography className="Title">
                     {props.item.Name}

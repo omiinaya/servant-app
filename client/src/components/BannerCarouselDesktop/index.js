@@ -4,37 +4,17 @@ import autoBind from "auto-bind"
 import './style.scss';
 import {
     Card,
-    CardContent,
     CardMedia,
     Typography,
     Grid,
-    Button
 } from '@material-ui/core';
 
 function Banner(props) {
     if (props.newProp) console.log(props.newProp)
-    const contentPosition = props.contentPosition ? props.contentPosition : "left"
     const totalItems = props.length ? props.length : 6;
-    const mediaLength = totalItems - 1;
+    const mediaLength = totalItems;
 
-    let items = [];
-    const content = (
-        <Grid item xs={12 / totalItems} key="content">
-            <CardContent className="Content">
-                <Typography className="Title">
-                    {props.item.Name}
-                </Typography>
-
-                <Typography className="Caption">
-                    {props.item.Caption}
-                </Typography>
-
-                <Button variant="outlined" className="ViewButton">
-                    View Now
-                </Button>
-            </CardContent>
-        </Grid>
-    )
+    let rows = [];
 
     for (let i = 0; i < mediaLength; i++) {
         const item = props.item.Items[i];
@@ -53,32 +33,21 @@ function Banner(props) {
 
             </Grid>
         )
-
-        items.push(media);
-    }
-
-    if (contentPosition === "left") {
-        items.unshift(content);
-    } else if (contentPosition === "right") {
-        items.push(content);
-    } else if (contentPosition === "middle") {
-        items.splice(items.length / 2, 0, content);
+        rows.push(media);
     }
 
     return (
         <Card raised className="Banner">
-            <Grid container spacing={7} className="BannerGrid">
-                {items}
+            <Grid container spacing={5} className="BannerGrid">
+                {rows}
             </Grid>
         </Card>
     )
 }
 
-const items = [
+const rows = [
     {
-        Name: "Electronics",
-        Caption: "Electrify your friends!",
-        contentPosition: "left",
+        Name: "01",
         Items: [
             {
                 Name: "Macbook Pro",
@@ -107,9 +76,7 @@ const items = [
         ]
     },
     {
-        Name: "Appliances",
-        Caption: "Say no to manual labour!",
-        contentPosition: "middle",
+        Name: "02",
         Items: [
             {
                 Name: "Macbook Pro",
@@ -120,19 +87,19 @@ const items = [
                 Image: "https://source.unsplash.com/featured/?iphone"
             },
             {
-                Name: "Washing Machine WX9102",
+                Name: "Washing Machine WX9101",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleaner",
+                Name: "Learus Vacuum Cleanerrr",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             },
             {
-                Name: "Washing Machine WX9102",
+                Name: "Washing Machine WX910",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleaner",
+                Name: "Learus Vacuum Cleanerrrr",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             }
         ]
@@ -220,7 +187,7 @@ class BannerCarousel extends React.Component {
                     // NextIcon='next'
                 >
                     {
-                        items.map((item, index) => {
+                        rows.map((item, index) => {
                             return <Banner item={item} key={index} contentPosition={item.contentPosition} />
                         })
                     }

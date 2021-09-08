@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   sectionMobile: {
     display: 'none',
     [theme.breakpoints.down('xs')]: {
-      display: 'block'
+      display: 'block',
     },
   },
 }));

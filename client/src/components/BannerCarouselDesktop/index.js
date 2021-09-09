@@ -27,21 +27,21 @@ const useStyles = makeStyles((theme) => ({
     },
     MediaCaption: {
         textOverflow: 'ellipsis',
-            position: 'absolute',
-            bottom: 0,
-            padding: '15px',
-            backgroundColor: 'black',
-            color: 'white',
-            opacity: 0.6,
-            width: '100%',
-            height: '10vh',
-            fontSize: '25px',
-            fontWeight: 200,
-            transition: '300ms',
-            cursor: 'pointer',
-            '&:hover': {
-                opacity: 0.8
-            }
+        position: 'absolute',
+        bottom: 0,
+        padding: '15px',
+        backgroundColor: 'black',
+        color: 'white',
+        opacity: 0.6,
+        width: '100%',
+        height: '10vh',
+        fontSize: '25px',
+        fontWeight: 200,
+        transition: '300ms',
+        cursor: 'pointer',
+        '&:hover': {
+            opacity: 0.8
+        }
     }
 }));
 

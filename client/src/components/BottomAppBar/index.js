@@ -1,9 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+import { 
+  AppBar, 
+  Toolbar, 
+  Fab 
+} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   text: {

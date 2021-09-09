@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 function BannerCarousel() {
   const classes = useStyles();
   return (
-    //make function that tells if mobile
     <div>
       <div className={classes.sectionDesktop}>
         <BannerCarouselDesktop />

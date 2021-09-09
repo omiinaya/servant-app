@@ -39,9 +39,11 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     carousel: {
-        margin: '5%',
-        marginTop: 0,
-        width: '90%'
+        [theme.breakpoints.down('xs')]: {
+            margin: '5%',
+            marginTop: 0,
+            width: '90%'
+        },
     },
     banner: {
         backgroundColor: 'black',

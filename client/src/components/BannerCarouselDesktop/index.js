@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
+import { makeStyles } from '@material-ui/core/styles';
 import autoBind from "auto-bind"
 import './style.scss';
 import {
@@ -9,7 +10,44 @@ import {
     Grid,
 } from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+    Banner: {
+        height: '200px',
+        position: 'relative'
+    },
+    Media: {
+        backgroundColor: 'white',
+        height: '30vh',
+        width: '30vh',
+        overflow: 'hidden',
+        position: 'relative'
+    },
+    BannerGrid: {
+        height: '100%',
+        position: 'relative'
+    },
+    MediaCaption: {
+        textOverflow: 'ellipsis',
+            position: 'absolute',
+            bottom: 0,
+            padding: '15px',
+            backgroundColor: 'black',
+            color: 'white',
+            opacity: 0.6,
+            width: '100%',
+            height: '10vh',
+            fontSize: '$header-font-size',
+            fontWeight: 200,
+            transition: '300ms',
+            cursor: 'pointer',
+            '&:hover': {
+                opacity: 0.8
+            }
+    }
+}));
+
 function Banner(props) {
+    const classes = useStyles();
     if (props.newProp) console.log(props.newProp)
     const totalItems = props.length ? props.length : 6;
     const mediaLength = totalItems;
@@ -22,11 +60,11 @@ function Banner(props) {
         const media = (
             <Grid item xs={12 / totalItems} key={item.Name}>
                 <CardMedia
-                    className="Media"
+                    className={classes.Media}
                     image={item.Image}
                     title={item.Name}
                 >
-                    <Typography className="MediaCaption">
+                    <Typography className={classes.MediaCaption}>
                         {item.Name}
                     </Typography>
                 </CardMedia>
@@ -37,8 +75,8 @@ function Banner(props) {
     }
 
     return (
-        <Card raised className="Banner">
-            <Grid container spacing={5} className="BannerGrid">
+        <Card raised className={classes.Banner}>
+            <Grid container spacing={5} className={classes.BannerGrid}>
                 {rows}
             </Grid>
         </Card>
@@ -180,11 +218,11 @@ class BannerCarousel extends React.Component {
                     next={(now, previous) => console.log(`Next User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
                     prev={(now, previous) => console.log(`Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
                     onChange={(now, previous) => console.log(`OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    // fullHeightHover={false}
-                    // navButtonsProps={{style: {backgroundColor: 'cornflowerblue', borderRadius: 0}}}
-                    // navButtonsWrapperProps={{style: {bottom: '0', top: 'unset', }}}
-                    // indicatorContainerProps={{style: {margin: "20px"}}}
-                    // NextIcon='next'
+                // fullHeightHover={false}
+                // navButtonsProps={{style: {backgroundColor: 'cornflowerblue', borderRadius: 0}}}
+                // navButtonsWrapperProps={{style: {bottom: '0', top: 'unset', }}}
+                // indicatorContainerProps={{style: {margin: "20px"}}}
+                // NextIcon='next'
                 >
                     {
                         rows.map((item, index) => {

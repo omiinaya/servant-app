@@ -11,7 +11,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     Banner: {
-        height: '200px',
+        height: '300px',
         position: 'relative'
     },
     Media: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     Content: {
         color: 'white',
         backgroundColor: 'rgb(119, 24, 24)',
-        height: '100%',
+        height: '40vh',
         position: 'relative',
         cursor: 'pointer',
         padding: '30px',

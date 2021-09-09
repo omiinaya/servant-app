@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
             opacity: 0.6,
             width: '100%',
             height: '10vh',
-            fontSize: '$header-font-size',
+            fontSize: '25px',
             fontWeight: 200,
             transition: '300ms',
             cursor: 'pointer',
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
 function Banner(props) {
     const classes = useStyles();
     if (props.newProp) console.log(props.newProp)
+    //calculate this based on screenspace instead
     const totalItems = props.length ? props.length : 6;
     const mediaLength = totalItems;
 

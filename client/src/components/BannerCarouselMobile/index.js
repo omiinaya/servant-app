@@ -1,34 +1,101 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
+import { makeStyles } from '@material-ui/core/styles';
 import autoBind from "auto-bind"
-import './style.scss';
 import {
     Card,
     CardContent,
     Typography,
-    Grid,
-    Button
+    Grid
 } from '@material-ui/core';
 
+const useStyles = makeStyles((theme) => ({
+    Banner: {
+        height: '200px',
+        position: 'relative'
+    },
+    Media: {
+        backgroundColor: 'white',
+        height: '30vh',
+        width: '30vh',
+        overflow: 'hidden',
+        position: 'relative'
+    },
+    BannerGrid: {
+        height: '100%',
+        position: 'relative'
+    },
+    MediaCaption: {
+        textOverflow: 'ellipsis',
+        position: 'absolute',
+        bottom: 0,
+        padding: '15px',
+        backgroundColor: 'black',
+        color: 'white',
+        opacity: 0.6,
+        width: '100%',
+        height: '10vh',
+        fontSize: '25px',
+        fontWeight: 200,
+        transition: '300ms',
+        cursor: 'pointer',
+        '&:hover': {
+            opacity: 0.8
+        }
+    },
+    Content: {
+        color: 'white',
+        backgroundColor: 'rgb(119, 24, 24)',
+        height: '100%',
+        position: 'relative',
+        cursor: 'pointer',
+        padding: '30px',
+        transition: '300ms',
+        '&:hover': {
+            backgroundColor: 'rgb(87, 17, 17)e',
+        },
+        '&:active': {
+            backgroundColor: 'rgb(87, 17, 17)',
+        },
+    },
+    ViewButton: {
+        backgroundColor: 'rgb(241, 241, 241)',
+        color: 'rgb(119, 24, 24)'
+    },
+    Title: {
+        fontSize: '40px',
+        fontWeight: 500
+    },
+    Caption: {
+        marginTop: '10px',
+        fontSize: '21px'
+    },
+    ViewButton2: {
+        marginTop: '40px',
+        color: 'white',
+        fontSize: '25px',
+        border: '3px solid white',
+        textTransform: 'capitalize',
+        transition: '200ms'
+    }
+}));
+
 function Banner(props) {
+    const classes = useStyles();
     if (props.newProp) console.log(props.newProp)
     const contentPosition = props.contentPosition ? props.contentPosition : "left"
 
     let items = [];
     const content = (
         <Grid item xs={12} key="content">
-            <CardContent className="Content">
-                <Typography className="Title">
+            <CardContent className={classes.Content}>
+                <Typography className={classes.Title}>
                     {props.item.Name}
                 </Typography>
 
-                <Typography className="Caption">
+                <Typography className={classes.Caption}>
                     {props.item.Caption}
                 </Typography>
-
-                <Button variant="outlined" className="ViewButton">
-                    View Now
-                </Button>
             </CardContent>
         </Grid>
     )
@@ -42,8 +109,8 @@ function Banner(props) {
     }
 
     return (
-        <Card raised className="Banner">
-            <Grid container spacing={7} className="BannerGrid">
+        <Card raised className={classes.Banner}>
+            <Grid container spacing={7} className={classes.BannerGrid}>
                 {items}
             </Grid>
         </Card>

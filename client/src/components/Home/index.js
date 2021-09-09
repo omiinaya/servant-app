@@ -28,12 +28,20 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         fontSize: '26px',
-        fontFamily: 'MyFont3',
-        marginTop: '8vh',
-        margin: '4vh',
+        fontFamily: 'MyFont2',
+        margin: '3vh',
+        marginTop: '12vh',
+        marginBottom: '1vh',
+        [theme.breakpoints.down('xs')]: {
+            margin: '2.5vh',
+            marginTop: '5vh',
+            marginBottom: '1.5vh',
+        },
     },
     carousel: {
-        
+        margin: '5%',
+        marginTop: 0,
+        width: '90%'
     },
     banner: {
         backgroundColor: 'black',
@@ -75,7 +83,7 @@ function Home() {
                     <BannerCarousel />
                 </div>
                 <div className={classes.mobile}>
-                <BottomAppBar />
+                    <BottomAppBar />
                 </div>
             </div>
         </div>

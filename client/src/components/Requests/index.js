@@ -1,4 +1,5 @@
 import React from 'react';
+import RequestList from '../RequestList'
 import  { 
   makeStyles
 } from '@material-ui/core';
@@ -13,7 +14,7 @@ function Requests() {
   const classes = useStyles();
   return (
     <div>
-      Requests page
+      <RequestList />
     </div>
   );
 }

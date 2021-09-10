@@ -78,24 +78,30 @@ export default function FullWidthTabs() {
         <BannerMenuTab
           title="Need a hand?"
           details="Request the help of locals with problems you need solved."
-          label="Request Now"
+          label1="Request Now"
           label2="See Requests"
+          link1="/request"
+          link2="/requests"
         />
       </TabPanel>
       <TabPanel value={value} index={1} dir={theme.direction}>
         <BannerMenuTab
           title="Got a hand?"
           details="Help locals by solving requests they have submitted."
-          label="Help Now"
+          label1="Help Now"
           label2="See Servies"
+          link1="/service"
+          link2="/services"
         />
       </TabPanel>
       <TabPanel value={value} index={2} dir={theme.direction}>
         <BannerMenuTab
           title="Things to sale?"
           details="Sell items you don't need to locals that might want them."
-          label="Shop Now"
+          label1="Shop Now"
           label2="List Item"
+          link1="/market"
+          link2="/listitem"
         />
       </TabPanel>
     </div>

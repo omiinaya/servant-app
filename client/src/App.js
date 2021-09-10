@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import RegisterMobile from './components/RegisterMobile'
 import LoginMobile from './components/LoginMobile'
 import RequestCreate from './components/RequestCreate'
+import Requests from './components/Requests'
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/register" component={RegisterMobile} />
         <Route exact path="/login" component={LoginMobile} />
         <Route exact path="/request" component={RequestCreate} />
+        <Route exact path="/requests" component={Requests} />
       </Switch>
     </Router>
   );

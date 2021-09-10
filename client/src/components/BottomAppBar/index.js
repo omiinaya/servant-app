@@ -54,7 +54,7 @@ export default function BottomAppBar() {
   )
 
   const signedOut = (
-    <Link to='/register'>
+    <Link to='/login'>
       <Fab color="secondary" aria-label="add" className={classes.fabButton}>
         <AddIcon />
       </Fab>

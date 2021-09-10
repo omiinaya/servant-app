@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 //import sequelize model
-const Service = require("../models/Review");
+const Service = require("../models/Service");
 
 const services = express.Router();
 services.use(cors())

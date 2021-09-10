@@ -9,6 +9,22 @@ var Reviews = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true,
             allowNull: true
+        },
+        reviwer_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false
+        },
+        title: {
+            type: Sequelize.STRING(255),
+            allowNull: false
+        },
+        content: {
+            type: Sequelize.STRING(255),
+            allowNull: false
+        },
+        rating: {
+            type: Sequelize.DECIMAL,
+            allowNull: false
         }
     },
     {

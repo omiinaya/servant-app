@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RequestListCards() {
+function RequestList() {
   const classes = useStyles();
   return (
     <div>
@@ -18,4 +18,4 @@ function RequestListCards() {
   );
 }
 
-export default RequestListCards;
+export default RequestList;

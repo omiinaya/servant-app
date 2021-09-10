@@ -8,7 +8,7 @@ var Reviews = db.sequelize.define(
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: true
+            allowNull: false
         },
         reviwer_id: {
             type: Sequelize.INTEGER,

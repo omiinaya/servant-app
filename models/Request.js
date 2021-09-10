@@ -8,7 +8,11 @@ var Requests = db.sequelize.define(
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: true
+            allowNull: false
+        },
+        author_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false
         }
     },
     {

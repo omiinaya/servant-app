@@ -8,7 +8,7 @@ var Users = db.sequelize.define(
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
-            allowNull: true
+            allowNull: false
         },
         firstname: {
             type: Sequelize.STRING(255),

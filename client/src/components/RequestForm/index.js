@@ -1,21 +1,64 @@
-import React from 'react';
-import  { 
-  makeStyles
-} from '@material-ui/core';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import { TextField, Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/styles';
+//import { login } from './scripts';
 
-const useStyles = makeStyles((theme) => ({
+const styles = () => ({
   root: {
-    
-  },
-}));
+    '& > *': {
+      margin: '2%',
+      width: '96%',
+    },
+  }
+})
 
-function RequestList() {
-  const classes = useStyles();
-  return (
-    <div>
-      test
-    </div>
-  );
+class RequestForm extends Component {
+  constructor() {
+    super()
+    this.state = {
+      username: '',
+      password: ''
+    }
+
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+    console.log(e.target.value)
+    console.log(e.target)
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    /*
+    const request = {
+      
+      username: this.state.username,
+      password: this.state.password
+      
+    }
+  
+    login(user).then(data => {
+      if (data) {
+        this.props.history.push('/');
+      }
+    })
+    */
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <form className={classes.root} noValidate autoComplete="off" onSubmit={this.onSubmit}>
+        <TextField size='small' id="username" name="username" type="username" label="Username" variant="outlined" onChange={this.onChange} />
+        <TextField size='small' id="password" name="password" type="password" label="Password" variant="outlined" onChange={this.onChange} />
+        <Button type='submit' size='large' color="primary" variant="contained">Continue</Button>
+      </form>
+    );
+  }
 }
 
-export default RequestList;
+export default withRouter(withStyles(styles)(RequestForm));

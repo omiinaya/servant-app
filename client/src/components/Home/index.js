@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
     banner: {
         //display: 'flex',
         width: '100%',
+        position: 'absolute',
+        zIndex: '-1',
     },
     menu: {
         margin: '4vh',

@@ -11,13 +11,13 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     Banner: {
-        height: '400px',
+        height: '370px',
         width: '100%',
         position: 'relative'
     },
     Media: {
         backgroundColor: 'white',
-        height: '400px',
+        height: '370px',
         width: '100%',
         overflow: 'hidden',
         position: 'relative'

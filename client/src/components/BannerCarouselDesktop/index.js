@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     Banner: {
         height: '300px',
         position: 'relative',
-        margin: '4.5%'
+        margin: '4.5%',
+        marginTop: 0
     },
     Media: {
         backgroundColor: 'white',

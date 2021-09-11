@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: '26px',
         fontFamily: 'MyFont2',
-        margin: '3vh',
+        margin: '8vh',
         marginTop: '10vh',
         marginBottom: '1vh',
         [theme.breakpoints.down('xs')]: {

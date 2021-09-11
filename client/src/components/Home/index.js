@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import BannerCarouselBackground from '../BannerCarouselBackground';
 import NavBar from "../NavBar"
-import { Box } from '@material-ui/core';
 import BannerMenu from '../BannerMenu';
 import BannerCarousel from '../BannerCarousel';
 import BottomAppBar from '../BottomAppBar';
@@ -12,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         //display: 'flex',
         width: '100%',
     },
-    card: {
+    menu: {
         margin: '4vh',
         borderRadius: '1%',
         [theme.breakpoints.down('lg')]: {
@@ -62,26 +61,17 @@ function Home() {
             <div className={classes.banner}>
                 <BannerCarouselBackground />
             </div>
-            <div>
-                <div className={classes.card}>
-                    <Box
-                        boxShadow={3}
-                        bgcolor="background.paper"
-                    >
-                        <BannerMenu />
-                    </Box>
-                </div>
+            <div className={classes.menu}>
+                <BannerMenu />
             </div>
-            <div>
-                <div className={classes.title}>
-                    Popular services
-                </div>
-                <div className={classes.carousel}>
-                    <BannerCarousel />
-                </div>
-                <div className={classes.mobile}>
-                    <BottomAppBar />
-                </div>
+            <div className={classes.title}>
+                Popular services
+            </div>
+            <div className={classes.carousel}>
+                <BannerCarousel />
+            </div>
+            <div className={classes.mobile}>
+                <BottomAppBar />
             </div>
         </div >
     )

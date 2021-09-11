@@ -5,7 +5,6 @@ import autoBind from "auto-bind"
 import {
     Card,
     CardMedia,
-    Typography,
     Grid,
 } from '@material-ui/core';
 
@@ -62,7 +61,7 @@ function Banner(props) {
         const item = props.item.Items[i];
         console.log(mediaLength)
         const media = (
-            <Grid item xs={12 / totalItems} key={item.Name} className={classes.test} >
+            <Grid item xs={12 / totalItems} key={item.Name} >
                 <CardMedia
                     className={classes.Media}
                     image={item.Image}

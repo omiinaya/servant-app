@@ -8,10 +8,12 @@ import BottomAppBar from '../BottomAppBar';
 
 const useStyles = makeStyles((theme) => ({
     banner: {
-        //display: 'flex',
         width: '100%',
         position: 'absolute',
         zIndex: '-1',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        },
     },
     menu: {
         margin: '4vh',
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '26px',
         fontFamily: 'MyFont2',
         margin: '3vh',
-        marginTop: '12vh',
+        marginTop: '10vh',
         marginBottom: '1vh',
         [theme.breakpoints.down('xs')]: {
             margin: '2.5vh',
@@ -44,7 +46,9 @@ const useStyles = makeStyles((theme) => ({
     },
     carousel: {
         [theme.breakpoints.down('xs')]: {
-
+            margin: '5%',
+            marginTop: 0,
+            width: '90%'
         },
     },
     mobile: {

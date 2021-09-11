@@ -11,13 +11,14 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     Banner: {
-        height: '200px',
-        position: 'relative'
+        height: '300px',
+        position: 'relative',
+        margin: '4.5%'
     },
     Media: {
         backgroundColor: 'white',
-        height: '30vh',
-        width: '30vh',
+        height: '60vh',
+        width: '25vh',
         overflow: 'hidden',
         position: 'relative'
     },
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         opacity: 0.6,
         width: '100%',
-        height: '10vh',
+        height: '35vh',
         fontSize: '25px',
         fontWeight: 200,
         transition: '300ms',
@@ -96,19 +97,19 @@ const rows = [
                 Image: "https://source.unsplash.com/featured/?iphone"
             },
             {
-                Name: "Washing Machine WX9102",
+                Name: "Washing Machine",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleaner",
+                Name: "Vacuum Cleaner",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             },
             {
-                Name: "Washing Machine WX9103",
+                Name: "Washing Machne",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleaner2",
+                Name: "Vaccuum Cleaner",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             }
         ]
@@ -121,23 +122,23 @@ const rows = [
                 Image: "https://source.unsplash.com/featured/?macbook"
             },
             {
-                Name: "iPhone",
+                Name: "iPhonee",
                 Image: "https://source.unsplash.com/featured/?iphone"
             },
             {
-                Name: "Washing Machine WX9101",
+                Name: "Washing Machin",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleanerrr",
+                Name: "Vacuum Cleanerrr",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             },
             {
-                Name: "Washing Machine WX910",
+                Name: "Washin Machine",
                 Image: "https://source.unsplash.com/featured/?washingmachine"
             },
             {
-                Name: "Learus Vacuum Cleanerrrr",
+                Name: "Vacuum Cleanerrrr",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
             }
         ]

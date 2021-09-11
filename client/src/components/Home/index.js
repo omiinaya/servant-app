@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import BannerImage from '../../assets/images/banner.jpg';
+import BannerCarouselBackground from '../BannerCarouselBackground';
 import NavBar from "../NavBar"
 import { Box } from '@material-ui/core';
 import BannerMenu from '../BannerMenu';
@@ -8,18 +8,21 @@ import BannerCarousel from '../BannerCarousel';
 import BottomAppBar from '../BottomAppBar';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '40%',
+    banner: {
+        //display: 'flex',
+        width: '100%',
+    },
+    card: {
         margin: '4vh',
         borderRadius: '1%',
         [theme.breakpoints.down('lg')]: {
-            width: '75vh',
+            width: '60vh',
         },
         [theme.breakpoints.down('md')]: {
-            width: '75vh',
+            width: '60vh',
         },
         [theme.breakpoints.down('sm')]: {
-            width: '75vh',
+            width: '60vh',
         },
         [theme.breakpoints.down('xs')]: {
             margin: '0%',
@@ -40,20 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
     carousel: {
         [theme.breakpoints.down('xs')]: {
-            margin: '5%',
-            marginTop: 0,
-            width: '90%'
-        },
-    },
-    banner: {
-        backgroundColor: 'black',
-        backgroundImage: `url(${BannerImage})`,
-        backgroundSize: '100%',
-        [theme.breakpoints.down('lg')]: {
-            height: '56vh',
-        },
-        [theme.breakpoints.down('xs')]: {
-            height: '0vh',
+
         },
     },
     mobile: {
@@ -61,16 +51,19 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             display: 'flex'
         },
-    }
+    },
 }))
 
 function Home() {
     const classes = useStyles();
     return (
         <div>
+            <NavBar />
             <div className={classes.banner}>
-                <NavBar />
-                <div className={classes.root}>
+                <BannerCarouselBackground />
+            </div>
+            <div>
+                <div className={classes.card}>
                     <Box
                         boxShadow={3}
                         bgcolor="background.paper"
@@ -78,6 +71,8 @@ function Home() {
                         <BannerMenu />
                     </Box>
                 </div>
+            </div>
+            <div>
                 <div className={classes.title}>
                     Popular services
                 </div>
@@ -88,7 +83,7 @@ function Home() {
                     <BottomAppBar />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

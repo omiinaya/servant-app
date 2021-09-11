@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
         margin: '4vh',
         borderRadius: '1%',
         [theme.breakpoints.down('lg')]: {
-            width: '60vh',
+            width: '560px',
         },
         [theme.breakpoints.down('md')]: {
-            width: '60vh',
+            width: '560px',
         },
         [theme.breakpoints.down('sm')]: {
-            width: '60vh',
+            width: '560px',
         },
         [theme.breakpoints.down('xs')]: {
             margin: '0%',

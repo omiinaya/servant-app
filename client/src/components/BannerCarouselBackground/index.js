@@ -10,7 +10,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     Banner: {
-        height: '370px',
+        height: '345px',
         width: '100%',
         position: 'relative'
     },

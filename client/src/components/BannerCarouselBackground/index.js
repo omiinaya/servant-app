@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
     Banner: {
         height: '345px',
         width: '100%',
-        position: 'relative'
+        position: 'relative',
+        borderRadius: 0,
     },
     Media: {
         backgroundColor: 'white',
@@ -42,9 +43,6 @@ const useStyles = makeStyles((theme) => ({
         '&:hover': {
             opacity: 0.8
         }
-    },
-    test: {
-        width: '100%'
     }
 }));
 
@@ -68,7 +66,6 @@ function Banner(props) {
                     title={item.Name}
                 >
                 </CardMedia>
-
             </Grid>
         )
         rows.push(media);

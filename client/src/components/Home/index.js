@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     },
     menu: {
         margin: '4vh',
-        borderRadius: '1%',
         [theme.breakpoints.down('lg')]: {
             width: '560px',
         },
@@ -35,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: '26px',
         fontFamily: 'MyFont2',
-        margin: '8vh',
+        margin: '9vh',
         marginTop: '10vh',
         marginBottom: '1vh',
         [theme.breakpoints.down('xs')]: {

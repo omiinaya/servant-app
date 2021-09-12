@@ -14,18 +14,20 @@ const useStyles = makeStyles((theme) => ({
         height: '300px',
         position: 'relative',
         margin: '4.5%',
-        marginTop: 0
+        marginTop: 0,
+        borderRadius: 0,
+        boxShadow: "none"
     },
     Media: {
         backgroundColor: 'white',
-        height: '60vh',
-        width: '25vh',
+        height: '300px',
+        width: '220px',
         overflow: 'hidden',
         position: 'relative'
     },
     BannerGrid: {
         height: '100%',
-        position: 'relative'
+        position: 'relative',
     },
     MediaCaption: {
         textOverflow: 'ellipsis',
@@ -36,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         opacity: 0.6,
         width: '100%',
-        height: '35vh',
+        height: '70px',
         fontSize: '25px',
         fontWeight: 200,
         transition: '300ms',
@@ -70,7 +72,6 @@ function Banner(props) {
                         {item.Name}
                     </Typography>
                 </CardMedia>
-
             </Grid>
         )
         rows.push(media);

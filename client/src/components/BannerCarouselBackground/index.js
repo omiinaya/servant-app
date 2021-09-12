@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import autoBind from "auto-bind"
 import {
     Card,
@@ -8,9 +8,11 @@ import {
     Grid,
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const styling = {
+    Root: {
+        height: '345px'
+    },
     Banner: {
-        height: '345px',
         width: '100%',
         position: 'relative',
         borderRadius: 0,
@@ -44,7 +46,15 @@ const useStyles = makeStyles((theme) => ({
             opacity: 0.8
         }
     }
-}));
+}
+
+const useStyles = makeStyles((theme) => (
+    styling
+));
+
+const styles = theme => (
+    styling
+);
 
 function Banner(props) {
     const classes = useStyles();
@@ -167,10 +177,11 @@ class BannerCarousel extends React.Component {
     }
 
     render() {
+        const { classes } = this.props
         return (
             <div style={{ color: "#494949" }}>
                 <Carousel
-                    className="Example"
+                    className={classes.Root}
                     autoPlay={this.state.autoPlay}
                     animation={this.state.animation}
                     indicators={this.state.indicators}
@@ -198,4 +209,4 @@ class BannerCarousel extends React.Component {
     }
 }
 
-export default BannerCarousel;
+export default withStyles(styles)(BannerCarousel);

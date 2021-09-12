@@ -1,8 +1,8 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/styles';
 import autoBind from "auto-bind"
 import {
     Card,
@@ -13,17 +13,17 @@ import {
 
 const styling = {
     Root: {
-        height: '350px'
+        height: '370px'
     },
     Banner: {
-        height: '400px',
+        height: '500px',
         position: 'relative',
         borderRadius: 0,
         boxShadow: "none"
     },
     Media: {
         backgroundColor: 'white',
-        height: '100%',
+        height: '83%',
         width: '220px',
         overflow: 'hidden',
         position: 'relative',
@@ -170,9 +170,9 @@ class BannerCarousel extends React.Component {
 
         this.state = {
             autoPlay: false,
-            animation: "fade",
+            animation: "slide",
             indicators: false,
-            timeout: 500,
+            timeout: 350,
             navButtonsAlwaysVisible: true,
             navButtonsAlwaysInvisible: false,
             cycleNavigation: true

@@ -35,11 +35,13 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     title: {
+        display: 'inline-block',
         fontSize: '26px',
         fontFamily: 'MyFont2',
         margin: '9vh',
-        marginTop: '10vh',
+        marginTop: '8vh',
         marginBottom: '1vh',
+        width: '100%',
         [theme.breakpoints.down('xs')]: {
             margin: '2.5vh',
             marginTop: '5vh',
@@ -73,10 +75,13 @@ function Home() {
                 <BannerMenu />
             </div>
             <div className={classes.title}>
-                Popular services
+                Popular Categories
             </div>
             <div className={classes.carousel}>
                 <BannerCarousel />
+            </div>
+            <div className={classes.title}>
+                Popular Services
             </div>
             <div className={classes.mobile}>
                 <BottomAppBar />

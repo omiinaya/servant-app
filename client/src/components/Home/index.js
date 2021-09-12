@@ -35,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'inline-block',
         fontSize: '26px',
         fontFamily: 'MyFont2',
-        margin: '9vh',
-        marginTop: '8vh',
-        marginBottom: '1vh',
         width: '100%',
+        marginTop: '60px',
+        marginBottom: '10px',
+        paddingLeft: '20px',
         [theme.breakpoints.down('xs')]: {
-            margin: '2.5vh',
-            marginTop: '5vh',
-            marginBottom: '1.5vh',
+            marginTop: '40px',
+            marginBottom: '10px',
+            paddingLeft: '20px',
         },
     },
     carousel: {
@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }))
+
 
 function Home() {
     const classes = useStyles();

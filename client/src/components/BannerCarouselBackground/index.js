@@ -9,9 +9,6 @@ import {
 } from '@material-ui/core';
 
 const styling = {
-    Root: {
-        height: '345px'
-    },
     Banner: {
         width: '100%',
         position: 'relative',
@@ -28,33 +25,20 @@ const styling = {
         height: '100%',
         position: 'relative'
     },
-    MediaCaption: {
-        textOverflow: 'ellipsis',
-        position: 'absolute',
-        bottom: 0,
-        padding: '15px',
-        backgroundColor: 'black',
-        color: 'white',
-        opacity: 0.6,
-        width: '100%',
-        height: '10vh',
-        fontSize: '25px',
-        fontWeight: 200,
-        transition: '300ms',
-        cursor: 'pointer',
-        '&:hover': {
-            opacity: 0.8
-        }
-    }
 }
 
 const useStyles = makeStyles((theme) => (
     styling
 ));
 
-const styles = theme => (
-    styling
-);
+const styles = theme => ({
+    Root: {
+        height: '345px',
+        [theme.breakpoints.down('md')]: {
+            height: '300px'
+        },
+    },
+});
 
 function Banner(props) {
     const classes = useStyles();

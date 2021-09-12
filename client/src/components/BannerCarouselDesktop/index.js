@@ -27,7 +27,7 @@ const styling = {
         width: '220px',
         overflow: 'hidden',
         position: 'relative',
-        boxShadow: '5px 5px 7px grey',
+        //boxShadow: '5px 5px 7px grey',
         transition: '300ms',
         cursor: 'pointer',
         '&:hover': {

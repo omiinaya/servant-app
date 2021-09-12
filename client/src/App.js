@@ -7,37 +7,8 @@ import RequestCreate from './components/RequestCreate'
 import Requests from './components/Requests'
 import './App.css';
 
-function getOrientation() {
-  if (window.matchMedia("(orientation: portrait)").matches) {
-    return true
-  } else {
-    return false
-  }
-}
-
 class App extends React.Component {
-  state = {
-    screenOrientation: 'portrait'
-  }
-
-  setScreenOrientation = () => {
-    if (getOrientation()) {
-      this.setState({
-        screenOrientation: 'landscape'
-      });
-    } else {
-      this.setState({
-        screenOrientation: 'portrait'
-      });
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener('orientationchange', this.setScreenOrientation);
-  }
-
   render() {
-    console.log(this.state.screenOrientation)
     return (
       <Router>
         <Switch>

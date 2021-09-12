@@ -1,12 +1,26 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { getOrientation, getDeviceType } from '../../scripts'
 import autoBind from "auto-bind"
 import {
     Card,
     CardMedia,
     Grid,
 } from '@material-ui/core';
+
+//testing switching styles depending on device type specifically."
+function test() {
+    console.log("getOrientation: " + getOrientation())
+    console.log("getDeviceType: " + getDeviceType())
+    if (getDeviceType()) {
+        console.log('styles1')
+        return styles
+    } else {
+        console.log('styles2')
+        return styles2
+    }
+}
 
 const styling = {
     Banner: {
@@ -39,6 +53,17 @@ const styles = theme => ({
         },
     },
 });
+
+const styles2 = theme => ({
+    Root: {
+        height: '345px',
+        [theme.breakpoints.down('md')]: {
+            height: '350px'
+        },
+    },
+});
+
+const test2 = test()
 
 function Banner(props) {
     const classes = useStyles();
@@ -112,7 +137,8 @@ class BannerCarousel extends React.Component {
             timeout: 100,
             navButtonsAlwaysVisible: false,
             navButtonsAlwaysInvisible: false,
-            cycleNavigation: true
+            cycleNavigation: true,
+            screenOrientation: 'portrait'
         }
 
         autoBind(this);
@@ -173,9 +199,9 @@ class BannerCarousel extends React.Component {
                     cycleNavigation={this.state.cycleNavigation}
                     navButtonsAlwaysVisible={this.state.navButtonsAlwaysVisible}
                     navButtonsAlwaysInvisible={this.state.navButtonsAlwaysInvisible}
-                    //next={(now, previous) => console.log(`Next User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    //prev={(now, previous) => console.log(`Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    //onChange={(now, previous) => console.log(`OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
+                //next={(now, previous) => console.log(`Next User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
+                //prev={(now, previous) => console.log(`Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
+                //onChange={(now, previous) => console.log(`OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
                 // fullHeightHover={false}
                 // navButtonsProps={{style: {backgroundColor: 'cornflowerblue', borderRadius: 0}}}
                 // navButtonsWrapperProps={{style: {bottom: '0', top: 'unset', }}}
@@ -193,4 +219,4 @@ class BannerCarousel extends React.Component {
     }
 }
 
-export default withStyles(styles)(BannerCarousel);
+export default withStyles(test2)(BannerCarousel);

@@ -1,6 +1,8 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import autoBind from "auto-bind"
 import {
     Card,
@@ -9,21 +11,28 @@ import {
     Grid,
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const styling = {
+    Root: {
+        height: '350px'
+    },
     Banner: {
-        height: '300px',
+        height: '400px',
         position: 'relative',
-        margin: '4.5%',
-        marginTop: 0,
         borderRadius: 0,
         boxShadow: "none"
     },
     Media: {
         backgroundColor: 'white',
-        height: '300px',
+        height: '100%',
         width: '220px',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        boxShadow: '5px 5px 7px grey',
+        transition: '300ms',
+        cursor: 'pointer',
+        '&:hover': {
+            filter: 'brightness(115%)'
+        }
     },
     BannerGrid: {
         height: '100%',
@@ -38,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
         color: 'white',
         opacity: 0.6,
         width: '100%',
-        height: '70px',
+        height: '20%',
         fontSize: '25px',
         fontWeight: 200,
         transition: '300ms',
@@ -47,7 +56,15 @@ const useStyles = makeStyles((theme) => ({
             opacity: 0.8
         }
     }
-}));
+}
+
+const useStyles = makeStyles((theme) => (
+    styling
+));
+
+const styles = theme => (
+    styling
+);
 
 function Banner(props) {
     const classes = useStyles();
@@ -164,6 +181,12 @@ class BannerCarousel extends React.Component {
         autoBind(this);
     }
 
+    componentDidMount() {
+        console.log(this.props)
+        console.log(styles)
+        console.log(useStyles)
+    }
+
     toggleAutoPlay() {
         this.setState({
             autoPlay: !this.state.autoPlay
@@ -207,10 +230,11 @@ class BannerCarousel extends React.Component {
     }
 
     render() {
+        const { classes } = this.props
         return (
             <div style={{ color: "#494949" }}>
                 <Carousel
-                    className="Example"
+                    className={classes.Root}
                     autoPlay={this.state.autoPlay}
                     animation={this.state.animation}
                     indicators={this.state.indicators}
@@ -238,4 +262,8 @@ class BannerCarousel extends React.Component {
     }
 }
 
-export default BannerCarousel;
+BannerCarousel.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(BannerCarousel);

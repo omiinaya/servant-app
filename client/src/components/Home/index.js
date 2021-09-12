@@ -7,6 +7,9 @@ import BannerCarousel from '../BannerCarousel';
 import BottomAppBar from '../BottomAppBar';
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        //
+    },
     banner: {
         width: '100%',
         position: 'absolute',
@@ -61,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 function Home() {
     const classes = useStyles();
     return (
-        <div>
+        <div className={classes.root}>
             <NavBar />
             <div className={classes.banner}>
                 <BannerCarouselBackground />
@@ -78,7 +81,7 @@ function Home() {
             <div className={classes.mobile}>
                 <BottomAppBar />
             </div>
-        </div >
+        </div>
     )
 }
 

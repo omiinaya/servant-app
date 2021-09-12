@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import { makeStyles } from '@material-ui/core/styles';
-import autoBind from "auto-bind"
 import {
     Card,
     CardContent,

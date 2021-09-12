@@ -1,6 +1,6 @@
 import React from 'react';
-import BannerCarouselDesktop from '../BannerCarouselDesktop';
-import BannerCarouselMobile from '../BannerCarouselMobile';
+import BottomCarouselDesktop from '../BottomCarouselDesktop';
+import BottomCarouselMobile from '../BottomCarouselMobile';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,10 +25,10 @@ function BannerCarousel() {
   return (
     <div>
       <div className={classes.sectionDesktop}>
-        <BannerCarouselDesktop />
+        <BottomCarouselDesktop />
       </div>
       <div className={classes.sectionMobile}>
-        <BannerCarouselMobile />
+        <BottomCarouselMobile />
       </div>
     </div>
   );

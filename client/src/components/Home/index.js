@@ -1,15 +1,12 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import BannerCarouselBackground from '../BannerCarouselBackground';
-import NavBar from "../NavBar"
+import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
-import BannerCarousel from '../BannerCarousel';
+import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        //
-    },
     banner: {
         width: '100%',
         position: 'absolute',
@@ -67,7 +64,7 @@ function Home() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <NavBar />
+            <AppBar />
             <div className={classes.banner}>
                 <BannerCarouselBackground />
             </div>
@@ -78,7 +75,7 @@ function Home() {
                 Popular Categories
             </div>
             <div className={classes.carousel}>
-                <BannerCarousel />
+                <BottomCarousel />
             </div>
             <div className={classes.title}>
                 Popular Services

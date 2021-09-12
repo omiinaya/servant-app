@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Login from '../Login';
-import NavBar from '../NavBar'
+import AppBar from '../AppBar'
 
 
 class RegisterMobile extends Component {
     render() {
         return (
             <div>
-                <NavBar />
+                <AppBar />
                 <div>
                     <Login />
                 </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { getDeviceType } from '../../scripts'
-import autoBind from "auto-bind"
 import {
     Card,
     CardMedia,
@@ -47,6 +46,9 @@ const styles = theme => ({
         [theme.breakpoints.down('md')]: {
             height: '300px'
         },
+        Test: {
+            height: '300px'
+        }
     },
 });
 
@@ -57,6 +59,9 @@ const styles2 = theme => ({
             height: '350px'
         },
     },
+    Test: {
+        height: '307px',
+    }
 });
 
 const style = styleHandler()
@@ -139,7 +144,11 @@ class BannerCarousel extends React.Component {
                 >
                     {
                         rows.map((item, index) => {
-                            return <Banner item={item} key={index} contentPosition={item.contentPosition} />
+                            return (
+                                <div className={classes.Test}>
+                                <Banner item={item} key={index} contentPosition={item.contentPosition} />
+                                </div>
+                            )
                         })
                     }
                 </Carousel>

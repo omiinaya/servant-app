@@ -64,8 +64,4 @@
   box-shadow: none !important;
 }
 
-.Example {
-  height: 350px;
-}
-
 ::-webkit-scrollbar {display:none;}

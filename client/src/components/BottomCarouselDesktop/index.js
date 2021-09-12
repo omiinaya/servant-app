@@ -2,7 +2,6 @@ import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import autoBind from "auto-bind"
 import {
     Card,
     CardMedia,
@@ -164,83 +163,19 @@ const rows = [
 ]
 
 class BannerCarousel extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            autoPlay: false,
-            animation: "slide",
-            indicators: false,
-            timeout: 350,
-            navButtonsAlwaysVisible: true,
-            navButtonsAlwaysInvisible: false,
-            cycleNavigation: true
-        }
-
-        autoBind(this);
-    }
-
-    componentDidMount() {
-        //console.log(this.props)
-        //console.log(styles)
-        //console.log(useStyles)
-    }
-
-    toggleAutoPlay() {
-        this.setState({
-            autoPlay: !this.state.autoPlay
-        })
-    }
-
-    toggleIndicators() {
-        this.setState({
-            indicators: !this.state.indicators
-        })
-    }
-
-    toggleNavButtonsAlwaysVisible() {
-        this.setState({
-            navButtonsAlwaysVisible: !this.state.navButtonsAlwaysVisible
-        })
-    }
-
-    toggleNavButtonsAlwaysInvisible() {
-        this.setState({
-            navButtonsAlwaysInvisible: !this.state.navButtonsAlwaysInvisible
-        })
-    }
-
-    toggleCycleNavigation() {
-        this.setState({
-            cycleNavigation: !this.state.cycleNavigation
-        })
-    }
-
-    changeAnimation(event) {
-        this.setState({
-            animation: event.target.value
-        })
-    }
-
-    changeTimeout(event, value) {
-        this.setState({
-            timeout: value
-        })
-    }
-
     render() {
         const { classes } = this.props
         return (
             <div style={{ color: "#494949" }}>
                 <Carousel
                     className={classes.Root}
-                    autoPlay={this.state.autoPlay}
-                    animation={this.state.animation}
-                    indicators={this.state.indicators}
-                    timeout={this.state.timeout}
-                    cycleNavigation={this.state.cycleNavigation}
-                    navButtonsAlwaysVisible={this.state.navButtonsAlwaysVisible}
-                    navButtonsAlwaysInvisible={this.state.navButtonsAlwaysInvisible}
+                    autoPlay={false}
+                    animation="slide"
+                    indicators={false}
+                    timeout={350}
+                    cycleNavigation={true}
+                    navButtonsAlwaysVisible={true}
+                    navButtonsAlwaysInvisible={false}
                 >
                     {
                         rows.map((item, index) => {

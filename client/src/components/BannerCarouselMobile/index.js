@@ -131,84 +131,18 @@ const items = [
 ]
 
 class BannerCarousel extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            autoPlay: false,
-            animation: "fade",
-            indicators: false,
-            timeout: 500,
-            navButtonsAlwaysVisible: true,
-            navButtonsAlwaysInvisible: false,
-            cycleNavigation: true
-        }
-
-        autoBind(this);
-    }
-
-    toggleAutoPlay() {
-        this.setState({
-            autoPlay: !this.state.autoPlay
-        })
-    }
-
-    toggleIndicators() {
-        this.setState({
-            indicators: !this.state.indicators
-        })
-    }
-
-    toggleNavButtonsAlwaysVisible() {
-        this.setState({
-            navButtonsAlwaysVisible: !this.state.navButtonsAlwaysVisible
-        })
-    }
-
-    toggleNavButtonsAlwaysInvisible() {
-        this.setState({
-            navButtonsAlwaysInvisible: !this.state.navButtonsAlwaysInvisible
-        })
-    }
-
-    toggleCycleNavigation() {
-        this.setState({
-            cycleNavigation: !this.state.cycleNavigation
-        })
-    }
-
-    changeAnimation(event) {
-        this.setState({
-            animation: event.target.value
-        })
-    }
-
-    changeTimeout(event, value) {
-        this.setState({
-            timeout: value
-        })
-    }
-
     render() {
         return (
             <div style={{ color: "#494949" }}>
                 <Carousel
                     className="Example"
-                    autoPlay={this.state.autoPlay}
-                    animation={this.state.animation}
-                    indicators={this.state.indicators}
-                    timeout={this.state.timeout}
-                    cycleNavigation={this.state.cycleNavigation}
-                    navButtonsAlwaysVisible={this.state.navButtonsAlwaysVisible}
-                    navButtonsAlwaysInvisible={this.state.navButtonsAlwaysInvisible}
-                    next={(now, previous) => console.log(`Next User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    prev={(now, previous) => console.log(`Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    onChange={(now, previous) => console.log(`OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                // fullHeightHover={false}
-                // navButtonsProps={{style: {backgroundColor: 'cornflowerblue', borderRadius: 0}}}
-                // navButtonsWrapperProps={{style: {bottom: '0', top: 'unset', }}}
-                // indicatorContainerProps={{style: {margin: "20px"}}}
-                // NextIcon='next'
+                    autoPlay={false}
+                    animation="fade"
+                    indicators={false}
+                    timeout={500}
+                    cycleNavigation={true}
+                    navButtonsAlwaysVisible={true}
+                    navButtonsAlwaysInvisible={false}
                 >
                     {
                         items.map((item, index) => {

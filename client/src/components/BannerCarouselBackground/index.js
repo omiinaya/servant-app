@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { getOrientation, getDeviceType } from '../../scripts'
+import { getDeviceType } from '../../scripts'
 import autoBind from "auto-bind"
 import {
     Card,
@@ -9,15 +9,11 @@ import {
     Grid,
 } from '@material-ui/core';
 
-//testing switching styles depending on device type specifically."
-function test() {
-    console.log("getOrientation: " + getOrientation())
-    console.log("getDeviceType: " + getDeviceType())
-    if (getDeviceType()) {
-        console.log('styles1')
+//switching styles depending on device type."
+function styleHandler() {
+    if (getDeviceType() === 'mobile') {
         return styles
     } else {
-        console.log('styles2')
         return styles2
     }
 }
@@ -63,7 +59,7 @@ const styles2 = theme => ({
     },
 });
 
-const test2 = test()
+const style = styleHandler()
 
 function Banner(props) {
     const classes = useStyles();
@@ -127,86 +123,19 @@ const rows = [
 ]
 
 class BannerCarousel extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            autoPlay: true,
-            animation: "fade",
-            indicators: true,
-            timeout: 100,
-            navButtonsAlwaysVisible: false,
-            navButtonsAlwaysInvisible: false,
-            cycleNavigation: true,
-            screenOrientation: 'portrait'
-        }
-
-        autoBind(this);
-    }
-
-    toggleAutoPlay() {
-        this.setState({
-            autoPlay: !this.state.autoPlay
-        })
-    }
-
-    toggleIndicators() {
-        this.setState({
-            indicators: !this.state.indicators
-        })
-    }
-
-    toggleNavButtonsAlwaysVisible() {
-        this.setState({
-            navButtonsAlwaysVisible: !this.state.navButtonsAlwaysVisible
-        })
-    }
-
-    toggleNavButtonsAlwaysInvisible() {
-        this.setState({
-            navButtonsAlwaysInvisible: !this.state.navButtonsAlwaysInvisible
-        })
-    }
-
-    toggleCycleNavigation() {
-        this.setState({
-            cycleNavigation: !this.state.cycleNavigation
-        })
-    }
-
-    changeAnimation(event) {
-        this.setState({
-            animation: event.target.value
-        })
-    }
-
-    changeTimeout(event, value) {
-        this.setState({
-            timeout: value
-        })
-    }
-
     render() {
         const { classes } = this.props
         return (
             <div style={{ color: "#494949" }}>
                 <Carousel
                     className={classes.Root}
-                    autoPlay={this.state.autoPlay}
-                    animation={this.state.animation}
-                    indicators={this.state.indicators}
-                    timeout={this.state.timeout}
-                    cycleNavigation={this.state.cycleNavigation}
-                    navButtonsAlwaysVisible={this.state.navButtonsAlwaysVisible}
-                    navButtonsAlwaysInvisible={this.state.navButtonsAlwaysInvisible}
-                //next={(now, previous) => console.log(`Next User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                //prev={(now, previous) => console.log(`Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                //onChange={(now, previous) => console.log(`OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                // fullHeightHover={false}
-                // navButtonsProps={{style: {backgroundColor: 'cornflowerblue', borderRadius: 0}}}
-                // navButtonsWrapperProps={{style: {bottom: '0', top: 'unset', }}}
-                // indicatorContainerProps={{style: {margin: "20px"}}}
-                // NextIcon='next'
+                    autoPlay={true}
+                    animation="fade"
+                    indicators={true}
+                    timeout={100}
+                    cycleNavigation={true}
+                    navButtonsAlwaysVisible={false}
+                    navButtonsAlwaysInvisible={false}
                 >
                     {
                         rows.map((item, index) => {
@@ -219,4 +148,4 @@ class BannerCarousel extends React.Component {
     }
 }
 
-export default withStyles(test2)(BannerCarousel);
+export default withStyles(style)(BannerCarousel);

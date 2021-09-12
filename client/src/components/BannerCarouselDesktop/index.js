@@ -241,14 +241,6 @@ class BannerCarousel extends React.Component {
                     cycleNavigation={this.state.cycleNavigation}
                     navButtonsAlwaysVisible={this.state.navButtonsAlwaysVisible}
                     navButtonsAlwaysInvisible={this.state.navButtonsAlwaysInvisible}
-                    //next={(now, previous) => console.log(`Next User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    //prev={(now, previous) => console.log(`Prev User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                    //onChange={(now, previous) => console.log(`OnChange User Callback: Now displaying child${now}. Previously displayed child${previous}`)}
-                // fullHeightHover={false}
-                // navButtonsProps={{style: {backgroundColor: 'cornflowerblue', borderRadius: 0}}}
-                // navButtonsWrapperProps={{style: {bottom: '0', top: 'unset', }}}
-                // indicatorContainerProps={{style: {margin: "20px"}}}
-                // NextIcon='next'
                 >
                     {
                         rows.map((item, index) => {

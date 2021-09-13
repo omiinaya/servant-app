@@ -145,11 +145,7 @@ class BannerCarousel extends React.Component {
                 >
                     {
                         rows.map((item, index) => {
-                            return (
-                                <div className={classes.Test}>
-                                <Banner item={item} key={index} contentPosition={item.contentPosition} />
-                                </div>
-                            )
+                            return <Banner item={item} key={index} contentPosition={item.contentPosition} />
                         })
                     }
                 </Carousel>

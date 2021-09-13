@@ -14,20 +14,16 @@ import {
 
 function styleHandlerForClass() {
     if (getDeviceType() === 'mobile') {
-        console.log('mobile')
         return styles
     } else {
-        console.log('other')
         return styles2
     }
 }
 
 function styleHandlerForFunction() {
     if (getDeviceType() === 'mobile') {
-        console.log('mobile')
         return mobileStyles
     } else {
-        console.log('other')
         return desktopStyles
     }
 }
@@ -178,12 +174,10 @@ const mobileRows = [
     {
         Name: "Electronics",
         Caption: "Electrify your friends!",
-        contentPosition: "left",
     },
     {
         Name: "Appliances",
         Caption: "Say no to manual labour!",
-        contentPosition: "middle",
     }
 ]
 

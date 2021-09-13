@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import BannerCarouselBackground from '../BannerCarouselBackground';
+import BannerCarouselBackground from '../BannerCarousel';
 import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     carousel: {
+        height: '280px',
         [theme.breakpoints.down('xs')]: {
             margin: '5%',
             marginTop: 0,

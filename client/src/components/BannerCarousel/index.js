@@ -39,7 +39,7 @@ const styling = {
 const useStyles = makeStyles((theme) => (
     styling
 ));
-
+//mobile landscape
 const styles = theme => ({
     Root: {
         height: '345px',
@@ -52,6 +52,7 @@ const styles = theme => ({
     },
 });
 
+//desktop
 const styles2 = theme => ({
     Root: {
         height: '345px',

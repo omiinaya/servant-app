@@ -44,7 +44,7 @@ const styles = theme => ({
     Root: {
         height: '345px',
         [theme.breakpoints.down('md')]: {
-            height: '300px'
+            height: '275px'
         },
         Test: {
             height: '300px'

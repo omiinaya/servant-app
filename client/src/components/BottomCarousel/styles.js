@@ -35,7 +35,7 @@ export var mobileStyles = ({
     Content: {
         color: 'white',
         backgroundColor: 'rgb(119, 24, 24)',
-        height: '40vh',
+        height: '280px',
         position: 'relative',
         cursor: 'pointer',
         padding: '30px',

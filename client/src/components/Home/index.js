@@ -5,6 +5,7 @@ import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
+import Test from '../Test';
 
 const useStyles = makeStyles((theme) => ({
     banner: {
@@ -76,6 +77,7 @@ function Home() {
             <div className={classes.title}>
                 Popular Categories
             </div>
+            <Test />
             <div className={classes.carousel}>
                 <BottomCarousel />
             </div>

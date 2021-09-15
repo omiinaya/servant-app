@@ -1,4 +1,7 @@
 import { isMobile } from 'react-device-detect';
+import {
+    Dimensions,
+  } from 'react-native';
 
 //gets current orientation of the device.
 export function getOrientation() {
@@ -17,3 +20,8 @@ export function getDeviceType() {
         return 'other'
     }
 }
+
+export const isPortrait = () => {
+    const dim = Dimensions.get('screen');
+    return dim.height >= dim.width;
+};

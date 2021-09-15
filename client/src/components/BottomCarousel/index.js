@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from "react-material-ui-carousel"
 import PropTypes from 'prop-types';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { mobileStyles, desktopStyles } from './styles';
-import { getDeviceType } from '../../scripts'
+import { getDeviceType, isPortrait } from '../../scripts'
+import {
+    Dimensions,
+} from 'react-native';
 import {
     Card,
     CardMedia,
@@ -100,6 +103,31 @@ function Banner(props) {
         }
     }
 
+    function orientationHandler(props) {
+        console.log(getDeviceType())
+        console.log(isPortrait())
+        if (getDeviceType() === 'mobile' && !isPortrait()) {
+            //code to execute if mobile landscape
+        }
+        if (getDeviceType() === 'mobile' && isPortrait()) {
+            //code to execute if mobile portrait
+        }
+    }
+
+    useEffect(() => {
+        const callback = () => {
+            console.log(isPortrait())
+            orientationHandler(props)
+        };
+
+        Dimensions.addEventListener('change', callback);
+
+        return () => {
+            Dimensions.removeEventListener('change', callback);
+        };
+
+    }, []);
+
     return (
         <Card raised className={classes.Banner}>
             <Grid container spacing={5} className={classes.BannerGrid}>
@@ -192,6 +220,7 @@ function test() {
 var rows = test()
 
 class BannerCarousel extends React.Component {
+
     render() {
         const { classes } = this.props
         return (

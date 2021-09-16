@@ -6,6 +6,7 @@ import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
 import Test from '../Test';
+import XD from '../XD';
 
 const useStyles = makeStyles((theme) => ({
     banner: {
@@ -78,6 +79,7 @@ function Home() {
                 Popular Categories
             </div>
             <Test />
+            <XD name='adrian' />
             <div className={classes.carousel}>
                 <BottomCarousel />
             </div>

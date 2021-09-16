@@ -107,10 +107,10 @@ function Banner(props) {
         console.log(getDeviceType())
         console.log(isPortrait())
         if (getDeviceType() === 'mobile' && !isPortrait()) {
-            //code to execute if mobile landscape
+            console.log('test1')
         }
         if (getDeviceType() === 'mobile' && isPortrait()) {
-            //code to execute if mobile portrait
+            console.log('test2')
         }
     }
 

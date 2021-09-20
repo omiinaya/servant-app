@@ -5,8 +5,7 @@ import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
-import Test from '../Test';
-import XD from '../XD';
+
 
 const useStyles = makeStyles((theme) => ({
     banner: {
@@ -50,9 +49,10 @@ const useStyles = makeStyles((theme) => ({
     carousel: {
         height: '280px',
         [theme.breakpoints.down('xs')]: {
-            margin: '5%',
+            display: 'flex',
+            justifyContent: 'center',
             marginTop: 0,
-            width: '90%'
+            width: '100%'
         },
     },
     mobile: {
@@ -78,8 +78,6 @@ function Home() {
             <div className={classes.title}>
                 Popular Categories
             </div>
-            <Test />
-            <XD name='adrian' />
             <div className={classes.carousel}>
                 <BottomCarousel />
             </div>

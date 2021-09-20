@@ -7,9 +7,6 @@ export default class Test extends React.Component {
   constructor() {
     super();
 
-    /**
-    * Returns true if the screen is in portrait mode
-    */
     const isPortrait = () => {
       const dim = Dimensions.get('screen');
       return dim.height >= dim.width;

@@ -65,15 +65,6 @@ function Project(props) {
 class BottomCarouselMobile extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            autoPlay: true,
-            animation: "fade",
-            indicators: true,
-            timeout: 500,
-            navButtonsAlwaysVisible: false,
-            navButtonsAlwaysInvisible: false
-        }
     }
 
     render() {
@@ -83,12 +74,12 @@ class BottomCarouselMobile extends React.Component {
 
                 <Carousel
                     className={classes.Project}
-                    autoPlay={this.state.autoPlay}
-                    animation={this.state.animation}
-                    indicators={this.state.indicators}
-                    timeout={this.state.timeout}
+                    autoPlay={true}
+                    animation='fade'
+                    indicators={true}
+                    timeout={500}
                     navButtonsAlwaysVisible={true}
-                    navButtonsAlwaysInvisible={this.state.navButtonsAlwaysInvisible}
+                    navButtonsAlwaysInvisible={false}
 
                 >
                     {

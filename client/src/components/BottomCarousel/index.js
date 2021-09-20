@@ -1,6 +1,7 @@
 import React from 'react';
 import BottomCarouselDesktop from '../BottomCarouselDesktop'
 import BottomCarouselMobile from '../BottomCarouselMobile'
+import { isPortrait } from '../../scripts'
 import {
   Dimensions,
 } from 'react-native';
@@ -8,11 +9,6 @@ import {
 export default class BottomCarousel extends React.Component {
   constructor() {
     super();
-
-    const isPortrait = () => {
-      const dim = Dimensions.get('screen');
-      return dim.height >= dim.width;
-    };
 
     this.state = {
       orientation: isPortrait() ? 'portrait' : 'landscape'

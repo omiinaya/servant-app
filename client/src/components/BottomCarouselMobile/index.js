@@ -5,14 +5,53 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {
     Paper,
     Button,
+    Card,
+    CardMedia,
+    Typography,
+    Grid,
 } from '@material-ui/core';
 
 const styling = {
+    Root: {
+        height: '370px'
+
+    },
     Project: {
         position: 'relative',
         height: '300px',
         overflow: 'hidden',
     },
+    Media: {
+        backgroundColor: 'white',
+        height: '300px',
+        width: '330px',
+        overflow: 'hidden',
+        position: 'relative',
+        transition: '300ms',
+        cursor: 'pointer',
+        '&:hover': {
+            filter: 'brightness(115%)'
+        }
+    },
+    MediaCaption: {
+        textOverflow: 'ellipsis',
+        position: 'absolute',
+        bottom: 0,
+        padding: '15px',
+        backgroundColor: 'black',
+        color: 'white',
+        opacity: 0.6,
+        width: '100%',
+        height: '23%',
+        fontSize: '25px',
+        fontWeight: 200,
+        transition: '300ms',
+        cursor: 'pointer',
+        '&:hover': {
+            opacity: 0.8
+        }
+    }
+
 }
 
 const useStyles = makeStyles((theme) => (
@@ -24,9 +63,27 @@ const styles = theme => (
     styling
 );
 
+const items = [
+    {
+        Name: "Macbook Pro",
+        Image: "https://source.unsplash.com/featured/?macbook"
+    },
+    {
+        Name: "iPhone",
+        Image: "https://source.unsplash.com/featured/?iphone"
+    },
+    {
+        Name: "Washing Machine",
+        Image: "https://source.unsplash.com/featured/?washingmachine"
+    },
+]
+
 function Project(props) {
+
     const classes = useStyles();
+    const item = props.item;
     return (
+
         <Paper
             className={classes.Project}
             style={{
@@ -34,39 +91,20 @@ function Project(props) {
             }}
             elevation={10}
         >
-            <h2>{props.item.name}</h2>
-            <p>{props.item.description}</p>
-
-            <Button className="CheckButton">
-                Check it out!
-            </Button>
+            <Grid item xs={12} key={item.Name} >
+                <CardMedia
+                    className={classes.Media}
+                    image={item.Image}
+                    title={item.Name}
+                >
+                    <Typography className={classes.MediaCaption}>
+                        {item.Name}
+                    </Typography>
+                </CardMedia>
+            </Grid>
         </Paper>
     )
 }
-
-const items = [
-    
-    {
-        name: "Hash Code 2019",
-        description: "My Solution on the 2019 Hash Code by Google Slideshow problem.",
-        color: "#7D85B1"
-    },
-    {
-        name: "Terrio",
-        description: "A exciting mobile game game made in the Unity Engine.",
-        color: "#CE7E78"
-    },
-    {
-        name: "React Carousel",
-        description: "A Generic carousel UI component for React using material ui.",
-        color: "#C9A27E"
-    },
-    {
-        name: "Terrio",
-        description: "A exciting mobile game game made in the Unity Engine.",
-        color: "#CE7E78"
-    },
-]
 
 class BottomCarouselMobile extends React.Component {
     constructor(props) {

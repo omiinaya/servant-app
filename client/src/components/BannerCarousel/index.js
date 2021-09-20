@@ -2,22 +2,26 @@ import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { getDeviceType } from '../../scripts'
+import { isPortrait } from '../../scripts'
+import {
+    Dimensions,
+} from 'react-native';
 import {
     Card,
     CardMedia,
     Grid,
 } from '@material-ui/core';
 
-//switching styles depending on device type."
-function styleHandler() {
-    if (getDeviceType() === 'mobile') {
-        return styles
-    } else {
-        return styles2
-    }
-}
-
 const styling = {
+    RootDesktop: {
+        height: '335px',
+    },
+    RootMobile: {
+        height: '275px'
+    },
+    Test: {
+        height: '300px'
+    },
     Banner: {
         width: '100%',
         position: 'relative',
@@ -25,7 +29,7 @@ const styling = {
     },
     Media: {
         backgroundColor: 'white',
-        height: '370px',
+        height: '345px',
         width: '100%',
         overflow: 'hidden',
         position: 'relative'
@@ -39,33 +43,6 @@ const styling = {
 const useStyles = makeStyles((theme) => (
     styling
 ));
-//mobile landscape
-const styles = theme => ({
-    Root: {
-        height: '345px',
-        [theme.breakpoints.down('md')]: {
-            height: '275px'
-        },
-        Test: {
-            height: '300px'
-        }
-    },
-});
-
-//desktop
-const styles2 = theme => ({
-    Root: {
-        height: '345px',
-        [theme.breakpoints.down('md')]: {
-            height: '350px'
-        },
-    },
-    Test: {
-        height: '307px',
-    }
-});
-
-const style = styleHandler()
 
 function Banner(props) {
     const classes = useStyles();
@@ -78,7 +55,6 @@ function Banner(props) {
 
     for (let i = 0; i < mediaLength; i++) {
         const item = props.item.Items[i];
-        //console.log(mediaLength)
         const media = (
             <Grid item xs={12 / totalItems} key={item.Name} >
                 <CardMedia
@@ -129,29 +105,51 @@ const rows = [
 ]
 
 class BannerCarousel extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            orientation: isPortrait() ? 'portrait' : 'landscape'
+        };
+
+        // Event Listener for orientation changes
+        Dimensions.addEventListener('change', () => {
+            this.setState({
+                orientation: isPortrait() ? 'portrait' : 'landscape'
+            });
+        });
+    }
     render() {
         const { classes } = this.props
-        return (
-            <div style={{ color: "#494949" }}>
-                <Carousel
-                    className={classes.Root}
-                    autoPlay={true}
-                    animation="fade"
-                    indicators={true}
-                    timeout={100}
-                    cycleNavigation={true}
-                    navButtonsAlwaysVisible={false}
-                    navButtonsAlwaysInvisible={false}
-                >
-                    {
-                        rows.map((item, index) => {
-                            return <Banner item={item} key={index} contentPosition={item.contentPosition} />
-                        })
-                    }
-                </Carousel>
-            </div>
-        )
+        if (this.state.orientation === 'portrait') {
+            return (
+                //Render View to be displayed in portrait mode
+                <div>This component should not render in portrait.</div>
+            );
+        }
+        else {
+            return (
+                //Render View to be displayed in landscape mode
+                <div style={{ color: "#494949" }}>
+                    <Carousel
+                        className={classes.Root}
+                        autoPlay={true}
+                        animation="fade"
+                        indicators={true}
+                        timeout={100}
+                        cycleNavigation={true}
+                        navButtonsAlwaysVisible={false}
+                        navButtonsAlwaysInvisible={false}
+                    >
+                        {
+                            rows.map((item, index) => {
+                                return <Banner item={item} key={index} contentPosition={item.contentPosition} />
+                            })
+                        }
+                    </Carousel>
+                </div>
+            );
+        }
     }
 }
 
-export default withStyles(style)(BannerCarousel);
+export default withStyles(styling)(BannerCarousel);

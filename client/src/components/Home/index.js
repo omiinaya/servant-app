@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     menu: {
+        borderBottom: '2px solid gray',
         margin: '4vh',
         [theme.breakpoints.down('lg')]: {
             width: '560px',

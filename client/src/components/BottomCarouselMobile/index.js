@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => (
     style
 ));
 
-
 const styles = theme => (
     style
 );

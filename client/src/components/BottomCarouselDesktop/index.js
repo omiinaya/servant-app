@@ -8,60 +8,14 @@ import {
     Typography,
     Grid,
 } from '@material-ui/core';
-
-const styling = {
-    Root: {
-        height: '370px'
-    },
-    Banner: {
-        height: '500px',
-        position: 'relative',
-        borderRadius: 0,
-        boxShadow: "none"
-    },
-    Media: {
-        backgroundColor: 'white',
-        height: '83%',
-        width: '220px',
-        overflow: 'hidden',
-        position: 'relative',
-        //boxShadow: '5px 5px 7px grey',
-        transition: '300ms',
-        cursor: 'pointer',
-        '&:hover': {
-            filter: 'brightness(115%)'
-        }
-    },
-    BannerGrid: {
-        height: '100%',
-        position: 'relative',
-    },
-    MediaCaption: {
-        textOverflow: 'ellipsis',
-        position: 'absolute',
-        bottom: 0,
-        padding: '15px',
-        backgroundColor: 'black',
-        color: 'white',
-        opacity: 0.6,
-        width: '100%',
-        height: '20%',
-        fontSize: '25px',
-        fontWeight: 200,
-        transition: '300ms',
-        cursor: 'pointer',
-        '&:hover': {
-            opacity: 0.8
-        }
-    }
-}
+import style from './styles'
 
 const useStyles = makeStyles((theme) => (
-    styling
+    style
 ));
 
 const styles = theme => (
-    styling
+    style
 );
 
 function Banner(props) {
@@ -90,6 +44,9 @@ function Banner(props) {
             </Grid>
         )
         rows.push(media);
+        if (rows.length >= 6) {
+            console.log(rows)
+        }
     }
 
     return (
@@ -127,7 +84,7 @@ const rows = [
             {
                 Name: "Vaccuum Cleaner",
                 Image: "https://source.unsplash.com/featured/?vacuum,cleaner"
-            }
+            },
         ]
     },
     {

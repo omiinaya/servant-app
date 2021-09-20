@@ -103,7 +103,6 @@ function Banner(props) {
 
 const rows = [
     {
-        Name: "01",
         Items: [
             {
                 Name: "Macbook Pro",
@@ -132,7 +131,6 @@ const rows = [
         ]
     },
     {
-        Name: "02",
         Items: [
             {
                 Name: "Macbook Pro",

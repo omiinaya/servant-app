@@ -21,7 +21,7 @@ const styles = () => ({
     root: {
         '& > *': {
             margin: '2%',
-            width: '100%',
+            width: '96%',
         },
     }
 })
@@ -114,7 +114,7 @@ class TEST_DynamicRendering extends React.Component {
         const { classes } = this.props;
         if (this.state.page === 0) {
             return (
-                <div>
+                <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
                     <TextField
                         size='small'
                         id="email"
@@ -127,12 +127,12 @@ class TEST_DynamicRendering extends React.Component {
                         hiddenLabel
                     />
                     <div><Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)}>Continue</Button></div>
-                </div>
+                </form>
             )
         }
         if (this.state.page === 1) {
             return (
-                <div>
+                <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
                     <TextField
                         size='small'
                         id="username"
@@ -166,19 +166,21 @@ class TEST_DynamicRendering extends React.Component {
                     <div>
                         <Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)}>Continue</Button>
                     </div>
-                </div>
+                </form>
             )
         }
         if (this.state.page === 2) {
             return (
-                <div className={classes.container}>
-                    <div className={classes.half}>
-                        <TextField size='small' id="firstname" name="firstname" type="firstname" label="First Name" variant="outlined" onChange={this.onChange} />
-                        <TextField size='small' id="lastname" name="lastname" type="lastname" label="Last Name" variant="outlined" onChange={this.onChange} />
+                <form className={classes.root} noValidate autoComplete="off" onSubmit={this.onSubmit}>
+                    <div className={classes.container}>
+                        <div className={classes.half}>
+                            <TextField size='small' id="firstname" name="firstname" type="firstname" label="First Name" variant="outlined" onChange={this.onChange} />
+                            <TextField size='small' id="lastname" name="lastname" type="lastname" label="Last Name" variant="outlined" onChange={this.onChange} />
+                        </div>
+                        <TextField size='small' id="birthdate" name="birthdate" type="date" variant="outlined" onChange={this.onChange} />
+                        <Button type='submit' size='large' color="primary" variant="contained" >Continue</Button>
                     </div>
-                    <TextField size='small' id="birthdate" name="birthdate" type="date" variant="outlined" onChange={this.onChange} />
-                    <Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)}>Continue</Button>
-                </div>
+                </form>
             )
         }
     }

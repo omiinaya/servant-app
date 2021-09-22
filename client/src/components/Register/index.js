@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/styles';
 import { TextField, Button } from '@material-ui/core';
@@ -14,22 +14,27 @@ const styles = () => ({
   },
   half: {
     '& > *': {
-      margin: '2%',
       width: '48%',
     },
   },
   root: {
     '& > *': {
       margin: '2%',
-      width: '96%',
+      width: '100%',
     },
+  },
+  test: {
+    width: '100%',
+    display: 'block'
   }
 })
 
-class Register extends Component {
-  constructor() {
-    super()
+class TEST_DynamicRendering extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
+      page: 0,
+      //
       firstname: '',
       lastname: '',
       email: '',
@@ -37,9 +42,26 @@ class Register extends Component {
       username: '',
       password: '',
       password2: ''
-    }
+    };
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+
+    this.myRef = React.createRef()
+  }
+
+  componentDidMount() {
+    console.log(this.myRef.current)
+  }
+
+  componentWillUnmount() {
+    console.log(this.state.page)
+  }
+
+  nextPage(a, e) {
+    var next = a + 1
+    this.setState({ page: next })
+    this.myRef.current.value = null
+    console.log(this.state)
   }
 
   onChange(e) {
@@ -93,25 +115,80 @@ class Register extends Component {
 
   render() {
     const { classes } = this.props;
-    return (
-      <form noValidate autoComplete="off" onSubmit={this.onSubmit}>
-        <div className={classes.container}>
-          <div className={classes.half}>
-            <TextField size='small' id="firstname" name="firstname" type="firstname" label="First Name" variant="outlined" onChange={this.onChange} />
-            <TextField size='small' id="lastname" name="lastname" type="lastname" label="Last Name" variant="outlined" onChange={this.onChange} />
+    if (this.state.page === 0) {
+      return (
+        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
+          <TextField
+            size='small'
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            variant="outlined"
+            onChange={this.onChange}
+            inputRef={this.myRef}
+            hiddenLabel
+          />
+          <Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)} fullWidth>Continue</Button>
+        </form>
+      )
+    }
+    if (this.state.page === 1) {
+      return (
+        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
+          <TextField
+            size='small'
+            id="username"
+            name="username"
+            type="username"
+            placeholder="Username"
+            variant="outlined"
+            onChange={this.onChange}
+            inputRef={this.myRef}
+          />
+          <TextField
+            size='small'
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            variant="outlined"
+            onChange={this.onChange}
+            inputRef={this.myRef}
+          />
+          <TextField
+            size='small'
+            id="password2"
+            name="password2"
+            type="password"
+            placeholder="Re-enter Password"
+            variant="outlined"
+            onChange={this.onChange}
+            inputRef={this.myRef}
+          />
+          <div>
+            <Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)} fullWidth>Continue</Button>
           </div>
-        </div>
-        <div className={classes.root}>
-          <TextField size='small' id="username" name="username" type="username" label="Username" variant="outlined" onChange={this.onChange} />
-          <TextField size='small' id="email" name="email" type="email" label="Email" variant="outlined" onChange={this.onChange} />
-          <TextField size='small' id="birthdate" name="birthdate" type="date" variant="outlined" onChange={this.onChange} />
-          <TextField size='small' id="password" name="password" type="password" label="Password" variant="outlined" onChange={this.onChange} />
-          <TextField size='small' id="password2" name="password2" type="password" label="Re-enter Password" variant="outlined" onChange={this.onChange} />
-          <Button type='submit' size='large' color="primary" variant="contained">Continue</Button>
-        </div>
-      </form>
-    );
+        </form>
+      )
+    }
+    if (this.state.page === 2) {
+      return (
+        <form className={classes.root} noValidate autoComplete="off" onSubmit={this.onSubmit}>
+          <div className={classes.container}>
+            <div className={classes.half}>
+              <TextField size='small' id="firstname" name="firstname" type="firstname" label="First Name" variant="outlined" onChange={this.onChange} />
+              <TextField size='small' id="lastname" name="lastname" type="lastname" label="Last Name" variant="outlined" onChange={this.onChange} />
+            </div>
+            
+              <TextField size='small' id="birthdate" name="birthdate" type="date" variant="outlined" onChange={this.onChange} />
+              <Button type='submit' size='large' color="primary" variant="contained" fullWidth>Continue</Button>
+          
+          </div>
+        </form>
+      )
+    }
   }
 }
 
-export default withRouter(withStyles(styles)(Register));
+export default withRouter(withStyles(styles)(TEST_DynamicRendering))

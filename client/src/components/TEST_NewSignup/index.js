@@ -21,12 +21,12 @@ const styles = () => ({
     root: {
         '& > *': {
             margin: '2%',
-            width: '96%',
+            width: '100%',
         },
     }
 })
 
-export default class TEST_DynamicRendering extends React.Component {
+class TEST_DynamicRendering extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -111,7 +111,7 @@ export default class TEST_DynamicRendering extends React.Component {
     }
 
     render() {
-
+        const { classes } = this.props;
         if (this.state.page === 0) {
             return (
                 <div>
@@ -120,33 +120,68 @@ export default class TEST_DynamicRendering extends React.Component {
                         id="email"
                         name="email"
                         type="email"
-                        label="Email"
+                        placeholder="Email"
                         variant="outlined"
                         onChange={this.onChange}
                         inputRef={this.myRef}
+                        hiddenLabel
                     />
-                    <div><button onClick={() => this.nextPage(this.state.page)}>Next</button></div>
+                    <div><Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)}>Continue</Button></div>
                 </div>
             )
         }
-        else {
+        if (this.state.page === 1) {
             return (
-                <div id="myform">
+                <div>
                     <TextField
                         size='small'
                         id="username"
                         name="username"
                         type="username"
-                        label="Username"
+                        placeholder="Username"
                         variant="outlined"
                         onChange={this.onChange}
                         inputRef={this.myRef}
                     />
-                    <TextField size='small' id="password" name="password" type="password" label="Password" variant="outlined" onChange={this.onChange} />
-                    <TextField size='small' id="password2" name="password2" type="password" label="Re-enter Password" variant="outlined" onChange={this.onChange} />
-                    <div><button onClick={() => this.nextPage(this.state.page)}>Next</button></div>
+                    <TextField
+                        size='small'
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                        variant="outlined"
+                        onChange={this.onChange}
+                        inputRef={this.myRef}
+                    />
+                    <TextField
+                        size='small'
+                        id="password2"
+                        name="password2"
+                        type="password"
+                        placeholder="Re-enter Password"
+                        variant="outlined"
+                        onChange={this.onChange}
+                        inputRef={this.myRef}
+                    />
+                    <div>
+                        <Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)}>Continue</Button>
+                    </div>
+                </div>
+            )
+        }
+        if (this.state.page === 2) {
+            return (
+                <div className={classes.container}>
+                    <div className={classes.half}>
+                        <TextField size='small' id="firstname" name="firstname" type="firstname" label="First Name" variant="outlined" onChange={this.onChange} />
+                        <TextField size='small' id="lastname" name="lastname" type="lastname" label="Last Name" variant="outlined" onChange={this.onChange} />
+                    </div>
+                    <TextField size='small' id="birthdate" name="birthdate" type="date" variant="outlined" onChange={this.onChange} />
+                    <Button type='submit' size='large' color="primary" variant="contained" onClick={() => this.nextPage(this.state.page)}>Continue</Button>
                 </div>
             )
         }
     }
 }
+
+export default withRouter(withStyles(styles)(TEST_DynamicRendering))

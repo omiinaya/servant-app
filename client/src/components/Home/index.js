@@ -5,6 +5,7 @@ import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
+import MapView from '../MapView'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     menu: {
-        borderBottom: '2px solid gray',
         margin: '4vh',
         [theme.breakpoints.up('lg')]: {
             width: '560px',
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             margin: '0%',
             width: '100%',
+            borderBottom: '2px solid gray',
         },
     },
     title: {
@@ -62,6 +63,11 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex'
         },
     },
+    test: {
+        border: '2px solid black',
+        height: '400px',
+        width: '400px'
+    }
 }))
 
 
@@ -84,6 +90,10 @@ function Home() {
             </div>
             <div className={classes.title}>
                 Popular Services
+            </div>
+            <div className={classes.test}>
+                Testing
+                <MapView />
             </div>
             <div className={classes.mobile}>
                 <BottomAppBar />

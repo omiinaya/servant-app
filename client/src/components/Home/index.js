@@ -6,6 +6,7 @@ import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
 import MapView from '../MapView'
+import TEST_DynamicRendering from '../TEST_DynamicRendering'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -94,6 +95,10 @@ function Home() {
             <div className={classes.test}>
                 Testing
                 <MapView />
+            </div>
+            <div className={classes.test}>
+                Testing 2
+                <TEST_DynamicRendering/>
             </div>
             <div className={classes.mobile}>
                 <BottomAppBar />

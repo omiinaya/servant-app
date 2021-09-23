@@ -19,8 +19,6 @@ export default class TEST_DynamicRendering extends React.Component {
     smoke(a) {
         var next = a + 1
         this.setState({ page: next })
-        //console.log(next)
-        //console.log(this.state.page)
     }
 
     render() {

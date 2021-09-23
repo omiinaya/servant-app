@@ -18,30 +18,34 @@ class RequestForm extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
-      password: ''
+      page: 0,
+      title: '',
+      description: ''
     }
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
   }
 
+  nextPage(a) {
+    var next = a + 1
+    this.setState({ page: next })
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
     console.log(e.target.value)
-    console.log(e.target)
   }
 
   onSubmit(e) {
     e.preventDefault()
-    /*
+
     const request = {
-      
-      username: this.state.username,
-      password: this.state.password
-      
+      title: this.state.title,
+      description: this.state.description
     }
-  
+    console.log(request)
+    /*
     login(user).then(data => {
       if (data) {
         this.props.history.push('/');
@@ -52,42 +56,51 @@ class RequestForm extends Component {
 
   render() {
     const { classes } = this.props;
-    return (
-      <Box
-        component="form"
-        className={classes.root}
-        noValidate
-        autoComplete="off"
-        onSubmit={this.onSubmit}
-      >
-        <TextField
-          size='small'
-          id="title"
-          name="title"
-          type="title"
-          placeholder="Title"
-          variant="outlined"
-          onChange={this.onChange} />
-        <TextField
-          id="outlined-multiline-static"
-          multiline
-          variant="outlined"
-          rows={8}
-          placeholder="Description"
-          onChange={this.onChange}
-        />
-       
-        <Button
-          type='submit'
-          size='large'
-          color="primary"
-          variant="contained"
+    if (this.state.page === 0) {
+      return (
+        <Box
+          component="form"
+          className={classes.root}
+          noValidate
+          autoComplete="off"
+          onSubmit={this.onSubmit}
         >
-          Continue
-        </Button>
-        
-      </Box>
-    );
+          <TextField
+            size='small'
+            id="title"
+            name="title"
+            type="title"
+            placeholder="Title"
+            variant="outlined"
+            onChange={this.onChange}
+          />
+
+          <TextField
+            id="outlined-multiline-static"
+            variant="outlined"
+            name="description"
+            rows={8}
+            placeholder="Description"
+            multiline
+            onChange={this.onChange}
+          />
+
+          <Button
+            //type='submit'
+            size='large'
+            color="primary"
+            variant="contained"
+            onClick={() => {this.nextPage(this.state.page)}}
+          >
+            Continue
+          </Button>
+        </Box>
+      );
+    } else {
+      return (
+      <div>test</div>
+      )
+    }
   }
 }
 

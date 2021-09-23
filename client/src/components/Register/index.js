@@ -50,11 +50,11 @@ class TEST_DynamicRendering extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.myRef.current)
+    //console.log(this.myRef.current)
   }
 
   componentWillUnmount() {
-    console.log(this.state.page)
+    //console.log(this.state.page)
   }
 
   nextPage(a, e) {
@@ -180,10 +180,8 @@ class TEST_DynamicRendering extends React.Component {
               <TextField size='small' id="firstname" name="firstname" type="firstname" label="First Name" variant="outlined" onChange={this.onChange} />
               <TextField size='small' id="lastname" name="lastname" type="lastname" label="Last Name" variant="outlined" onChange={this.onChange} />
             </div>
-            
               <TextField size='small' id="birthdate" name="birthdate" type="date" variant="outlined" onChange={this.onChange} />
               <Button type='submit' size='large' color="primary" variant="contained" fullWidth>Continue</Button>
-          
           </div>
         </form>
       )

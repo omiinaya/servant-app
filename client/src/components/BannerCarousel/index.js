@@ -1,7 +1,6 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import { getDeviceType } from '../../scripts'
 import { isPortrait } from '../../scripts'
 import {
     Dimensions,

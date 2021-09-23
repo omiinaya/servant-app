@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MapPicker from 'react-google-map-picker'
 
 const useStyles = makeStyles((theme) => ({

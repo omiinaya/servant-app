@@ -47,18 +47,18 @@ class TEST_DynamicRendering extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.myRef.current)
+        //console.log(this.myRef.current)
     }
 
     componentWillUnmount() {
-        console.log(this.state.page)
+        //console.log(this.state.page)
     }
 
     nextPage(a, e) {
         var next = a + 1
         this.setState({ page: next })
         this.myRef.current.value = null
-        console.log(this.state)
+        //console.log(this.state)
     }
 
     onChange(e) {

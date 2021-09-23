@@ -6,7 +6,7 @@ import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
 import MapView from '../MapView'
-import TEST_NewSignup from '../TEST_NewSignup'
+import TEST_NewSignup from '../TEST_NEW_SIGNUP'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
     const classes = useStyles();
+    console.log(process.env.REACT_APP_MAPSKEY)
     return (
         <div className={classes.root}>
             <AppBar />

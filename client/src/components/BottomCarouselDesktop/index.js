@@ -44,9 +44,11 @@ function Banner(props) {
             </Grid>
         )
         rows.push(media);
+        /*
         if (rows.length >= 6) {
             console.log(rows)
         }
+        */
     }
 
     return (

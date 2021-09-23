@@ -11,7 +11,6 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        {process.env.NODE_ENV === 'development' ? process.env.REACT_APP_DEV_MODE : process.env.REACT_APP_PRO_MODE}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/register" component={RegisterMobile} />

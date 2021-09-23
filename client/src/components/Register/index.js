@@ -45,8 +45,7 @@ class TEST_DynamicRendering extends React.Component {
     };
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-
-    this.myRef = React.createRef()
+    this.myRef    = React.createRef()
   }
 
   componentDidMount() {

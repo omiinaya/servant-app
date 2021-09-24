@@ -20,7 +20,7 @@ const styles = () => ({
   root: {
     '& > *': {
       margin: '2%',
-      width: '100%',
+      width: '96%',
     },
   },
   test: {

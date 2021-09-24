@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import MapView from '../MapView'
 //import { login } from './scripts';
@@ -33,15 +33,18 @@ class RequestForm extends Component {
     this.state = {
       page: 0,
       title: '',
-      description: ''
+      description: '',
+      currency: 'EUR'
     }
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    this.onSelect = this.onSelect.bind(this)
     this.myRef = React.createRef()
   }
 
   nextPage(a) {
+    console.log(this.myRef.current)
     var next = a + 1
     this.setState({ page: next })
     this.myRef.current.value = null
@@ -52,6 +55,11 @@ class RequestForm extends Component {
     this.setState({ [e.target.name]: e.target.value })
     console.log(e.target.value)
   }
+
+  onSelect(e) {
+    this.setState({ currency: e.target.value})
+    console.log(e.target.value)
+  };
 
   onSubmit(e) {
     e.preventDefault()
@@ -72,21 +80,35 @@ class RequestForm extends Component {
 
   render() {
     const { classes } = this.props;
+
+    const currencies = [
+      {
+        value: 'USD',
+        label: '$',
+      },
+      {
+        value: 'EUR',
+        label: '€',
+      },
+      {
+        value: 'BTC',
+        label: '฿',
+      },
+      {
+        value: 'JPY',
+        label: '¥',
+      },
+    ];
+
     if (this.state.page === 0) {
       return (
-        <Box
-          component="form"
-          className={classes.root}
-          noValidate
-          autoComplete="off"
-          onSubmit={this.onSubmit}
-        >
+        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
           <TextField
             size='small'
             id="title"
             name="title"
             type="title"
-            placeholder="Title"
+            label="Title"
             variant="outlined"
             inputRef={this.myRef}
             onChange={this.onChange}
@@ -97,9 +119,8 @@ class RequestForm extends Component {
             variant="outlined"
             name="description"
             rows={8}
-            placeholder="Description"
+            label="Description"
             multiline
-            inputRef={this.myRef}
             onChange={this.onChange}
           />
 
@@ -112,24 +133,18 @@ class RequestForm extends Component {
           >
             Continue
           </Button>
-        </Box>
+        </form>
       );
     } else {
       //location
       return (
-        <Box
-          component="form"
-          className={classes.root}
-          noValidate
-          autoComplete="off"
-          onSubmit={this.onSubmit}
-        >
+        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
           <TextField
             size='small'
             id="address-1"
             name="address-1"
             type="address"
-            placeholder="Address Line 1"
+            label="Address Line 1"
             variant="outlined"
             inputRef={this.myRef}
             onChange={this.onChange}
@@ -140,33 +155,44 @@ class RequestForm extends Component {
             id="address-2"
             name="address-2"
             type="address"
-            placeholder="Address Line 2"
+            label="Address Line 2"
             variant="outlined"
             inputRef={this.myRef}
             onChange={this.onChange}
           />
 
           <div className={classes.half}>
-          <TextField
-              size='small'
-              id="city"
-              name="city"
-              type="lastname"
-              placeholder="City"
-              variant="outlined"
-              inputRef={this.myRef}
-              onChange={this.onChange}
-            />
+
             <TextField
-              size='small'
-              id="state"
-              name="state"
-              //type="firstname"
-              placeholder="State"
+              size="small"
+              id="outlined-select-currency"
+              select
+              label="City"
+              value={this.state.currency}
+              onChange={this.onSelect}
               variant="outlined"
-              inputRef={this.myRef}
-              onChange={this.onChange}
-            />
+            >
+              {currencies.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              size="small"
+              id="outlined-select-currency"
+              select
+              label="State"
+              value={this.state.currency}
+              onChange={this.onSelect}
+              variant="outlined"
+            >
+              {currencies.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
           </div>
 
           <Button
@@ -178,7 +204,7 @@ class RequestForm extends Component {
           >
             Continue
           </Button>
-        </Box>
+        </form>
       )
     }
   }

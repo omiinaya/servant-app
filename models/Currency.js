@@ -10,7 +10,11 @@ var Currencies = db.sequelize.define(
             autoIncrement: true,
             allowNull: false
         },
-        author_id: {
+        symbol: {
+            type: Sequelize.STRING(255),
+            allowNull: false
+        },
+        country_id: {
             type: Sequelize.INTEGER,
             allowNull: false
         }

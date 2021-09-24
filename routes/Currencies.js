@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 //import sequelize model
-const Currency = require("../models/Request");
+const Currency = require("../models/Currency");
 
 const currencies = express.Router();
 currencies.use(cors())

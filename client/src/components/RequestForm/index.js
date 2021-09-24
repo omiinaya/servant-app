@@ -46,6 +46,7 @@ class RequestForm extends Component {
   }
 
   componentWillMount() {
+    //this allows the data to be received before rendering.
     getCurrencies().then(data => {
       this.setState({ currencies: data})
       console.log(this.state.currencies)

@@ -10,6 +10,10 @@ var Currencies = db.sequelize.define(
             autoIncrement: true,
             allowNull: false
         },
+        label: {
+            type: Sequelize.STRING(255),
+            allowNull: false
+        },
         symbol: {
             type: Sequelize.STRING(255),
             allowNull: false

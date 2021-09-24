@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { TextField, Button, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import MapView from '../MapView'
+import { getCurrencies } from '../ipc'
 //import { login } from './scripts';
 
 const styles = () => ({
@@ -34,6 +35,7 @@ class RequestForm extends Component {
       page: 0,
       title: '',
       description: '',
+      currencies: [],
       currency: 'EUR'
     }
 
@@ -41,6 +43,13 @@ class RequestForm extends Component {
     this.onSubmit = this.onSubmit.bind(this)
     this.onSelect = this.onSelect.bind(this)
     this.myRef = React.createRef()
+  }
+
+  componentWillMount() {
+    getCurrencies().then(data => {
+      this.setState({ currencies: data})
+      console.log(this.state.currencies)
+    })
   }
 
   nextPage(a) {
@@ -78,28 +87,10 @@ class RequestForm extends Component {
     */
   }
 
+
   render() {
     const { classes } = this.props;
-
-    const currencies = [
-      {
-        value: 'USD',
-        label: '$',
-      },
-      {
-        value: 'EUR',
-        label: '€',
-      },
-      {
-        value: 'BTC',
-        label: '฿',
-      },
-      {
-        value: 'JPY',
-        label: '¥',
-      },
-    ];
-
+  
     if (this.state.page === 0) {
       return (
         <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
@@ -172,7 +163,7 @@ class RequestForm extends Component {
               onChange={this.onSelect}
               variant="outlined"
             >
-              {currencies.map((option) => (
+              {this.state.currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
@@ -187,7 +178,7 @@ class RequestForm extends Component {
               onChange={this.onSelect}
               variant="outlined"
             >
-              {currencies.map((option) => (
+              {this.state.currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { TextField, Button, MenuItem } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import { getCurrencies } from '../ipc'
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import DirectionsIcon from '@mui/icons-material/Directions';
 //import { login } from './scripts';
 
 const styles = () => ({
@@ -136,100 +143,28 @@ class RequestForm extends Component {
         </form>
       );
     } else {
-      //location
       return (
-        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
-          <TextField
-            size='small'
-            id="address-1"
-            name="address-1"
-            type="address"
-            label="Address Line 1"
-            variant="outlined"
-            inputRef={this.myRef}
+        <Paper
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '96%', margin: '2%' }}
+        >
+          <IconButton sx={{ p: '10px' }} aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="Search Google Maps"
+            inputProps={{ 'aria-label': 'search google maps' }}
             onChange={this.onChange}
           />
-
-          <TextField
-            size='small'
-            id="address-2"
-            name="address-2"
-            type="address"
-            label="Address Line 2"
-            variant="outlined"
-            inputRef={this.myRef}
-            onChange={this.onChange}
-          />
-          <div className={classes.overhalf}>
-            <TextField
-              size="small"
-              id="outlined-select-currency"
-              select
-              label="Country"
-              value={this.state.currency}
-              onChange={this.onSelect}
-              variant="outlined"
-            >
-              {this.state.currencies.map((option) => (
-                <MenuItem key={option.label} value={option.symbol}>
-                  {option.symbol}
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
-          <div className={classes.fourth}>
-            <TextField
-              size="small"
-              id="outlined-select-currency"
-              select
-              label="State"
-              value={this.state.currency}
-              onChange={this.onSelect}
-              variant="outlined"
-            >
-              {this.state.currencies.map((option) => (
-                <MenuItem key={option.label} value={option.symbol}>
-                  {option.symbol}
-                </MenuItem>
-              ))}
-            </TextField>
-            <TextField
-              size="small"
-              id="outlined-select-currency"
-              select
-              label="City"
-              value={this.state.currency}
-              onChange={this.onSelect}
-              variant="outlined"
-            >
-              {this.state.currencies.map((option) => (
-                <MenuItem key={option.label} value={option.symbol}>
-                  {option.symbol}
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
-          <div className={classes.half}>
-          <TextField
-            size='small'
-            id="zip"
-            name="zip"
-            label="Zip"
-            variant="outlined"
-            inputRef={this.myRef}
-            onChange={this.onChange}
-          />
-          </div>
-          <Button
-            //type='submit'
-            size='large'
-            color="primary"
-            variant="contained"
-            onClick={() => { this.nextPage(this.state.page) }}
-          >
-            Continue
-          </Button>
-        </form>
+          <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+            <SearchIcon />
+          </IconButton>
+          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton>
+        </Paper>
       )
     }
   }

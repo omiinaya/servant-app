@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import { getCurrencies } from '../ipc'
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -10,6 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
+import MapView from '../MapView'
+//import { getCurrencies } from '../ipc'
 //import { login } from './scripts';
 
 const styles = () => ({
@@ -42,6 +43,23 @@ const styles = () => ({
       marginRight: '2%'
     },
   },
+  Container: {
+    position: 'relative',
+    height: '100vh'
+  },
+  Map: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: '0',
+    left: '0',
+    zIndex: 1
+  },
+  Search: {
+    position: 'absolute',
+    width: '96%',
+    zIndex: 2
+  }
 })
 
 class RequestForm extends Component {
@@ -51,8 +69,13 @@ class RequestForm extends Component {
       page: 0,
       title: '',
       description: '',
+      /*
       currencies: [],
+      states: [],
+      cities: [],
+      countries: [],
       currency: '$'
+      */
     }
 
     this.onChange = this.onChange.bind(this)
@@ -62,11 +85,12 @@ class RequestForm extends Component {
   }
 
   componentWillMount() {
-    //this allows the data to be received before rendering.
+    /*
     getCurrencies().then(data => {
       this.setState({ currencies: data })
       console.log(this.state.currencies)
     })
+    */
   }
 
   nextPage(a) {
@@ -114,8 +138,7 @@ class RequestForm extends Component {
             size='small'
             id="title"
             name="title"
-            type="title"
-            label="Title"
+            label="Add a title"
             variant="outlined"
             inputRef={this.myRef}
             onChange={this.onChange}
@@ -126,7 +149,7 @@ class RequestForm extends Component {
             variant="outlined"
             name="description"
             rows={8}
-            label="Description"
+            label="Add a description"
             multiline
             onChange={this.onChange}
           />
@@ -144,27 +167,34 @@ class RequestForm extends Component {
       );
     } else {
       return (
-        <Paper
-          component="form"
-          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '96%', margin: '2%' }}
-        >
-          <IconButton sx={{ p: '10px' }} aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <InputBase
-            sx={{ ml: 1, flex: 1 }}
-            placeholder="Search Google Maps"
-            inputProps={{ 'aria-label': 'search google maps' }}
-            onChange={this.onChange}
-          />
-          <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-            <SearchIcon />
-          </IconButton>
-          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-            <DirectionsIcon />
-          </IconButton>
-        </Paper>
+        <div className={classes.Container}>
+          <div className={classes.Search}>
+            <Paper
+              component="form"
+              sx={{ display: 'flex', alignItems: 'center', width: '100%',  height: '50px', margin: '2%' }}
+            >
+              <IconButton sx={{ p: '10px' }} aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Search Google Maps"
+                inputProps={{ 'aria-label': 'search google maps' }}
+                onChange={this.onChange}
+              />
+              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                <SearchIcon />
+              </IconButton>
+              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+                <DirectionsIcon />
+              </IconButton>
+            </Paper>
+          </div>
+          <div className={classes.Map}>
+            <MapView test='success' />
+          </div>
+        </div>
       )
     }
   }

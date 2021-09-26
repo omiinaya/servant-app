@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { TextField, Button, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
-import MapView from '../MapView'
 import { getCurrencies } from '../ipc'
 //import { login } from './scripts';
 
@@ -20,9 +19,19 @@ const styles = () => ({
       justifyContent: 'space-between'
     },
   },
+  overhalf: {
+    '& > *': {
+      width: '75%',
+    },
+  },
   half: {
     '& > *': {
-      width: '48%',
+      width: '50%',
+    },
+  },
+  fourth: {
+    '& > *': {
+      width: '24%',
       marginRight: '2%'
     },
   },
@@ -36,7 +45,7 @@ class RequestForm extends Component {
       title: '',
       description: '',
       currencies: [],
-      currency: 'EUR'
+      currency: '$'
     }
 
     this.onChange = this.onChange.bind(this)
@@ -48,13 +57,12 @@ class RequestForm extends Component {
   componentWillMount() {
     //this allows the data to be received before rendering.
     getCurrencies().then(data => {
-      this.setState({ currencies: data})
+      this.setState({ currencies: data })
       console.log(this.state.currencies)
     })
   }
 
   nextPage(a) {
-    console.log(this.myRef.current)
     var next = a + 1
     this.setState({ page: next })
     this.myRef.current.value = null
@@ -67,7 +75,7 @@ class RequestForm extends Component {
   }
 
   onSelect(e) {
-    this.setState({ currency: e.target.value})
+    this.setState({ currency: e.target.value })
     console.log(e.target.value)
   };
 
@@ -91,7 +99,7 @@ class RequestForm extends Component {
 
   render() {
     const { classes } = this.props;
-  
+
     if (this.state.page === 0) {
       return (
         <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
@@ -152,24 +160,24 @@ class RequestForm extends Component {
             inputRef={this.myRef}
             onChange={this.onChange}
           />
-
-          <div className={classes.half}>
-
+          <div className={classes.overhalf}>
             <TextField
               size="small"
               id="outlined-select-currency"
               select
-              label="City"
+              label="Country"
               value={this.state.currency}
               onChange={this.onSelect}
               variant="outlined"
             >
               {this.state.currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+                <MenuItem key={option.label} value={option.symbol}>
+                  {option.symbol}
                 </MenuItem>
               ))}
             </TextField>
+          </div>
+          <div className={classes.fourth}>
             <TextField
               size="small"
               id="outlined-select-currency"
@@ -180,13 +188,38 @@ class RequestForm extends Component {
               variant="outlined"
             >
               {this.state.currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+                <MenuItem key={option.label} value={option.symbol}>
+                  {option.symbol}
+                </MenuItem>
+              ))}
+            </TextField>
+            <TextField
+              size="small"
+              id="outlined-select-currency"
+              select
+              label="City"
+              value={this.state.currency}
+              onChange={this.onSelect}
+              variant="outlined"
+            >
+              {this.state.currencies.map((option) => (
+                <MenuItem key={option.label} value={option.symbol}>
+                  {option.symbol}
                 </MenuItem>
               ))}
             </TextField>
           </div>
-
+          <div className={classes.half}>
+          <TextField
+            size='small'
+            id="zip"
+            name="zip"
+            label="Zip"
+            variant="outlined"
+            inputRef={this.myRef}
+            onChange={this.onChange}
+          />
+          </div>
           <Button
             //type='submit'
             size='large'

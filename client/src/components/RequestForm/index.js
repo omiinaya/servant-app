@@ -45,7 +45,7 @@ const styles = () => ({
   },
   Container: {
     position: 'relative',
-    height: '100vh'
+    height: '93.5vh'
   },
   Map: {
     position: 'absolute',

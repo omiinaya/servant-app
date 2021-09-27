@@ -33,6 +33,8 @@ const MapView = (props) => {
             onChangeLocation={handleChangeLocation}
             onChangeZoom={handleChangeZoom}
             zoomControl={false}
+            scaleControl={false}
+            fullscreenControl={false}
             disableDoubleClickZoom={true}
             gestureHandling='greedy'
             draggable={true}

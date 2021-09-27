@@ -93,14 +93,6 @@ function Home() {
             <div className={classes.title}>
                 Popular Services
             </div>
-            <div className={classes.test}>
-                Testing
-                <MapView />
-            </div>
-            <div className={classes.test}>
-                Testing 2
-                <TEST_NewSignup/>
-            </div>
             <div className={classes.mobile}>
                 <BottomAppBar />
             </div>

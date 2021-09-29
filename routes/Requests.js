@@ -15,4 +15,29 @@ requests.get("/all", function (req, res) {
     });
 });
 
+//create new request
+requests.post('/create', (req, res) => {
+    //data to send to db
+    const today = new Date()
+    const requestData = {
+        //edit this to match necessary data.
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        birthdate: req.body.birthdate,
+        username: req.body.username,
+        password: req.body.password,
+        created: today
+    }
+    Request.create(requestData)
+        .then(request => {
+            console.log(request)
+            //edit this to log relevant data.
+            res.json('request has been created.')
+        })
+        .catch(err => {
+            res.send("error: " + err)
+        })
+})
+
 module.exports = requests

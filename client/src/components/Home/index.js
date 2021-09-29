@@ -5,8 +5,6 @@ import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
-import MapView from '../MapView'
-import TEST_NewSignup from '../TEST_NEW_SIGNUP'
 
 
 const useStyles = makeStyles((theme) => ({

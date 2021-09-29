@@ -29,7 +29,7 @@ export const register = newUser => {
         password: newUser.password
     })
     .then(res => {
-        console.log("User has been egistered.")
+        console.log("User has been registered.")
         return res.data
     })
     .catch(err => {

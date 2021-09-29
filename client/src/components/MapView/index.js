@@ -36,6 +36,7 @@ const MapView = (props) => {
             scaleControl={false}
             fullscreenControl={false}
             disableDoubleClickZoom={true}
+            disableStreetView={true}
             gestureHandling='greedy'
             draggable={true}
             apiKey='' />

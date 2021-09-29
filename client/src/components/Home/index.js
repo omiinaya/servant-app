@@ -72,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
     const classes = useStyles();
-    console.log(process.env.REACT_APP_MAPSKEY)
     return (
         <div className={classes.root}>
             <AppBar />

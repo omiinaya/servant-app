@@ -10,6 +10,36 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import MapView from '../MapView'
+import Geocode from "react-geocode";
+
+Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
+Geocode.setLanguage("en");
+
+/*
+// Get address from latitude & longitude.
+Geocode.fromLatLng("48.8583701", "2.2922926").then(
+  response => {
+    const address = response.results[0].formatted_address;
+    console.log(address);
+  },
+  error => {
+    console.error(error);
+  }
+);
+*/
+
+// Get latitude & longitude from address.
+function testingGeocode() {
+  Geocode.fromAddress("Eiffel Tower").then(
+    response => {
+      const { lat, lng } = response.results[0].geometry.location;
+      console.log(lat, lng);
+    },
+    error => {
+      console.error(error);
+    }
+  );
+}
 //import { login } from './scripts';
 
 const styles = () => ({
@@ -84,6 +114,7 @@ class RequestForm extends Component {
   }
 
   componentWillMount() {
+    //testingGeocode()
     /*
     getCurrencies().then(data => {
       this.setState({ currencies: data })
@@ -170,7 +201,7 @@ class RequestForm extends Component {
           <div className={classes.Search}>
             <Paper
               component="form"
-              sx={{ display: 'flex', alignItems: 'center', width: '100%',  height: '50px', margin: '2%' }}
+              sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
             >
               <IconButton sx={{ p: '10px' }} aria-label="menu">
                 <MenuIcon />

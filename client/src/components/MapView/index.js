@@ -39,7 +39,7 @@ const MapView = (props) => {
             disableStreetView={true}
             gestureHandling='greedy'
             draggable={true}
-            apiKey='' />
+            apiKey={process.env.REACT_APP_MAPSKEY} />
     );
 }
 

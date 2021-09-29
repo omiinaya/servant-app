@@ -2,6 +2,7 @@ export const createRequest = newRequest => {
     var url = '/api/users/register'
     return axios
     .post(url, {
+        //change to match request
         firstname: newRequest.firstname,
         lastname: newRequest.lastname,
         email: newRequest.email,

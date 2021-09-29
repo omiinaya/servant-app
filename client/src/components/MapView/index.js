@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MapPicker from 'react-google-map-picker'
 
 const DefaultLocation = { lat: 10, lng: 106 };
@@ -6,7 +6,17 @@ const DefaultZoom = 10;
 
 const MapView = (props) => {
     console.log(props)
-    const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
+
+    useEffect( () => {
+        console.log('props updated.')
+        var x = props
+        console.log(props.lat, props.lng)
+        console.log(location)
+        console.log(x)
+        setLocation(x)
+    }, [props.lng])
+
+    const [defaultLocation, setDefaultLocation] = useState(props);
 
     const [location, setLocation] = useState(defaultLocation);
     const [zoom, setZoom] = useState(DefaultZoom);

@@ -11,6 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
+import MapPicker from 'react-google-map-picker'
 //import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
@@ -72,6 +73,9 @@ class RequestForm extends Component {
       page: 0,
       title: '',
       description: '',
+      search: '',
+      lat: 10,
+      lng: 106,
       /*
       currencies: [],
       states: [],
@@ -81,10 +85,13 @@ class RequestForm extends Component {
       */
     }
 
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-    this.onSelect = this.onSelect.bind(this)
-    this.myRef = React.createRef()
+    this.onChange       = this.onChange.bind(this)
+    this.onSubmit       = this.onSubmit.bind(this)
+    this.onSelect       = this.onSelect.bind(this)
+    this.onSearch       = this.onSearch.bind(this)
+    this.onReset        = this.onReset.bind(this)
+    this.myRef          = React.createRef()
+    this.getCoordinates = this.getCoordinates.bind(this)
   }
 
   componentWillMount() {
@@ -106,6 +113,7 @@ class RequestForm extends Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+    console.log(e.target.name)
     console.log(e.target.value)
   }
 
@@ -133,7 +141,13 @@ class RequestForm extends Component {
 
   onSearch(e) {
     e.preventDefault()
+    this.getCoordinates(this.state.search)
     //get value from search bar then send to geocoder function
+  }
+
+  onReset(e) {
+    e.preventDefault()
+    console.log(this.state)
   }
 
   getCoordinates(address) {
@@ -141,13 +155,16 @@ class RequestForm extends Component {
       response => {
         const { lat, lng } = response.results[0].geometry.location;
         console.log(lat, lng);
+        this.setState({ 
+          lat: lat, 
+          lng: lng
+        })
       },
       error => {
         console.error(error);
       }
     );
   }
-
 
   render() {
     const { classes } = this.props;
@@ -199,6 +216,7 @@ class RequestForm extends Component {
               </IconButton>
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
+                name="search"
                 placeholder="Search Google Maps"
                 inputProps={{ 'aria-label': 'search google maps' }}
                 onChange={this.onChange}
@@ -208,12 +226,12 @@ class RequestForm extends Component {
               </IconButton>
               <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
               <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                <RotateLeftIcon />
+                <RotateLeftIcon onClick={this.onReset}/>
               </IconButton>
             </Paper>
           </div>
           <div className={classes.Map}>
-            <MapView test='success' />
+          { this.state.lng ? <MapView lat={this.state.lat} lng={this.state.lng} /> : <MapView lat={this.state.lat} lng={this.state.lng} /> }
           </div>
         </div>
       )

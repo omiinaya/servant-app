@@ -11,36 +11,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
+//import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
 Geocode.setLanguage("en");
-
-/*
-// Get address from latitude & longitude.
-Geocode.fromLatLng("48.8583701", "2.2922926").then(
-  response => {
-    const address = response.results[0].formatted_address;
-    console.log(address);
-  },
-  error => {
-    console.error(error);
-  }
-);
-*/
-
-// Get latitude & longitude from address.
-function testingGeocode() {
-  Geocode.fromAddress("Eiffel Tower").then(
-    response => {
-      const { lat, lng } = response.results[0].geometry.location;
-      console.log(lat, lng);
-    },
-    error => {
-      console.error(error);
-    }
-  );
-}
-//import { login } from './scripts';
 
 const styles = () => ({
   root: {
@@ -157,6 +131,23 @@ class RequestForm extends Component {
     */
   }
 
+  onSearch(e) {
+    e.preventDefault()
+    //get value from search bar then send to geocoder function
+  }
+
+  getCoordinates(address) {
+    Geocode.fromAddress(address).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        console.log(lat, lng);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -213,7 +204,7 @@ class RequestForm extends Component {
                 onChange={this.onChange}
               />
               <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                <SearchIcon />
+                <SearchIcon onClick={this.onSearch}/>
               </IconButton>
               <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
               <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">

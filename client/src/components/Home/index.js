@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import BannerCarouselBackground from '../BannerCarousel';
+import BannerCarousel from '../BannerCarousel';
 import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
@@ -11,13 +11,15 @@ const useStyles = makeStyles((theme) => ({
     banner: {
         width: '100%',
         position: 'absolute',
-        zIndex: '-1',
+        zIndex: '1',
         [theme.breakpoints.down('xs')]: {
             display: 'none'
         },
     },
     menu: {
-        margin: '4vh',
+        position: 'relative',
+        zIndex: '2',
+        margin: '25px',
         [theme.breakpoints.up('lg')]: {
             width: '560px',
         },
@@ -76,7 +78,7 @@ function Home() {
         <div className={classes.root}>
             <AppBar />
             <div className={classes.banner}>
-                <BannerCarouselBackground />
+                <BannerCarousel />
             </div>
             <div className={classes.menu}>
                 <BannerMenu />

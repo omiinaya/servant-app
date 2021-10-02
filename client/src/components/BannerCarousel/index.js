@@ -137,7 +137,7 @@ class BannerCarousel extends React.Component {
                         timeout={100}
                         cycleNavigation={true}
                         navButtonsAlwaysVisible={false}
-                        navButtonsAlwaysInvisible={false}
+                        navButtonsAlwaysInvisible={true}
                     >
                         {
                             rows.map((item, index) => {

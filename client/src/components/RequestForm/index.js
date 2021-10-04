@@ -11,7 +11,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
-import MapPicker from 'react-google-map-picker'
 //import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);

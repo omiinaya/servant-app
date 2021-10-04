@@ -12,13 +12,10 @@ const MapView = (props) => {
             zoom={10}
             mapTypeId="roadmap"
             style={{ height: '100%' }}
-            zoomControl={false}
-            scaleControl={false}
-            fullscreenControl={false}
             disableDoubleClickZoom={true}
-            disableStreetView={true}
             gestureHandling='greedy'
             draggable={true}
+            disableDefaultUI={true}
             apiKey={process.env.REACT_APP_MAPSKEY} />
     );
 }

@@ -62,6 +62,13 @@ const styles = () => ({
     position: 'absolute',
     width: '96%',
     zIndex: 2
+  },
+  Buttons: {
+    position: 'absolute',
+    bottom: 0,
+    width: '96%',
+    zIndex: 2,
+    margin: '2%'
   }
 })
 
@@ -83,23 +90,18 @@ class RequestForm extends Component {
       */
     }
 
-    this.onChange = this.onChange.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
-    this.onSelect = this.onSelect.bind(this)
-    this.onSearch = this.onSearch.bind(this)
-    this.onReset = this.onReset.bind(this)
-    this.myRef = React.createRef()
+    this.onReset        = this.onReset.bind(this)
+    this.onChange       = this.onChange.bind(this)
+    this.onSubmit       = this.onSubmit.bind(this)
+    this.onSelect       = this.onSelect.bind(this)
+    this.onSearch       = this.onSearch.bind(this)
+    this.onUseCurrent   = this.onUseCurrent.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
+    this.myRef          = React.createRef()
   }
 
   componentWillMount() {
-    //testingGeocode()
-    /*
-    getCurrencies().then(data => {
-      this.setState({ currencies: data })
-      console.log(this.state.currencies)
-    })
-    */
+    console.log('test')
   }
 
   nextPage(a) {
@@ -140,7 +142,6 @@ class RequestForm extends Component {
   onSearch(e) {
     e.preventDefault()
     this.getCoordinates(this.state.search)
-    //get value from search bar then send to geocoder function
   }
 
   onReset(e) {
@@ -161,6 +162,15 @@ class RequestForm extends Component {
         console.error(error);
       }
     );
+  }
+
+  onUseCurrent() {
+    var document = this
+    navigator.geolocation.getCurrentPosition(function (position) {
+      document.setState({
+        location: [position.coords.latitude, position.coords.longitude]
+      })
+    })
   }
 
   render() {
@@ -206,66 +216,78 @@ class RequestForm extends Component {
       if (this.state.location) {
         return (
           <div className={classes.Container}>
-          <div className={classes.Search}>
-            <Paper
-              component="form"
-              sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
-            >
-              <IconButton sx={{ p: '10px' }} aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                name="search"
-                placeholder="Search Google Maps"
-                inputProps={{ 'aria-label': 'search google maps' }}
-                onChange={this.onChange}
-              />
-              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={this.onSearch}>
-                <SearchIcon />
-              </IconButton>
-              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
-                <RotateLeftIcon />
-              </IconButton>
-            </Paper>
+            <div className={classes.Search}>
+              <Paper
+                component="form"
+                sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
+              >
+                <IconButton sx={{ p: '10px' }} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  name="search"
+                  placeholder="Search Google Maps"
+                  inputProps={{ 'aria-label': 'search google maps' }}
+                  onChange={this.onChange}
+                />
+                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={this.onSearch}>
+                  <SearchIcon />
+                </IconButton>
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
+                  <RotateLeftIcon />
+                </IconButton>
+              </Paper>
+            </div>
+            <div className={classes.Buttons}>
+              <Button variant="contained" size='large' color="primary" fullWidth>Use Current Location</Button>
+            </div>
+            <div className={classes.Map}>
+              <MapView location={this.state.location} />
+            </div>
           </div>
-          <div className={classes.Map}>
-            <MapView location={this.state.location} />
-          </div>
-        </div>
         )
       } else {
         return (
           <div className={classes.Container}>
-          <div className={classes.Search}>
-            <Paper
-              component="form"
-              sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
-            >
-              <IconButton sx={{ p: '10px' }} aria-label="menu">
-                <MenuIcon />
-              </IconButton>
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                name="search"
-                placeholder="Search Google Maps"
-                inputProps={{ 'aria-label': 'search google maps' }}
-                onChange={this.onChange}
-              />
-              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={this.onSearch}>
-                <SearchIcon />
-              </IconButton>
-              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
-                <RotateLeftIcon />
-              </IconButton>
-            </Paper>
+            <div className={classes.Search}>
+              <Paper
+                component="form"
+                sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
+              >
+                <IconButton sx={{ p: '10px' }} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  name="search"
+                  placeholder="Search Google Maps"
+                  inputProps={{ 'aria-label': 'search google maps' }}
+                  onChange={this.onChange}
+                />
+                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={this.onSearch}>
+                  <SearchIcon />
+                </IconButton>
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
+                  <RotateLeftIcon />
+                </IconButton>
+              </Paper>
+            </div>
+            <div className={classes.Buttons}>
+              <Button 
+                variant="contained" 
+                size='large' 
+                color="primary"
+                onClick={this.onUseCurrent}
+                fullWidth
+                >Use Current Location</Button>
+            </div>
+            <div className={classes.Map}>
+              <MapView location={[10, 106]} />
+            </div>
           </div>
-          <div className={classes.Map}>
-            <MapView location={[10, 106]} />
-          </div>
-        </div>
         )
       }
     }

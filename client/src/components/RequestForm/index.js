@@ -11,6 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 //import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
@@ -48,7 +49,7 @@ const styles = () => ({
   },
   map: {
     position: 'absolute',
-    bottom: '6%',
+    top: '14%',
     width: '96%',
     margin: '2%',
     height: '78%',
@@ -63,13 +64,10 @@ const styles = () => ({
   buttons: {
     position: 'absolute',
     bottom: 0,
-    width: '96%',
     zIndex: 2,
+    width: '96%',
     margin: '2%'
   },
-  wrapper: {
-    borderRadius: '5%',
-  }
 })
 
 class RequestForm extends Component {
@@ -90,24 +88,22 @@ class RequestForm extends Component {
       */
     }
 
-    this.onReset        = this.onReset.bind(this)
-    this.onChange       = this.onChange.bind(this)
-    this.onSubmit       = this.onSubmit.bind(this)
-    this.onSelect       = this.onSelect.bind(this)
-    this.onSearch       = this.onSearch.bind(this)
-    this.onUseCurrent   = this.onUseCurrent.bind(this)
+    this.myRef = React.createRef()
+    this.onReset = this.onReset.bind(this)
+    this.nextPage = this.nextPage.bind(this)
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onSelect = this.onSelect.bind(this)
+    this.onSearch = this.onSearch.bind(this)
+    this.onUseCurrent = this.onUseCurrent.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
-    this.myRef          = React.createRef()
-  }
-
-  componentWillMount() {
-    console.log('test')
+  
   }
 
   nextPage(a) {
     var next = a + 1
     this.setState({ page: next })
-    this.myRef.current.value = null
+    //this.myRef.current.value = null
     console.log(this.state)
   }
 
@@ -215,7 +211,7 @@ class RequestForm extends Component {
       console.log(this.state.location)
       if (this.state.location) {
         return (
-          <div className={classes.wrapper}>
+          <div>
             <div className={classes.search}>
               <Paper
                 component="form"
@@ -235,13 +231,21 @@ class RequestForm extends Component {
                   <SearchIcon />
                 </IconButton>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
-                  <RotateLeftIcon />
+                <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onUseCurrent}>
+                  <MyLocationIcon />
                 </IconButton>
               </Paper>
             </div>
             <div className={classes.buttons}>
-              <Button variant="contained" size='large' color="primary" fullWidth>Use Current Location</Button>
+                <Button
+                  variant="contained"
+                  size='large'
+                  color="primary"
+                  onClick={()=> this.nextPage(this.state.page)}
+                  fullWidth
+                >
+                  Continue
+                </Button>
             </div>
             <div className={classes.map}>
               <MapView location={this.state.location} />
@@ -250,7 +254,7 @@ class RequestForm extends Component {
         )
       } else {
         return (
-          <div className={classes.wrapper}>
+          <div>
             <div className={classes.search}>
               <Paper
                 component="form"
@@ -270,19 +274,21 @@ class RequestForm extends Component {
                   <SearchIcon />
                 </IconButton>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-                <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
-                  <RotateLeftIcon />
+                <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onUseCurrent}>
+                  <MyLocationIcon />
                 </IconButton>
               </Paper>
             </div>
             <div className={classes.buttons}>
-              <Button 
-                variant="contained" 
-                size='large' 
-                color="primary"
-                onClick={this.onUseCurrent}
-                fullWidth
-                >Use Current Location</Button>
+                <Button
+                  variant="contained"
+                  size='large'
+                  color="primary"
+                  onClick={()=> this.nextPage(this.state.page)}
+                  fullWidth
+                >
+                  Continue
+                </Button>
             </div>
             <div className={classes.map}>
               <MapView location={[10, 106]} />

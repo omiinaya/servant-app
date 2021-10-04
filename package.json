@@ -39,6 +39,7 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.4",
     "react-dom": "^17.0.2",
+    "react-google-map-picker": "github:omiinaya/react-google-map-picker",
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.3.0",
     "react-transition-group": "^4.4.2",

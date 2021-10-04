@@ -222,12 +222,12 @@ class RequestForm extends Component {
                 inputProps={{ 'aria-label': 'search google maps' }}
                 onChange={this.onChange}
               />
-              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                <SearchIcon onClick={this.onSearch} />
+              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={this.onSearch}>
+                <SearchIcon />
               </IconButton>
               <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                <RotateLeftIcon onClick={this.onReset} />
+              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
+                <RotateLeftIcon />
               </IconButton>
             </Paper>
           </div>
@@ -254,12 +254,12 @@ class RequestForm extends Component {
                 inputProps={{ 'aria-label': 'search google maps' }}
                 onChange={this.onChange}
               />
-              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                <SearchIcon onClick={this.onSearch} />
+              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={this.onSearch}>
+                <SearchIcon />
               </IconButton>
               <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                <RotateLeftIcon onClick={this.onReset} />
+              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions" onClick={this.onReset}>
+                <RotateLeftIcon />
               </IconButton>
             </Paper>
           </div>

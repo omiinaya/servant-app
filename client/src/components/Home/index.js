@@ -5,6 +5,7 @@ import AppBar from "../AppBar"
 import BannerMenu from '../BannerMenu';
 import BottomCarousel from '../BottomCarousel';
 import BottomAppBar from '../BottomAppBar';
+import TEST_PROPBASED_RENDERING from '../TEST_PROPBASED_RENDERING'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -91,6 +92,9 @@ function Home() {
             </div>
             <div className={classes.title}>
                 Popular Services
+            </div>
+            <div>
+                <TEST_PROPBASED_RENDERING />
             </div>
             <div className={classes.mobile}>
                 <BottomAppBar />

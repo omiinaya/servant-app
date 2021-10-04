@@ -74,8 +74,7 @@ class RequestForm extends Component {
       title: '',
       description: '',
       search: '',
-      lat: 10,
-      lng: 106,
+      location: ''
       /*
       currencies: [],
       states: [],
@@ -85,12 +84,12 @@ class RequestForm extends Component {
       */
     }
 
-    this.onChange       = this.onChange.bind(this)
-    this.onSubmit       = this.onSubmit.bind(this)
-    this.onSelect       = this.onSelect.bind(this)
-    this.onSearch       = this.onSearch.bind(this)
-    this.onReset        = this.onReset.bind(this)
-    this.myRef          = React.createRef()
+    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onSelect = this.onSelect.bind(this)
+    this.onSearch = this.onSearch.bind(this)
+    this.onReset = this.onReset.bind(this)
+    this.myRef = React.createRef()
     this.getCoordinates = this.getCoordinates.bind(this)
   }
 
@@ -155,9 +154,8 @@ class RequestForm extends Component {
       response => {
         const { lat, lng } = response.results[0].geometry.location;
         console.log(lat, lng);
-        this.setState({ 
-          lat: lat, 
-          lng: lng
+        this.setState({
+          location: [lat, lng]
         })
       },
       error => {
@@ -204,8 +202,11 @@ class RequestForm extends Component {
         </form>
       );
     } else {
-      return (
-        <div className={classes.Container}>
+      console.log(this.state.search)
+      console.log(this.state.location)
+      if (this.state.location) {
+        return (
+          <div className={classes.Container}>
           <div className={classes.Search}>
             <Paper
               component="form"
@@ -222,19 +223,52 @@ class RequestForm extends Component {
                 onChange={this.onChange}
               />
               <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                <SearchIcon onClick={this.onSearch}/>
+                <SearchIcon onClick={this.onSearch} />
               </IconButton>
               <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
               <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
-                <RotateLeftIcon onClick={this.onReset}/>
+                <RotateLeftIcon onClick={this.onReset} />
               </IconButton>
             </Paper>
           </div>
           <div className={classes.Map}>
-          { this.state.lng ? <MapView lat={this.state.lat} lng={this.state.lng} /> : <MapView lat={this.state.lat} lng={this.state.lng} /> }
+            <MapView location={this.state.location} />
           </div>
         </div>
-      )
+        )
+      } else {
+        return (
+          <div className={classes.Container}>
+          <div className={classes.Search}>
+            <Paper
+              component="form"
+              sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
+            >
+              <IconButton sx={{ p: '10px' }} aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                name="search"
+                placeholder="Search Google Maps"
+                inputProps={{ 'aria-label': 'search google maps' }}
+                onChange={this.onChange}
+              />
+              <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                <SearchIcon onClick={this.onSearch} />
+              </IconButton>
+              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+              <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+                <RotateLeftIcon onClick={this.onReset} />
+              </IconButton>
+            </Paper>
+          </div>
+          <div className={classes.Map}>
+            <MapView location={[10, 106]} />
+          </div>
+        </div>
+        )
+      }
     }
   }
 }

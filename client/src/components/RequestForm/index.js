@@ -178,19 +178,6 @@ class RequestForm extends Component {
             onChange={this.onChange}
           />
 
-          <Select
-            size='small'
-            id="payment"
-            value={this.state.payment}
-            name="Payment"
-            variant="outlined"
-            onChange={this.onSelect}
-          >
-            <MenuItem value={'Fixed'}>Fixed</MenuItem>
-            <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
-            <MenuItem value={'Offer'}>Offer</MenuItem>
-          </Select>
-
           <TextField
             id="outlined-multiline-static"
             variant="outlined"
@@ -212,7 +199,7 @@ class RequestForm extends Component {
           </Button>
         </form>
       );
-    } else {
+    } if (this.state.page === 1) {
       console.log(this.state.search)
       console.log(this.state.location)
       if (this.state.location) {
@@ -302,6 +289,41 @@ class RequestForm extends Component {
           </div>
         )
       }
+    } else {
+      return (
+        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
+          <Select
+            size='small'
+            id="payment"
+            value={this.state.payment}
+            name="Payment"
+            variant="outlined"
+            onChange={this.onSelect}
+          >
+            <MenuItem value={'Fixed'}>Fixed</MenuItem>
+            <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
+            <MenuItem value={'Offer'}>Offer</MenuItem>
+          </Select>
+
+          <TextField
+            id="outlined-multiline-static"
+            variant="outlined"
+            name="pay"
+            placeholder="Pay"
+            onChange={this.onChange}
+          />
+
+          <Button
+            //type='submit'
+            size='large'
+            color="primary"
+            variant="contained"
+            onClick={() => { this.nextPage(this.state.page) }}
+          >
+            Continue
+          </Button>
+        </form>
+      )
     }
   }
 }

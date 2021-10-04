@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Select, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -8,7 +8,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
@@ -78,14 +77,8 @@ class RequestForm extends Component {
       title: '',
       description: '',
       search: '',
-      location: ''
-      /*
-      currencies: [],
-      states: [],
-      cities: [],
-      countries: [],
-      currency: '$'
-      */
+      location: '',
+      payment: 'Fixed'
     }
 
     this.myRef = React.createRef()
@@ -97,7 +90,7 @@ class RequestForm extends Component {
     this.onSearch = this.onSearch.bind(this)
     this.onUseCurrent = this.onUseCurrent.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
-  
+
   }
 
   nextPage(a) {
@@ -114,7 +107,7 @@ class RequestForm extends Component {
   }
 
   onSelect(e) {
-    this.setState({ currency: e.target.value })
+    this.setState({ payment: e.target.value })
     console.log(e.target.value)
   };
 
@@ -179,18 +172,31 @@ class RequestForm extends Component {
             size='small'
             id="title"
             name="title"
-            label="Add a title"
+            placeholder="Add a title"
             variant="outlined"
             inputRef={this.myRef}
             onChange={this.onChange}
           />
+
+          <Select
+            size='small'
+            id="payment"
+            value={this.state.payment}
+            name="Payment"
+            variant="outlined"
+            onChange={this.onSelect}
+          >
+            <MenuItem value={'Fixed'}>Fixed</MenuItem>
+            <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
+            <MenuItem value={'Offer'}>Offer</MenuItem>
+          </Select>
 
           <TextField
             id="outlined-multiline-static"
             variant="outlined"
             name="description"
             rows={8}
-            label="Add a description"
+            placeholder="Add a description"
             multiline
             onChange={this.onChange}
           />
@@ -237,15 +243,15 @@ class RequestForm extends Component {
               </Paper>
             </div>
             <div className={classes.buttons}>
-                <Button
-                  variant="contained"
-                  size='large'
-                  color="primary"
-                  onClick={()=> this.nextPage(this.state.page)}
-                  fullWidth
-                >
-                  Continue
-                </Button>
+              <Button
+                variant="contained"
+                size='large'
+                color="primary"
+                onClick={() => this.nextPage(this.state.page)}
+                fullWidth
+              >
+                Continue
+              </Button>
             </div>
             <div className={classes.map}>
               <MapView location={this.state.location} />
@@ -280,18 +286,18 @@ class RequestForm extends Component {
               </Paper>
             </div>
             <div className={classes.buttons}>
-                <Button
-                  variant="contained"
-                  size='large'
-                  color="primary"
-                  onClick={()=> this.nextPage(this.state.page)}
-                  fullWidth
-                >
-                  Continue
-                </Button>
+              <Button
+                variant="contained"
+                size='large'
+                color="primary"
+                onClick={() => this.nextPage(this.state.page)}
+                fullWidth
+              >
+                Continue
+              </Button>
             </div>
             <div className={classes.map}>
-              <MapView location={[10, 106]} />
+              <MapView location={[25.6513512, -80.41268649999999]} />
             </div>
           </div>
         )

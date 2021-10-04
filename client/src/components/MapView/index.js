@@ -2,13 +2,13 @@ import React from 'react'
 import MapPicker from 'react-google-map-picker'
 
 const MapView = (props) => {
-    console.log(props)
     var lat = props.location[0]
     var lng = props.location[1]
     var location = { lat, lng }
-   
+
     return (
-        <MapPicker defaultLocation={location}
+        <MapPicker
+            defaultLocation={location}
             zoom={10}
             mapTypeId="roadmap"
             style={{ height: '100%' }}

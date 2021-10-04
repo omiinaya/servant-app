@@ -46,29 +46,29 @@ const styles = () => ({
       marginRight: '2%'
     },
   },
-  Container: {
-    position: 'relative',
-    height: '93.5vh'
-  },
-  Map: {
+  map: {
     position: 'absolute',
-    width: '100%',
-    height: '100%',
-    top: '0',
-    left: '0',
-    zIndex: 1
+    bottom: '6%',
+    width: '96%',
+    margin: '2%',
+    height: '78%',
+    borderRadius: '5%',
+    zIndex: 2
   },
-  Search: {
+  search: {
     position: 'absolute',
     width: '96%',
     zIndex: 2
   },
-  Buttons: {
+  buttons: {
     position: 'absolute',
     bottom: 0,
     width: '96%',
     zIndex: 2,
     margin: '2%'
+  },
+  wrapper: {
+    borderRadius: '5%',
   }
 })
 
@@ -215,8 +215,8 @@ class RequestForm extends Component {
       console.log(this.state.location)
       if (this.state.location) {
         return (
-          <div className={classes.Container}>
-            <div className={classes.Search}>
+          <div className={classes.wrapper}>
+            <div className={classes.search}>
               <Paper
                 component="form"
                 sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
@@ -240,18 +240,18 @@ class RequestForm extends Component {
                 </IconButton>
               </Paper>
             </div>
-            <div className={classes.Buttons}>
+            <div className={classes.buttons}>
               <Button variant="contained" size='large' color="primary" fullWidth>Use Current Location</Button>
             </div>
-            <div className={classes.Map}>
+            <div className={classes.map}>
               <MapView location={this.state.location} />
             </div>
           </div>
         )
       } else {
         return (
-          <div className={classes.Container}>
-            <div className={classes.Search}>
+          <div className={classes.wrapper}>
+            <div className={classes.search}>
               <Paper
                 component="form"
                 sx={{ display: 'flex', alignItems: 'center', width: '100%', height: '50px', margin: '2%' }}
@@ -275,7 +275,7 @@ class RequestForm extends Component {
                 </IconButton>
               </Paper>
             </div>
-            <div className={classes.Buttons}>
+            <div className={classes.buttons}>
               <Button 
                 variant="contained" 
                 size='large' 
@@ -284,7 +284,7 @@ class RequestForm extends Component {
                 fullWidth
                 >Use Current Location</Button>
             </div>
-            <div className={classes.Map}>
+            <div className={classes.map}>
               <MapView location={[10, 106]} />
             </div>
           </div>

@@ -89,7 +89,8 @@ class RequestForm extends Component {
       description: '',
       search: defaultAddress,
       location: defaultLocation,
-      payment: 'Fixed'
+      payment: 'Fixed',
+      recurrence: 'One Time',
     }
 
     this.myRef = React.createRef()

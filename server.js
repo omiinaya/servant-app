@@ -25,6 +25,7 @@ var Reviews = require('./routes/Reviews');
 var Requests = require('./routes/Requests');
 var Services = require('./routes/Services');
 var Currencies = require('./routes/Currencies');
+var Locations = require('./routes/Locations');
 
 //importing api routes.
 app.use('/api/users/', Users);
@@ -32,6 +33,7 @@ app.use('/api/reviews/', Reviews);
 app.use('/api/requests/', Requests);
 app.use('/api/services/', Services);
 app.use('/api/currencies/', Currencies);
+app.use('/api/locations/', Locations);
 
 //exposing the public folder to the public.
 app.use(express.static('public'));

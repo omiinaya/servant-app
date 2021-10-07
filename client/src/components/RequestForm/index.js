@@ -10,13 +10,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 //import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
 Geocode.setLanguage("en");
 
-const styles = () => ({
+const breakpoints = createBreakpoints({})
+const styles = theme => ({
   root: {
     '& > *': {
       margin: '2%',
@@ -52,8 +54,13 @@ const styles = () => ({
     width: '96%',
     margin: '2%',
     height: '78%',
-    borderRadius: '5%',
-    zIndex: 2
+    zIndex: 2,
+    [breakpoints.down('xs')]: {
+      top: '115px',
+      width: '96%',
+      height: '635px',
+      margin: '2%',
+    },
   },
   search: {
     position: 'absolute',
@@ -200,8 +207,6 @@ class RequestForm extends Component {
         </form>
       );
     } if (this.state.page === 1) {
-      console.log(this.state.search)
-      console.log(this.state.location)
       if (this.state.location) {
         return (
           <div>
@@ -328,4 +333,4 @@ class RequestForm extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(RequestForm));
+export default withRouter(withStyles(styles, { withTheme: true })(RequestForm));

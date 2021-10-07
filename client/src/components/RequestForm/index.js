@@ -12,12 +12,14 @@ import MapView from '../MapView'
 import Geocode from "react-geocode";
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 import MyLocationIcon from '@mui/icons-material/MyLocation';
-import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 //import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
 Geocode.setLanguage("en");
+
+const defaultLocation = [25.6513512, -80.41268649999999]
+const defaultAddress = '12400 SW 134th Ct, Miami, FL 33186'
 
 const breakpoints = createBreakpoints({})
 const styles = theme => ({
@@ -85,8 +87,8 @@ class RequestForm extends Component {
       page: 0,
       title: '',
       description: '',
-      search: '',
-      location: '',
+      search: defaultAddress,
+      location: defaultLocation,
       payment: 'Fixed'
     }
 
@@ -169,6 +171,7 @@ class RequestForm extends Component {
       response => {
         const address = response.results[0].formatted_address;
         console.log(address);
+        return address
       },
       error => {
         console.error(error);
@@ -184,13 +187,6 @@ class RequestForm extends Component {
       })
     })
   }
-
-  componentDidMount() {
-    check(PERMISSIONS.IOS.LOCATION_ALWAYS)
-      .then((result) => {
-        console.log(result)
-      })
-    }
 
   render() {
     const { classes } = this.props;
@@ -312,46 +308,110 @@ class RequestForm extends Component {
               </Button>
             </div>
             <div className={classes.map}>
-              <MapView location={[25.6513512, -80.41268649999999]} />
+              <MapView location={defaultLocation} />
             </div>
           </div>
         )
       }
     } else {
-      return (
-        <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
-          <Select
-            size='small'
-            id="payment"
-            value={this.state.payment}
-            name="Payment"
-            variant="outlined"
-            onChange={this.onSelect}
-          >
-            <MenuItem value={'Fixed'}>Fixed</MenuItem>
-            <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
-            <MenuItem value={'Offer'}>Offer</MenuItem>
-          </Select>
+      if (this.state.payment === 'Fixed') {
+        return (
+          <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
+            <Select
+              size='small'
+              id="payment"
+              value={this.state.payment}
+              name="Payment"
+              variant="outlined"
+              onChange={this.onSelect}
+            >
+              <MenuItem value={'Fixed'}>Fixed</MenuItem>
+              <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
+              <MenuItem value={'Offer'}>Offer</MenuItem>
+            </Select>
 
-          <TextField
-            id="outlined-multiline-static"
-            variant="outlined"
-            name="pay"
-            placeholder="Pay"
-            onChange={this.onChange}
-          />
+            <TextField
+              id="outlined-multiline-static"
+              variant="outlined"
+              name="pay"
+              placeholder="Pay"
+              onChange={this.onChange}
+            />
 
-          <Button
-            //type='submit'
-            size='large'
-            color="primary"
-            variant="contained"
-            onClick={() => { this.nextPage(this.state.page) }}
-          >
-            Continue
-          </Button>
-        </form>
-      )
+            <Button
+              //type='submit'
+              size='large'
+              color="primary"
+              variant="contained"
+              onClick={() => { this.nextPage(this.state.page) }}
+            >
+              Continue
+            </Button>
+          </form>
+        )
+      } else if (this.state.payment === 'Negotiable') {
+        return (
+          <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
+            <Select
+              size='small'
+              id="payment"
+              value={this.state.payment}
+              name="Payment"
+              variant="outlined"
+              onChange={this.onSelect}
+            >
+              <MenuItem value={'Fixed'}>Fixed</MenuItem>
+              <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
+              <MenuItem value={'Offer'}>Offer</MenuItem>
+            </Select>
+
+            <TextField
+              id="outlined-multiline-static"
+              variant="outlined"
+              name="pay"
+              placeholder="Pay"
+              onChange={this.onChange}
+            />
+
+            <Button
+              //type='submit'
+              size='large'
+              color="primary"
+              variant="contained"
+              onClick={() => { this.nextPage(this.state.page) }}
+            >
+              Continue
+            </Button>
+          </form>
+        )
+      } else if (this.state.payment === 'Offer') {
+        return (
+          <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
+            <Select
+              size='small'
+              id="payment"
+              value={this.state.payment}
+              name="Payment"
+              variant="outlined"
+              onChange={this.onSelect}
+            >
+              <MenuItem value={'Fixed'}>Fixed</MenuItem>
+              <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
+              <MenuItem value={'Offer'}>Offer</MenuItem>
+            </Select>
+
+            <Button
+              //type='submit'
+              size='large'
+              color="primary"
+              variant="contained"
+              onClick={() => { this.nextPage(this.state.page) }}
+            >
+              Continue
+            </Button>
+          </form>
+        )
+      }
     }
   }
 }

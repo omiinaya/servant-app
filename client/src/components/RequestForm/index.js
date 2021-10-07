@@ -91,9 +91,10 @@ class RequestForm extends Component {
       location: defaultLocation,
       payment: 'Fixed',
       recurrence: 'One Time',
+      start_date: '',
+      end_date: ''
     }
 
-    this.myRef = React.createRef()
     this.onReset = this.onReset.bind(this)
     this.nextPage = this.nextPage.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -108,13 +109,11 @@ class RequestForm extends Component {
   nextPage(a) {
     var next = a + 1
     this.setState({ page: next })
-    //this.myRef.current.value = null
     console.log(this.state)
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
-    console.log(e.target.name)
     console.log(e.target.value)
   }
 
@@ -171,7 +170,6 @@ class RequestForm extends Component {
     Geocode.fromLatLng(lat, lng).then(
       response => {
         const address = response.results[0].formatted_address;
-        console.log(address);
         return address
       },
       error => {
@@ -201,7 +199,6 @@ class RequestForm extends Component {
             name="title"
             placeholder="Add a title"
             variant="outlined"
-            inputRef={this.myRef}
             onChange={this.onChange}
           />
 

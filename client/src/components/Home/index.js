@@ -93,9 +93,6 @@ function Home() {
             <div className={classes.title}>
                 Popular Services
             </div>
-            <div>
-                <TEST_PROPBASED_RENDERING />
-            </div>
             <div className={classes.mobile}>
                 <BottomAppBar />
             </div>

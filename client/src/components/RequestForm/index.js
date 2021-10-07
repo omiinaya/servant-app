@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { TextField, Button, Select, MenuItem } from '@material-ui/core';
+import { TextField, Button, MenuItem } from '@material-ui/core';
 import { withStyles } from '@material-ui/styles';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -318,18 +318,20 @@ class RequestForm extends Component {
       if (this.state.payment === 'Fixed') {
         return (
           <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
-            <Select
+            <TextField
               size='small'
               id="payment"
+              select
+              label="Payment Agreement"
               value={this.state.payment}
-              name="Payment"
               variant="outlined"
               onChange={this.onSelect}
+              helperText="This is what you're willing to pay and it is non-negotiable."
             >
               <MenuItem value={'Fixed'}>Fixed</MenuItem>
               <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
               <MenuItem value={'Offer'}>Offer</MenuItem>
-            </Select>
+            </TextField>
 
             <TextField
               id="outlined-multiline-static"
@@ -353,18 +355,20 @@ class RequestForm extends Component {
       } else if (this.state.payment === 'Negotiable') {
         return (
           <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
-            <Select
+            <TextField
               size='small'
               id="payment"
+              select
+              label="Payment Agreement"
               value={this.state.payment}
-              name="Payment"
               variant="outlined"
               onChange={this.onSelect}
+              helperText="This is your price range, but it is open to negotiation."
             >
               <MenuItem value={'Fixed'}>Fixed</MenuItem>
               <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
               <MenuItem value={'Offer'}>Offer</MenuItem>
-            </Select>
+            </TextField>
 
             <TextField
               id="outlined-multiline-static"
@@ -388,18 +392,21 @@ class RequestForm extends Component {
       } else if (this.state.payment === 'Offer') {
         return (
           <form className={classes.root} noValidate autoComplete="off" /*onSubmit={this.onSubmit}*/>
-            <Select
+            <TextField
               size='small'
               id="payment"
+              select
+              label="Select"
+              label="Payment Agreement"
               value={this.state.payment}
-              name="Payment"
               variant="outlined"
               onChange={this.onSelect}
+              helperText="Let the other party decide the cost."
             >
               <MenuItem value={'Fixed'}>Fixed</MenuItem>
               <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
               <MenuItem value={'Offer'}>Offer</MenuItem>
-            </Select>
+            </TextField>
 
             <Button
               //type='submit'

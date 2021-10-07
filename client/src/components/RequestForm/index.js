@@ -12,6 +12,8 @@ import MapView from '../MapView'
 import Geocode from "react-geocode";
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
+
 //import { login } from './scripts';
 
 Geocode.setApiKey(process.env.REACT_APP_GEOKEY);
@@ -157,7 +159,21 @@ class RequestForm extends Component {
       error => {
         console.error(error);
       }
-    );
+    )
+  }
+
+  getAddress(coordinates) {
+    var lat = coordinates[0]
+    var lng = coordinates[1]
+    Geocode.fromLatLng(lat, lng).then(
+      response => {
+        const address = response.results[0].formatted_address;
+        console.log(address);
+      },
+      error => {
+        console.error(error);
+      }
+    )
   }
 
   onUseCurrent() {
@@ -168,6 +184,13 @@ class RequestForm extends Component {
       })
     })
   }
+
+  componentDidMount() {
+    check(PERMISSIONS.IOS.LOCATION_ALWAYS)
+      .then((result) => {
+        console.log(result)
+      })
+    }
 
   render() {
     const { classes } = this.props;

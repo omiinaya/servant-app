@@ -20,7 +20,10 @@ requests.post('/create', (req, res) => {
     //data to send to db
     const today = new Date()
     const requestData = {
+
         //edit this to match necessary data.
+        
+        /*
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
@@ -28,6 +31,7 @@ requests.post('/create', (req, res) => {
         username: req.body.username,
         password: req.body.password,
         created: today
+        */
     }
     Request.create(requestData)
         .then(request => {

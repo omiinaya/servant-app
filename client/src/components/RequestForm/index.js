@@ -28,7 +28,7 @@ class RequestForm extends Component {
       page: 0,
       title: '',
       description: '',
-      search: defaultAddress,
+      address: defaultAddress,
       location: defaultLocation,
       payment: 'Fixed',
       recurrence: 'One Time',
@@ -89,7 +89,7 @@ class RequestForm extends Component {
 
   onSearch(e) {
     e.preventDefault()
-    this.getCoordinates(this.state.search)
+    this.getCoordinates(this.state.address)
   }
 
   onReset(e) {
@@ -185,7 +185,7 @@ class RequestForm extends Component {
                 </IconButton>
                 <InputBase
                   sx={{ ml: 1, flex: 1 }}
-                  name="search"
+                  name="address"
                   placeholder="Search Google Maps"
                   inputProps={{ 'aria-label': 'search google maps' }}
                   onChange={this.onChange}
@@ -228,7 +228,7 @@ class RequestForm extends Component {
                 </IconButton>
                 <InputBase
                   sx={{ ml: 1, flex: 1 }}
-                  name="search"
+                  name="address"
                   placeholder="Search Google Maps"
                   inputProps={{ 'aria-label': 'search google maps' }}
                   onChange={this.onChange}

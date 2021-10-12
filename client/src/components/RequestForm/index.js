@@ -10,7 +10,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import MapView from '../MapView'
 import Geocode from "react-geocode";
-import createBreakpoints from '@material-ui/core/styles/createBreakpoints'
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import styles from './styles'
 
@@ -34,7 +33,8 @@ class RequestForm extends Component {
       payment: 'Fixed',
       recurrence: 'One Time',
       start_date: '',
-      end_date: ''
+      end_date: '',
+      currency: '$'
     }
 
     this.onReset = this.onReset.bind(this)
@@ -42,6 +42,7 @@ class RequestForm extends Component {
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.onSelect = this.onSelect.bind(this)
+    this.onCurrency = this.onCurrency.bind(this)
     this.onSearch = this.onSearch.bind(this)
     this.onUseCurrent = this.onUseCurrent.bind(this)
     this.getCoordinates = this.getCoordinates.bind(this)
@@ -63,6 +64,11 @@ class RequestForm extends Component {
     this.setState({ payment: e.target.value })
     console.log(e.target.value)
   };
+
+  onCurrency(e) {
+    this.setState({ currency: e.target.value })
+    console.log(e.target.value)
+  }
 
   onSubmit(e) {
     e.preventDefault()
@@ -261,15 +267,29 @@ class RequestForm extends Component {
               size='small'
               id="payment"
               select
-              label="Payment Agreement"
+              label="Select a Payment Agreement"
               value={this.state.payment}
               variant="outlined"
               onChange={this.onSelect}
-              helperText="This is what you're willing to pay and it is non-negotiable."
+              helperText="Determines payment flexibility."
             >
               <MenuItem value={'Fixed'}>Fixed</MenuItem>
               <MenuItem value={'Negotiable'}>Negotiable</MenuItem>
               <MenuItem value={'Offer'}>Offer</MenuItem>
+            </TextField>
+
+            <TextField
+              size='small'
+              id="payment"
+              select
+              label="Select a Currency"
+              value={this.state.currency}
+              variant="outlined"
+              onChange={this.onCurrency}
+              helperText="Currency in which the payment will be processed."
+            >
+              <MenuItem value={'$'}>$</MenuItem>
+              <MenuItem value={'€'}>€</MenuItem>
             </TextField>
 
             <TextField
@@ -278,6 +298,7 @@ class RequestForm extends Component {
               name="pay"
               placeholder="Pay"
               onChange={this.onChange}
+              helperText="What you're willing to pay and it is non-negotiable."
             />
 
             <Button
